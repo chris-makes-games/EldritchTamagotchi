@@ -225,7 +225,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -290,7 +290,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   rb: {fileID: 1907600275}
   moveSpeed: 5
-  move: {fileID: 2371312145404239149, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  sr: {fileID: 1907600276}
+  initSprite: {fileID: -2413806693520163455, guid: ac1c0a9f8e922479c812f4a2124a9b0a, type: 3}
+  fuckYou: {fileID: 7482667652216324306, guid: a30cb6d4340dc4af6874225b17705efd, type: 3}
+  InputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  move:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e634e5fc-1c45-459a-90f1-33df7b206e63
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  bird:
+    m_Name: Bird
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4ef8c7db-d9db-4eaa-8678-f87ab847cdf3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  birdActive: 0
 --- !u!114 &1907600274
 MonoBehaviour:
   m_ObjectHideFlags: 0
