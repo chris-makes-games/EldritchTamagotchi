@@ -1,9 +1,12 @@
+using Ink.UnityIntegration;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
     public string nickame;
     public string description;
+
+    public InkFile startDialogue;
 
     public SpriteRenderer icon;
     public SpriteRenderer portrait;
@@ -12,17 +15,11 @@ public class NPC : MonoBehaviour
     {
         icon = GetComponent<SpriteRenderer>();
         portrait = GetComponent<SpriteRenderer>();
-        buildDialogueTree();
     }
 
     // Update is called once per frame
     void Update()
     {
         //maybe we can have animations play here, or have them wander
-    }
-
-    void buildDialogueTree()
-    {
-
     }
 }
