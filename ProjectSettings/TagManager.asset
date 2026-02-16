@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -41,3 +41,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1436213365
+    locked: 0
+  - name: Room
+    uniqueID: 4276437171
+    locked: 0
+  - name: Gamepad
+    uniqueID: 2054981771
+    locked: 0
+  - name: Play Window
+    uniqueID: 2191030705
+    locked: 0
+  - name: Popups
+    uniqueID: 1991324493
+    locked: 0
+  m_RenderingLayers:
+  - Default
