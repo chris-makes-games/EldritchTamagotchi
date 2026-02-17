@@ -1,12 +1,12 @@
-using Ink.UnityIntegration;
 using UnityEngine;
+using Ink;
 
 public class NPC : MonoBehaviour
 {
     public string nickame;
     public string description;
 
-    public InkFile startDialogue;
+    [SerializeField] private TextAsset ink;
 
     public SpriteRenderer icon;
     public SpriteRenderer portrait;
