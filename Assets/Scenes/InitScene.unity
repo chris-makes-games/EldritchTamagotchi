@@ -2140,6 +2140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1966333485}
   - component: {fileID: 1966333486}
+  - component: {fileID: 1966333487}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -2221,6 +2222,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1966333487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966333484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0bb300a36df49af9390c3f370838db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  roomNumber: 0
+  examplePrefab: {fileID: 8456805062768259834, guid: f371f0b7530524e9cbe1302d5a61cbd9, type: 3}
 --- !u!1 &2035514356
 GameObject:
   m_ObjectHideFlags: 0
