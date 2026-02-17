@@ -1,4 +1,3 @@
-using Ink.UnityIntegration;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,25 +6,11 @@ public class Interactable : MonoBehaviour
 {
     private SpriteRenderer sprite;
     private SpriteRenderer highlight;
-    private bool highlighted;
     public float highlightSize;
-
-    //interact button
-    public InputActionAsset InputActions;
-    public InputAction interact;
 
     //ink file for text
     [SerializeField] private TextAsset ink;
 
-    void OnEnable()
-    {
-        InputActions.FindActionMap("Player").Enable();
-    }
-
-    private void Awake()
-    {
-        interact = InputSystem.actions.FindAction("Interact/Continue");
-    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,21 +40,11 @@ public class Interactable : MonoBehaviour
         highlight.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       if (highlighted && interact.WasPressedThisFrame())
-        {
-            Debug.Log(ink.text);
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player")) 
         {
             highlight.enabled = true;
-            highlighted = true;
         }
 
     }
@@ -79,7 +54,6 @@ public class Interactable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             highlight.enabled = false;
-            highlighted = false;
         }
     }
 }
