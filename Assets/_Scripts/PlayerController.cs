@@ -14,11 +14,17 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer sr;
     public Sprite initSprite, fuckYou;
 
+    //interaction variables
+    public DialogueManager DialogueManager;
+    bool interactable = false;
+    TextAsset story = null;
+
     // input variables
     public InputActionAsset InputActions;
     public InputAction move;
     public InputAction bird;
     public InputAction dodge;
+    public InputAction interact;
     public bool birdActive;
     
     void OnEnable() {
@@ -29,6 +35,7 @@ public class PlayerController : MonoBehaviour
         move = InputSystem.actions.FindAction("Move");
         bird = InputSystem.actions.FindAction("FlipTheBird");
         dodge = InputSystem.actions.FindAction("Dodge");
+        interact = InputSystem.actions.FindAction("Interact/Continue");
     }
 
     void FixedUpdate()
@@ -69,6 +76,32 @@ public class PlayerController : MonoBehaviour
             dodgeDirection = moveDirection;
             rb.linearVelocity = dodgeDirection * dodgeSpeed;
             dodging = true;
+        }
+
+        if (interact.WasPressedThisFrame())
+        {
+            if (interactable)
+            {
+                DialogueManager.EnterStoryMode(story);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Interaction"))
+        {
+            interactable = true;
+            story = collision.GetComponent<Interactable>().GetInk();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Interaction"))
+        {
+            interactable = false;
+            story = null;
         }
     }
 }
