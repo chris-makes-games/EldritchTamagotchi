@@ -1,1 +1,1 @@
-This is another interactable test!
+This is another dialogue test!

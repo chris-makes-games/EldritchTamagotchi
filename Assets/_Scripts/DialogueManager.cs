@@ -6,14 +6,13 @@ public class DialogueManager : MonoBehaviour
 {
     //gmae objects to hold the panel and text
     [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI text0;
+    [SerializeField] private TextMeshProUGUI text1;
+    [SerializeField] private TextMeshProUGUI text2;
+    [SerializeField] private TextMeshProUGUI text3;
 
     //ink story JSON - recieves from the player
     private Story currentStory;
-
-    //holds all story lines
-    private string[] allStories;
-    public int storyNumber;
 
     //keep track of if a story is playing - to wait when a player needs to make a choice
     private bool storyPlaying;
@@ -35,23 +34,15 @@ public class DialogueManager : MonoBehaviour
     {
         //starts inactive until text is shown
         storyPlaying = false;
-        dialoguePanel.SetActive(false);
-
-        //creates the array
-        allStories = new string[storyNumber];
+        text0.text = "";
+        text1.text = "";
+        text2.text = "";
+        text3.text = "";
     }
 
     
     public void EnterStoryMode(TextAsset ink) //begin a story, accepts an ink
-    {
-        string current = ink.text;
-        string next = null;
-        for (int i = 0; i < storyNumber - 1; i++)
-        {
-            next = allStories[i];
-            allStories[i] = current;
-            current = next;
-        }
+    {    
         currentStory = new Story(ink.text);
         storyPlaying = true;
         dialoguePanel.SetActive(true);
@@ -75,7 +66,10 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            text3.text = text2.text;
+            text2.text = text1.text;
+            text1.text = text0.text;
+            text0.text = currentStory.Continue();
         }
         else
         {
