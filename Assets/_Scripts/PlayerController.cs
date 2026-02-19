@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public DialogueManager DialogueManager;
     bool interactable = false;
     TextAsset story = null;
+    bool canMove = true; //for toggling player movement
 
     // input variables
     public InputActionAsset InputActions;
@@ -93,7 +94,6 @@ public class PlayerController : MonoBehaviour
         {
             interactable = true;
             story = collision.GetComponent<Interactable>().GetInk();
-            DialogueManager.SetText("Press E to interact");
         }
     }
 

@@ -57,7 +57,6 @@ public class DialogueManager : MonoBehaviour
     {
         storyPlaying = false;
         body.text = "";
-        choices.text = "";
     }
 
     private void ContinueStory() //goes to next step of story
