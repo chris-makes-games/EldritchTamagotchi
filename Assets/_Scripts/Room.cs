@@ -26,6 +26,9 @@ public class Room : MonoBehaviour
     // booleans for room changes
     private bool room0 = false;
 
+    // other variables
+    public SpriteRenderer floor;
+
     void Update()
     {
         // these two if statements check roomNumber to see if it is equal to something
@@ -36,15 +39,13 @@ public class Room : MonoBehaviour
         // at the moment, if roomNumber is 0, spawns a triangle
         // if roomNumber changes from 0, the triangle is destroyed
 
-        // the triangle is huge because it's "1:1:1 scale" is relative to the parent (which is the huge floor object)
-        // I might fix this by just making the "Room" object it's own thing seperate from the floor
+        // i do not know why the triangle is kinda big (not as big as when it was attached to the floor)
 
         if (roomNumber == 0 && room0 == false) {
             // Instantiate(prefabName (need to be declared beforehand), position (Vector3), rotation (quaternion), ref to parent object (this.transform))
-            GameObject placeHolder = Instantiate(examplePrefab, Vector3.zero, Quaternion.identity);
+            GameObject placeHolder = Instantiate(examplePrefab, Vector3.zero, Quaternion.identity, this.transform);
             room0 = true;
         }
-        // this part does not work yet, needs some fiddling
         if (roomNumber != 0 && room0 == true) {
             Debug.Log(transform.childCount);
             while (transform.childCount > 0) {
