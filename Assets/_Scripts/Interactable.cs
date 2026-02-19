@@ -56,9 +56,4 @@ public class Interactable : MonoBehaviour
             highlight.enabled = false;
         }
     }
-
-    public TextAsset GetInk() 
-    { 
-        return ink;
-    }
 }
