@@ -4,12 +4,10 @@ using Ink.Runtime;
 
 public class DialogueManager : MonoBehaviour
 {
-    //gmae objects to hold the panel and text
+    //gmae objects to hold the panel and text and choices
     [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private TextMeshProUGUI text0;
-    [SerializeField] private TextMeshProUGUI text1;
-    [SerializeField] private TextMeshProUGUI text2;
-    [SerializeField] private TextMeshProUGUI text3;
+    [SerializeField] private GameObject choicePanel;
+    [SerializeField] private TextMeshProUGUI body;
 
     //ink story JSON - recieves from the player
     private Story currentStory;
@@ -34,10 +32,8 @@ public class DialogueManager : MonoBehaviour
     {
         //starts inactive until text is shown
         storyPlaying = false;
-        text0.text = "";
-        text1.text = "";
-        text2.text = "";
-        text3.text = "";
+        choicePanel.SetActive(false);
+        body.text = "";
     }
 
     
@@ -57,23 +53,27 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void ExitDialogueMode()//when a story is done, exits
+    public void ExitStoryMode()//when a story is done, exits
     {
         storyPlaying = false;
+        body.text = "";
+        choices.text = "";
     }
 
     private void ContinueStory() //goes to next step of story
     {
         if (currentStory.canContinue)
         {
-            text3.text = text2.text;
-            text2.text = text1.text;
-            text1.text = text0.text;
-            text0.text = currentStory.Continue();
+            body.text = currentStory.Continue();
         }
         else
         {
-            ExitDialogueMode();
+            ExitStoryMode();
         }
+    }
+
+    public void SetText(string s)
+    {
+        body.text = s;
     }
 }

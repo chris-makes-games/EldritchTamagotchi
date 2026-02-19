@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour
         {
             interactable = true;
             story = collision.GetComponent<Interactable>().GetInk();
+            DialogueManager.SetText("Press E to interact");
         }
     }
 
@@ -102,6 +103,7 @@ public class PlayerController : MonoBehaviour
         {
             interactable = false;
             story = null;
+            DialogueManager.ExitStoryMode();
         }
     }
 }
