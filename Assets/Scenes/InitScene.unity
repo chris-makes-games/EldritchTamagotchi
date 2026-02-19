@@ -1328,8 +1328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
   dialoguePanel: {fileID: 437915777}
+  choicePanel: {fileID: 386426238}
   body: {fileID: 1094512104}
-  choices: {fileID: 0}
 --- !u!4 &681542481
 Transform:
   m_ObjectHideFlags: 0
