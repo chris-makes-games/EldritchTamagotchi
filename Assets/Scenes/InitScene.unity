@@ -1372,7 +1372,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1258201472}
@@ -1391,6 +1391,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Room
   roomNumber: 1
   examplePrefab: {fileID: 8456805062768259834, guid: f371f0b7530524e9cbe1302d5a61cbd9, type: 3}
+  doorTo1: {fileID: 709797728498161819, guid: 76244238b557b4bd18838952608a8a1e, type: 3}
+  doorTo2: {fileID: 709797728498161819, guid: 08c0bfb34e711495d9676224e5f8105f, type: 3}
   floor: {fileID: 1966333486}
 --- !u!1 &865468565
 GameObject:

@@ -14,20 +14,35 @@ public class Room : MonoBehaviour
     *   Also important that we declare some Vector3's in order to place objects in specific positions.
     */
 
+    // instance of this script
+    // call with Room.instance.whatever_thing_you_want
+    public static Room instance;
 
     // this is the number used to determine what to spawn
     // theoretically this will be grabbed from the quest manager
     // or generated based off of data from the quest manager
     public int roomNumber;
+    private int roomNumberPrevFrame;
 
     // prefabs (this could get bloated very quickly depending on how many prefabs we have)
     public GameObject examplePrefab;
+    public GameObject doorTo1;
+    public GameObject doorTo2;
 
     // booleans for room changes
-    private bool room0 = false;
+    private bool room1 = false;
+    private bool room2 = false;
+    private bool startPosition = true;
 
     // other variables
     public SpriteRenderer floor;
+
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Update()
     {
@@ -36,22 +51,39 @@ public class Room : MonoBehaviour
         // which would allow us to use seeds to create layouts
         // (once we have some unique prefabs worth instantiating)
 
-        // at the moment, if roomNumber is 0, spawns a triangle
-        // if roomNumber changes from 0, the triangle is destroyed
+        // at the moment, if roomNumber is 1, spawns a triangle
+        // if roomNumber changes from 1, the triangle is destroyed
 
         // i do not know why the triangle is kinda big (not as big as when it was attached to the floor)
 
-        if (roomNumber == 0 && room0 == false) {
-            // Instantiate(prefabName (need to be declared beforehand), position (Vector3), rotation (quaternion), ref to parent object (this.transform))
-            GameObject placeHolder = Instantiate(examplePrefab, Vector3.zero, Quaternion.identity, this.transform);
-            room0 = true;
-        }
-        if (roomNumber != 0 && room0 == true) {
-            Debug.Log(transform.childCount);
+        if (roomNumber != roomNumberPrevFrame) {
             while (transform.childCount > 0) {
                 DestroyImmediate(transform.GetChild(0).gameObject);
+            room1 = false;
+            room2 = false;
             }
-            room0 = false;
         }
+
+        
+        if (roomNumber == 1 && room1 == false) {
+            // Instantiate(prefabName (need to be declared beforehand), position (Vector3), rotation (quaternion), ref to parent object (this.transform))
+            GameObject placeHolder = Instantiate(examplePrefab, Vector3.zero, Quaternion.identity, this.transform);
+            Vector3 doorPosition2 = new Vector3(-19.0f, 2.0f, 0.0f);
+            GameObject door2 = Instantiate(doorTo2, doorPosition2, Quaternion.identity, this.transform);
+            if(!startPosition) PlayerController.instance.transform.position = new Vector3(-17.0f, transform.position.y, 0.0f);
+            startPosition = false;
+            room1 = true;
+        }
+        
+        else if (roomNumber == 2 && room2 == false) {
+            Vector3 doorPosition1 = new Vector3(11.0f, 2.0f, 0.0f);
+            GameObject door1 = Instantiate(doorTo1, doorPosition1, Quaternion.identity, this.transform);
+            PlayerController.instance.transform.position = new Vector3(9.0f, transform.position.y, 0.0f);
+            room2 = true;
+        }
+
+        // record roomNumber of previous frame
+        // used to check for changes in room number
+        roomNumberPrevFrame = roomNumber;
     }
 }
