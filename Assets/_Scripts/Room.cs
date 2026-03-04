@@ -70,7 +70,7 @@ public class Room : MonoBehaviour
             GameObject placeHolder = Instantiate(examplePrefab, Vector3.zero, Quaternion.identity, this.transform);
             Vector3 doorPosition2 = new Vector3(-19.0f, 2.0f, 0.0f);
             GameObject door2 = Instantiate(doorTo2, doorPosition2, Quaternion.identity, this.transform);
-            if(!startPosition) PlayerController.instance.transform.position = new Vector3(-17.0f, transform.position.y, 0.0f);
+            if(!startPosition) PlayerController.instance.transform.position = new Vector3(-17.0f, PlayerController.instance.rb.position.y, 0.0f);
             startPosition = false;
             room1 = true;
         }
@@ -78,7 +78,7 @@ public class Room : MonoBehaviour
         else if (roomNumber == 2 && room2 == false) {
             Vector3 doorPosition1 = new Vector3(11.0f, 2.0f, 0.0f);
             GameObject door1 = Instantiate(doorTo1, doorPosition1, Quaternion.identity, this.transform);
-            PlayerController.instance.transform.position = new Vector3(9.0f, transform.position.y, 0.0f);
+            PlayerController.instance.transform.position = new Vector3(9.0f, PlayerController.instance.rb.position.y, 0.0f);
             room2 = true;
         }
 
