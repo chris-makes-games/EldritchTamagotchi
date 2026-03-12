@@ -45,17 +45,17 @@ public class ChoiceManager : MonoBehaviour
     {
         if (choosing)
         {
-            if (moveDirection.x > 0 && !choiceWait)
+            if (moveDirection.x > 0 && !choiceWait) //moves once to the right
             {
                 choiceWait = true;
                 moveCursor(true);
             }
-            else if (moveDirection.x < 0 && !choiceWait) 
+            else if (moveDirection.x < 0 && !choiceWait) //moves once to the left
             { 
                 choiceWait = true;
                 moveCursor(false);
             }
-            if (moveDirection.x == 0)
+            if (moveDirection.x == 0) //resets the ability to move
             {
                 choiceWait = false;
             }
@@ -66,14 +66,14 @@ public class ChoiceManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (choosing)
+        if (choosing) //takes move direction same as player
         {
             moveDirection = choiceInput.ReadValue<Vector2>();
         }
         
     }
 
-    public void startChoice(string[] newChoices)
+    public void startChoice(string[] newChoices) //begins a new choice, needs list of strings for buttons
     {
         numberOfChoices = newChoices.Length;
         choosing = true;
@@ -85,29 +85,29 @@ public class ChoiceManager : MonoBehaviour
         }
 
     }
-    private void moveCursor(bool forward)
+    private void moveCursor(bool forward) //moves the selector forward or back if false
     {
-        if (forward) //wrap forwards
+        if (forward)
         {
             if (currentChoice == numberOfChoices - 1)
             {
-                currentChoice = 0;
+                currentChoice = 0; //wrap forwards back to front
             }
             else
             {
-                currentChoice++;
+                currentChoice++; //move right
             }
             
         }
-        else //wrap backwards
+        else 
         {
             if (currentChoice == 0)
             {
-                currentChoice = numberOfChoices - 1;
+                currentChoice = numberOfChoices - 1; //wrap backwards back to end
             }
             else
             {
-                currentChoice--;
+                currentChoice--; //move left
             }
             
         }
@@ -117,7 +117,7 @@ public class ChoiceManager : MonoBehaviour
 
     }
 
-    public void EndChoice()
+    public void EndChoice() //hides all the choices again
     {
         choosing = false;
         currentChoice = 0;
@@ -131,7 +131,7 @@ public class ChoiceManager : MonoBehaviour
         selector.SetActive(false);
     }
 
-    public int getSelection()
+    public int getSelection() //sends the current selection to make a choice
     {
         return currentChoice;
     }

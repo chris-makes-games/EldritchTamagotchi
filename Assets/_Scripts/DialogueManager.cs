@@ -1,10 +1,16 @@
-using UnityEngine;
-using TMPro;
 using Ink.Runtime;
+using System.Collections;
+using TMPro;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
+    //to "read" text by character
+    public float delay = 0.025f; //delay between characters in seconds
+    private bool readingText = false; //keep track of if characters are being read
+    string fullText; //keep track of what all the text should be
+
     //game objects to hold the panel and text and choices
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private GameObject choicePanel;
@@ -55,22 +61,27 @@ public class DialogueManager : MonoBehaviour
 
     public void ExitStoryMode()//when a story is done, exits
     {
-        Debug.Log("exiting story...");
         choiceManager.EndChoice(); //hides buttons and selector
         player.endStory(); //lets player move again
     }
 
     public void ContinueStory() //goes to next step of story
     {
+        if (readingText) //stop reading text, show full text and return
+        {
+            StopAllCoroutines();
+            body.text = fullText;
+            choiceManager.startChoice(choiceList); //sets choices
+            readingText = false; //resets reading
+            return;
+        }
         if (waitingchoice) //player makes a choice
         {
             waitingchoice = false;
             if (currentStory.currentChoices.Count > 0) //makes a choice
             {
                 currentStory.ChooseChoiceIndex(choiceManager.getSelection());
-                body.text = currentStory.Continue();
                 choiceManager.EndChoice();
-                ContinueStory();
             }
             else //no choice to make, ends the interaction
             {
@@ -80,8 +91,8 @@ public class DialogueManager : MonoBehaviour
 
         if (currentStory.canContinue)
         {
-            Debug.Log("continue? " + currentStory.canContinue);
-            body.text = currentStory.Continue();
+            fullText = currentStory.Continue();
+            SayText(fullText);
             if (currentStory.currentChoices.Count > 0) //if story has more than one choice
             {
                 choiceList = new string[currentStory.currentChoices.Count];
@@ -96,7 +107,7 @@ public class DialogueManager : MonoBehaviour
                 choiceList = new string[1];
                 choiceList[0] = "Continue";
             }
-            choiceManager.startChoice(choiceList); //sends choices as strings to the choice manager
+             //sends choices as strings to the choice manager
             waitingchoice = true;
         }
         else
@@ -108,6 +119,25 @@ public class DialogueManager : MonoBehaviour
     public void SetText(string s)
     {
         body.text = s;
+    }
+
+    public void SayText(string text) //to "say" the letters one by one
+    {
+        StartCoroutine(Wait(text));
+    }
+
+    IEnumerator Wait(string text)
+    {
+        readingText = true;
+        string output = "";
+        for (int i = 0; i < text.Length; i++)
+        {
+            output = output + text[i];
+            body.text = output;
+            yield return new WaitForSeconds(delay);
+        }
+        choiceManager.startChoice(choiceList);
+        readingText = false;
     }
 
 }

@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     TextAsset story = null;
     bool canMove = true; //for toggling player movement
     bool storyMode = false;
+    bool waitInput = false; //so player doesn't press interact again
 
     // input variables
     public InputActionAsset InputActions;
@@ -81,17 +82,24 @@ public class PlayerController : MonoBehaviour
             dodging = true;
         }
 
-        if (interact.WasCompletedThisFrame())
+        if (interact.WasPressedThisFrame())
         {
-            if (interactable && !storyMode)
+            if (interactable && !storyMode && !waitInput)
             {
                 DialogueManager.EnterStoryMode(story);
                 startStory();
+                waitInput = true;
             }
-            else if (storyMode) 
+            else if (storyMode && !waitInput) 
             {
                 DialogueManager.ContinueStory();
+                waitInput = true;
             }
+        }
+
+        if (interact.WasReleasedThisFrame()) //resets interact button
+        {
+            waitInput = false;
         }
     }
 
