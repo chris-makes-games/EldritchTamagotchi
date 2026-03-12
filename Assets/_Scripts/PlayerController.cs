@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     bool interactable = false;
     TextAsset story = null;
     bool canMove = true; //for toggling player movement
+    bool storyMode = false;
 
     // input variables
     public InputActionAsset InputActions;
@@ -41,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!dodging) {
+        if (!dodging && canMove) {
             // normal movement
             rb.linearVelocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
         }
@@ -79,13 +81,32 @@ public class PlayerController : MonoBehaviour
             dodging = true;
         }
 
-        if (interact.WasPressedThisFrame())
+        if (interact.WasCompletedThisFrame())
         {
-            if (interactable)
+            if (interactable && !storyMode)
             {
                 DialogueManager.EnterStoryMode(story);
+                startStory();
+            }
+            else if (storyMode) 
+            {
+                DialogueManager.ContinueStory();
             }
         }
+    }
+
+    public void startStory() //to toggle player movement by Dialoguemanager
+    {
+        canMove = false;
+        storyMode = true;
+        interactable = false;
+    }
+
+    public void endStory() //to toggle player movement by Dialoguemanager
+    {
+        canMove = true;
+        storyMode = false;
+        resetInteraction();//need to wait before turning interact back on
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -103,7 +124,13 @@ public class PlayerController : MonoBehaviour
         {
             interactable = false;
             story = null;
-            DialogueManager.ExitStoryMode();
+            DialogueManager.SetText("");
         }
+    }
+
+    IEnumerator resetInteraction()
+    {
+        yield return new WaitForSeconds(0.5f);
+        interactable = true;
     }
 }
