@@ -1363,11 +1363,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd99ffac4ae6be45a0175a3aab3adca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
+  delay: 0.025
   dialoguePanel: {fileID: 437915777}
   choicePanel: {fileID: 386426238}
   body: {fileID: 1094512104}
   select:
-    m_Name: 
+    m_Name: Select
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 0f949a89-d6c2-4d99-b678-215e76b88344
