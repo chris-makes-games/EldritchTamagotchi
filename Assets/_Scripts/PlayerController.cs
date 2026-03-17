@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+    
     // movement variables
     public Rigidbody2D rb;
     public float moveSpeed;
@@ -33,10 +35,13 @@ public class PlayerController : MonoBehaviour
     }
     
     void Awake() {
+        instance = this;
+        
         move = InputSystem.actions.FindAction("Move");
         bird = InputSystem.actions.FindAction("FlipTheBird");
         dodge = InputSystem.actions.FindAction("Dodge");
         interact = InputSystem.actions.FindAction("Interact/Continue");
+
     }
 
     void FixedUpdate()
