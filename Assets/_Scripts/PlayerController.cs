@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     bool interactable = false;
     TextAsset story = null;
     bool canMove = true; //for toggling player movement
+    bool storyMode = false;
+    bool waitInput = false; //so player doesn't press interact again
 
     // input variables
     public InputActionAsset InputActions;
@@ -46,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!dodging) {
+        if (!dodging && canMove) {
             // normal movement
             rb.linearVelocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
         }
@@ -86,11 +89,37 @@ public class PlayerController : MonoBehaviour
 
         if (interact.WasPressedThisFrame())
         {
-            if (interactable)
+            if (interactable && !storyMode && !waitInput)
             {
                 DialogueManager.EnterStoryMode(story);
+                startStory();
+                waitInput = true;
+            }
+            else if (storyMode && !waitInput) 
+            {
+                DialogueManager.ContinueStory();
+                waitInput = true;
             }
         }
+
+        if (interact.WasReleasedThisFrame()) //resets interact button
+        {
+            waitInput = false;
+        }
+    }
+
+    public void startStory() //to toggle player movement by Dialoguemanager
+    {
+        canMove = false;
+        storyMode = true;
+        interactable = false;
+    }
+
+    public void endStory() //to toggle player movement by Dialoguemanager
+    {
+        canMove = true;
+        storyMode = false;
+        resetInteraction();//need to wait before turning interact back on
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -108,7 +137,13 @@ public class PlayerController : MonoBehaviour
         {
             interactable = false;
             story = null;
-            DialogueManager.ExitStoryMode();
+            DialogueManager.SetText("");
         }
+    }
+
+    IEnumerator resetInteraction()
+    {
+        yield return new WaitForSeconds(0.5f);
+        interactable = true;
     }
 }
