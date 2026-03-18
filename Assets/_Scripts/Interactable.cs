@@ -1,12 +1,13 @@
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Interactable : MonoBehaviour
 {
     private SpriteRenderer sprite;
     private SpriteRenderer highlight;
     public float highlightSize;
+
+    //choice outcomes for quests - complete quests or not
+    [SerializeField] public bool[] outcomes;
 
     //ink file for text
     [SerializeField] private TextAsset ink;
