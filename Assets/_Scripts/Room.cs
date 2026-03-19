@@ -24,6 +24,7 @@ public class Room : MonoBehaviour
 
     // prefabs (all of the objects that the room manager can spawn)
     public GameObject examplePrefab; // used in everything, replace with bespoke prefabs when we make them
+    public GameObject dog;
     public GameObject doorTo1;
     public GameObject doorTo2;
 
@@ -89,7 +90,7 @@ public class Room : MonoBehaviour
         
         // spawns room 2 if roomNumber is 2
         else if (roomNumber == 2 && room2 == false) {
-            GameObject object1 = Instantiate(examplePrefab, bottomMiddle, Quaternion.identity, this.transform);
+            GameObject object1 = Instantiate(dog, bottomMiddle, Quaternion.identity, this.transform);
             GameObject object2 = Instantiate(examplePrefab, bottomLeft, Quaternion.identity, this.transform);
             GameObject door1 = Instantiate(doorTo1, doorRight, Quaternion.identity, this.transform);
             floor.color = floorGreen;
