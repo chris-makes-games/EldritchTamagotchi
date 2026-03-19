@@ -5,13 +5,12 @@ public class Room : MonoBehaviour
 {
     // HOW DOES THIS WORK/WHAT IS THIS SUPPOSED TO DO
     /*
-    *   Given a specific int roomNumber, this will instantiate a set of child objects in the placespace.
-    *   Upon changing the number, it kills all of the current children and instantiates a new set of children.
+    *   Given a specific int roomNumber, this will instantiate a set of child objects in the playspace.
+    *   Upon changing that number, it kills all of the current children and instantiates a new set of children.
     *   
     *   This will need iteration to accomodate more objects.
     *   New game objects need to be declared in the top here.
-    *   If statements need to be setup to check for specific numbers within roomNumber (using roomNumber%10^x)
-    *   Also important that we declare some Vector3's in order to place objects in specific positions.
+    *   (i know this is a lot of variables)
     */
 
     // instance of this script
@@ -19,15 +18,27 @@ public class Room : MonoBehaviour
     public static Room instance;
 
     // this is the number used to determine what to spawn
-    // theoretically this will be grabbed from the quest manager
-    // or generated based off of data from the quest manager
+    // theoretically this will be grabbed/generated from the quest or dialogue managers
     public int roomNumber;
     private int roomNumberPrevFrame;
 
-    // prefabs (this could get bloated very quickly depending on how many prefabs we have)
-    public GameObject examplePrefab;
+    // prefabs (all of the objects that the room manager can spawn)
+    public GameObject examplePrefab; // used in everything, replace with bespoke prefabs when we make them
     public GameObject doorTo1;
     public GameObject doorTo2;
+
+    // potential spawn locations (probably won't use all of these, but nice to have)
+    private Vector3 topLeft = new Vector3(-16.0f, 8.0f, 0.0f);
+    private Vector3 topMiddle = new Vector3(-4.0f, 8.0f, 0.0f);
+    private Vector3 topRight = new Vector3(8.0f, 8.0f, 0.0f);
+    private Vector3 middleLeft = new Vector3(-16.0f, 3.0f, 0.0f); // watch out for doors
+    private Vector3 middle = new Vector3(8.0f, 3.0f, 0.0f);
+    private Vector3 middleRight = new Vector3(-16.0f, 3.0f, 0.0f); // watch out for doors
+    private Vector3 bottomLeft = new Vector3(-16.0f, -2.5f, 0.0f);
+    private Vector3 bottomMiddle = new Vector3(-4.0f, -2.5f, 0.0f);
+    private Vector3 bottomRight = new Vector3(8.0f, -2.5f, 0.0f);
+    private Vector3 doorLeft = new Vector3(-19.0f, 2.0f, 0.0f); // used for doors
+    private Vector3 doorRight = new Vector3(11.0f, 2.0f, 0.0f);
 
     // booleans for room changes
     private bool room1 = false;
@@ -36,8 +47,7 @@ public class Room : MonoBehaviour
 
     // other variables
     public SpriteRenderer floor;
-
-
+    public Color floorBlue, floorGreen; // replace with sprites when we have floor assets
 
     private void Awake()
     {
@@ -46,16 +56,12 @@ public class Room : MonoBehaviour
 
     void Update()
     {
-        // these two if statements check roomNumber to see if it is equal to something
-        // probably going to change these to check roomNumber % 10^x
-        // which would allow us to use seeds to create layouts
-        // (once we have some unique prefabs worth instantiating)
+        // these if statements check roomNumber to see if it should spawn/destroy anything
 
-        // at the moment, if roomNumber is 1, spawns a triangle
-        // if roomNumber changes from 1, the triangle is destroyed
+        // i do not know why the triangle is kinda big
 
-        // i do not know why the triangle is kinda big (not as big as when it was attached to the floor)
 
+        // kills all objects when room number changes
         if (roomNumber != roomNumberPrevFrame) {
             while (transform.childCount > 0) {
                 DestroyImmediate(transform.GetChild(0).gameObject);
@@ -64,20 +70,29 @@ public class Room : MonoBehaviour
             }
         }
 
-        
+        // spawns room 1 if roomNumber is 1
         if (roomNumber == 1 && room1 == false) {
             // Instantiate(prefabName (need to be declared beforehand), position (Vector3), rotation (quaternion), ref to parent object (this.transform))
-            GameObject placeHolder = Instantiate(examplePrefab, Vector3.zero, Quaternion.identity, this.transform);
-            Vector3 doorPosition2 = new Vector3(-19.0f, 2.0f, 0.0f);
-            GameObject door2 = Instantiate(doorTo2, doorPosition2, Quaternion.identity, this.transform);
-            if(!startPosition) PlayerController.instance.transform.position = new Vector3(-17.0f, PlayerController.instance.rb.position.y, 0.0f);
+            GameObject object1 = Instantiate(examplePrefab, topLeft, Quaternion.identity, this.transform);
+            GameObject object2 = Instantiate(examplePrefab, topRight, Quaternion.identity, this.transform);
+            GameObject door2 = Instantiate(doorTo2, doorLeft, Quaternion.identity, this.transform);
+            
+            // things that shouldn't be done when starting the game
+            if(!startPosition) {
+                PlayerController.instance.transform.position = new Vector3(-17.0f, PlayerController.instance.rb.position.y, 0.0f);
+                floor.color = floorBlue;
+            }
+
             startPosition = false;
             room1 = true;
         }
         
+        // spawns room 2 if roomNumber is 2
         else if (roomNumber == 2 && room2 == false) {
-            Vector3 doorPosition1 = new Vector3(11.0f, 2.0f, 0.0f);
-            GameObject door1 = Instantiate(doorTo1, doorPosition1, Quaternion.identity, this.transform);
+            GameObject object1 = Instantiate(examplePrefab, bottomMiddle, Quaternion.identity, this.transform);
+            GameObject object2 = Instantiate(examplePrefab, bottomLeft, Quaternion.identity, this.transform);
+            GameObject door1 = Instantiate(doorTo1, doorRight, Quaternion.identity, this.transform);
+            floor.color = floorGreen;
             PlayerController.instance.transform.position = new Vector3(9.0f, PlayerController.instance.rb.position.y, 0.0f);
             room2 = true;
         }

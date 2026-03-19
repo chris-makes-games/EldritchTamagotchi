@@ -59,6 +59,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause/Quit",
+                    "type": "Button",
+                    "id": "6f740df1-e063-490f-97ff-d32c9750e475",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -345,6 +354,28 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "FlipTheBird",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7de88bf1-be25-4085-b19b-6f01b6f847b5",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Pause/Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "028a84ef-a16d-4d01-9b19-3156e6b0c397",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Pause/Quit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
