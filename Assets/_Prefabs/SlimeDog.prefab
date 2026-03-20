@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   highlightSize: 1.3
-  ink: {fileID: 4900000, guid: eb3fad19051931946820ce98da4ffab8, type: 3}
+  ink: {fileID: 4900000, guid: 91e36c664cc4f42098a7fa6c28524500, type: 3}
 --- !u!212 &8989278045597287509
 SpriteRenderer:
   serializedVersion: 2
