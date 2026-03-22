@@ -787,6 +787,7 @@ GameObject:
   - component: {fileID: 386426239}
   - component: {fileID: 386426241}
   - component: {fileID: 386426240}
+  - component: {fileID: 386426242}
   m_Layer: 5
   m_Name: ChoicePanel
   m_TagString: Untagged
@@ -857,6 +858,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386426238}
   m_CullTransparentMesh: 1
+--- !u!114 &386426242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386426238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4eabc2c46e94364cab1d9293cee532a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChoiceManager
+  dialogueManager: {fileID: 0}
+  choices:
+  - {fileID: 1926578917}
+  - {fileID: 79817710}
+  - {fileID: 1076447711}
+  - {fileID: 2100401790}
+  - {fileID: 1900292639}
+  textList:
+  - {fileID: 2016971662}
+  - {fileID: 1966215506}
+  - {fileID: 284003601}
+  - {fileID: 2136559334}
+  - {fileID: 471737828}
+  selector: {fileID: 537152988}
+  choiceInput:
+    m_Name: Choice Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9d40d7d2-be11-4af2-95e6-3377d1dbebd8
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &437915777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,7 +1215,7 @@ MonoBehaviour:
   choicePanel: {fileID: 386426238}
   body: {fileID: 1094512104}
   select:
-    m_Name: 
+    m_Name: Select
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: c30fee59-e4c8-4aef-a941-2ca9d533092e
@@ -1187,7 +1223,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  player: {fileID: 0}
+  player: {fileID: 1907600273}
 --- !u!4 &681542481
 Transform:
   m_ObjectHideFlags: 0
@@ -1249,6 +1285,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Room
   roomNumber: 1
   examplePrefab: {fileID: 8456805062768259834, guid: f371f0b7530524e9cbe1302d5a61cbd9, type: 3}
+  dog: {fileID: 4923169241527524199, guid: 011890a2682c242568c6209692a2eda6, type: 3}
+  bed: {fileID: 6779386451130447984, guid: 582c787f758d9498da4382d89439d967, type: 3}
+  wardrobe: {fileID: 7834378072812668681, guid: 89b6dcee785d2420c82bb85a08b9be5d, type: 3}
   doorTo1: {fileID: 709797728498161819, guid: 76244238b557b4bd18838952608a8a1e, type: 3}
   doorTo2: {fileID: 709797728498161819, guid: 08c0bfb34e711495d9676224e5f8105f, type: 3}
   floor: {fileID: 1966333486}

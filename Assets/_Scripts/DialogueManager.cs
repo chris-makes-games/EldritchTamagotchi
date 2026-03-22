@@ -54,6 +54,7 @@ public class DialogueManager : MonoBehaviour
     
     public void EnterStoryMode(TextAsset ink) //begin a story, accepts an ink
     {    
+        PlayerController.instance.rb.linearVelocity = Vector2.zero;
         currentStory = new Story(ink.text);
         dialoguePanel.SetActive(true);
         ContinueStory();

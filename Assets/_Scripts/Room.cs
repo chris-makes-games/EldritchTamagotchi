@@ -13,6 +13,24 @@ public class Room : MonoBehaviour
     *   (i know this is a lot of variables)
     */
 
+    // HOW TO ADD/CHANGE THINGS (rooms or objects) (i know this is kinda tedious, sorry)
+    /*
+    *   adding a room:
+    *   create a boolean named "roomx" with x being the number of that room
+    *   in update(), do this:
+    *   if (roomNumber == x && roomx == false) {
+    *   // all the code for adding things goes here
+    *   roomx = true;
+    *   }
+    *
+    *   adding objects to a room:
+    *   add a new item to the list of prefabs seen below (public GameObject nameOfObject)
+    *   locate the room you want to spawn the object in and write this:
+    *   GameObject thisNameDoesNotMatter = Instantiate(nameOfObject, position, Quaternion.identity, this.transform);
+    *   for position, either create a Vector3 or use the presets from below
+    *   don't mess with the quaternion part or the transform part
+    */
+
     // instance of this script
     // call with Room.instance.whatever_thing_you_want
     public static Room instance;
@@ -24,6 +42,9 @@ public class Room : MonoBehaviour
 
     // prefabs (all of the objects that the room manager can spawn)
     public GameObject examplePrefab; // used in everything, replace with bespoke prefabs when we make them
+    public GameObject dog;
+    public GameObject bed;
+    public GameObject wardrobe;
     public GameObject doorTo1;
     public GameObject doorTo2;
 
@@ -73,8 +94,8 @@ public class Room : MonoBehaviour
         // spawns room 1 if roomNumber is 1
         if (roomNumber == 1 && room1 == false) {
             // Instantiate(prefabName (need to be declared beforehand), position (Vector3), rotation (quaternion), ref to parent object (this.transform))
-            GameObject object1 = Instantiate(examplePrefab, topLeft, Quaternion.identity, this.transform);
-            GameObject object2 = Instantiate(examplePrefab, topRight, Quaternion.identity, this.transform);
+            GameObject object1 = Instantiate(wardrobe, topLeft, Quaternion.identity, this.transform);
+            GameObject object2 = Instantiate(bed, topRight, Quaternion.identity, this.transform);
             GameObject door2 = Instantiate(doorTo2, doorLeft, Quaternion.identity, this.transform);
             
             // things that shouldn't be done when starting the game
@@ -89,7 +110,7 @@ public class Room : MonoBehaviour
         
         // spawns room 2 if roomNumber is 2
         else if (roomNumber == 2 && room2 == false) {
-            GameObject object1 = Instantiate(examplePrefab, bottomMiddle, Quaternion.identity, this.transform);
+            GameObject object1 = Instantiate(dog, bottomMiddle, Quaternion.identity, this.transform);
             GameObject object2 = Instantiate(examplePrefab, bottomLeft, Quaternion.identity, this.transform);
             GameObject door1 = Instantiate(doorTo1, doorRight, Quaternion.identity, this.transform);
             floor.color = floorGreen;
