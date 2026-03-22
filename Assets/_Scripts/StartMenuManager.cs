@@ -7,10 +7,12 @@ public class StartMenuManager : MonoBehaviour
 {
    [SerializeField] private InputActionAsset InputActions;
    [SerializeField] private InputAction closeGame;
+   [SerializeField] private InputAction startGame;
 
     void Awake()
     {
         closeGame = InputSystem.actions.FindAction("Pause/Quit");
+        startGame = InputSystem.actions.FindAction("Interact/Continue");
     }
 
     void Start()
@@ -34,5 +36,7 @@ public class StartMenuManager : MonoBehaviour
             Debug.Log("Quitting game...");
             Application.Quit();
         }
+
+        if (startGame.WasPressedThisFrame()) StartGame();
     }
 }
