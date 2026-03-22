@@ -43,6 +43,8 @@ public class Room : MonoBehaviour
     // prefabs (all of the objects that the room manager can spawn)
     public GameObject examplePrefab; // used in everything, replace with bespoke prefabs when we make them
     public GameObject dog;
+    public GameObject bed;
+    public GameObject wardrobe;
     public GameObject doorTo1;
     public GameObject doorTo2;
 
@@ -92,8 +94,8 @@ public class Room : MonoBehaviour
         // spawns room 1 if roomNumber is 1
         if (roomNumber == 1 && room1 == false) {
             // Instantiate(prefabName (need to be declared beforehand), position (Vector3), rotation (quaternion), ref to parent object (this.transform))
-            GameObject object1 = Instantiate(examplePrefab, topLeft, Quaternion.identity, this.transform);
-            GameObject object2 = Instantiate(examplePrefab, topRight, Quaternion.identity, this.transform);
+            GameObject object1 = Instantiate(wardrobe, topLeft, Quaternion.identity, this.transform);
+            GameObject object2 = Instantiate(bed, topRight, Quaternion.identity, this.transform);
             GameObject door2 = Instantiate(doorTo2, doorLeft, Quaternion.identity, this.transform);
             
             // things that shouldn't be done when starting the game
