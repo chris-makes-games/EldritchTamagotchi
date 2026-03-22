@@ -70,8 +70,11 @@ public class PlayerController : MonoBehaviour
         // reading movement input (joystick, wasd, whatever)
         moveDirection = move.ReadValue<Vector2>();
 
+        // return to start menu with pause/quit button 
+        // (i didn't know where else to put this)
         if (menu.WasPressedThisFrame()) {
             Cursor.visible = true;
+            Debug.Log("Returning to main menu...");
             SceneManager.LoadScene("StartMenu");
         }
 
