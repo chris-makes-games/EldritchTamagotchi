@@ -13,6 +13,24 @@ public class Room : MonoBehaviour
     *   (i know this is a lot of variables)
     */
 
+    // HOW TO ADD/CHANGE THINGS (rooms or objects) (i know this is kinda tedious, sorry)
+    /*
+    *   adding a room:
+    *   create a boolean named "roomx" with x being the number of that room
+    *   in update(), do this:
+    *   if (roomNumber == x && roomx == false) {
+    *   // all the code for adding things goes here
+    *   roomx = true;
+    *   }
+    *
+    *   adding objects to a room:
+    *   add a new item to the list of prefabs seen below (public GameObject nameOfObject)
+    *   locate the room you want to spawn the object in and write this:
+    *   GameObject thisNameDoesNotMatter = Instantiate(nameOfObject, position, Quaternion.identity, this.transform);
+    *   for position, either create a Vector3 or use the presets from below
+    *   don't mess with the quaternion part or the transform part
+    */
+
     // instance of this script
     // call with Room.instance.whatever_thing_you_want
     public static Room instance;
