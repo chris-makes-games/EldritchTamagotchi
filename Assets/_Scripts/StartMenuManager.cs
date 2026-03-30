@@ -13,6 +13,7 @@ public class StartMenuManager : MonoBehaviour
     {
         // for whatever reason, these inputs are ignored if you come return to this scene from InitScene
         // this is a pretty major bug because it means you can't quit the game after you start it
+        // (with controller/keyboard buttons, mouse/trackpad still works with in-game buttons)
         closeGame = InputSystem.actions.FindAction("Pause/Quit");
         startGame = InputSystem.actions.FindAction("Interact/Continue");
     }
@@ -31,6 +32,7 @@ public class StartMenuManager : MonoBehaviour
         SceneManager.LoadScene("InitScene");
     }
 
+    // if you push the quit button (on screen) it quits the game
     public void QuitGame()
     {
         Debug.Log("Quitting game...");
