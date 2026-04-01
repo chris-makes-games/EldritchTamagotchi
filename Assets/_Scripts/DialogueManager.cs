@@ -116,17 +116,17 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void SetText(string s)
+    public void SetText(string s) //easy way to set the text, set to blank to erase
     {
         body.text = s;
     }
 
     public void SayText(string text) //to "say" the letters one by one
     {
-        StartCoroutine(Wait(text));
+        StartCoroutine(SlowText(text));
     }
 
-    IEnumerator Wait(string text)
+    IEnumerator SlowText(string text) //waits for the delay in-between characters of the given text
     {
         readingText = true;
         string output = "";

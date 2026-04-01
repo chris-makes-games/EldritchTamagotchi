@@ -1,3 +1,4 @@
+EXTERNAL SetHat(hatChoice)
 VAR hatchoice = 0
 VAR coins = 0
 VAR hat_text = "Now it is time to choose a hat!"
@@ -8,7 +9,7 @@ VAR cow_hat = 0
 VAR dunce_hat = 0
 VAR burg_hat = 0
 VAR spin_hat = 0
-Hello, this is a longer test dialogue
+Hello, test unity stuff
 +[Continue] ->second
 
 === second ===
@@ -34,6 +35,7 @@ You have been given a coin. Cherish it forever.
 === cowboy ===
 You put on the cowboy hat. You feel rowdy.
 ~ hat_text = "You are wearing the Cowboy Hat. Try a different hat?"
+~ hatchoice = 0
 ~ cow_hat = 1
 ~ dunce_hat = 0
 ~ burg_hat = 0
@@ -44,6 +46,7 @@ You put on the cowboy hat. You feel rowdy.
 === dunce ===
 You put on the dunce cap. You feel stupid.
 ~ hat_text = "You are wearing the dunce cap. Try a different hat?"
+~ hatchoice = 1
 ~ cow_hat = 0
 ~ dunce_hat = 1
 ~ burg_hat = 0
@@ -54,6 +57,7 @@ You put on the dunce cap. You feel stupid.
 === burger ===
 You put on the carboard crown from Burger King. You feel powerful.
 ~ hat_text = "You are wearing the Burger King crown. Try a different hat?"
+~ hatchoice = 2
 ~ cow_hat = 0
 ~ dunce_hat = 0
 ~ burg_hat = 1
@@ -64,6 +68,7 @@ You put on the carboard crown from Burger King. You feel powerful.
 === spinny ===
 You put on the spinny hat. You feel deep regret.
 ~ hat_text = "You are wearing the Spinny Hat. Try a different hat?"
+~ hatchoice = 3
 ~ cow_hat = 0
 ~ dunce_hat = 0
 ~ burg_hat = 0
@@ -85,4 +90,5 @@ You purchase the spinny hat. The coin falls into the slot with a thunk. The glas
 
 === confirm ===
 You feel good about your hat choice. You close the dresser.
+~ SetHat(hatchoice)
 -> DONE
