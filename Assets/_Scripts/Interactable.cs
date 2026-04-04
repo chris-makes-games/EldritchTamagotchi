@@ -1,6 +1,4 @@
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Interactable : MonoBehaviour
 {
@@ -8,8 +6,17 @@ public class Interactable : MonoBehaviour
     private SpriteRenderer highlight;
     public float highlightSize;
 
+    //choice outcomes for quests - complete quests or not
+    [SerializeField] public bool[] outcomes;
+
     //ink file for text
     [SerializeField] private TextAsset ink;
+
+    //to say something about this before the interaction
+    [SerializeField] public string description;
+
+    //check if this interactable has been performed already
+    public bool visited = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -55,6 +62,23 @@ public class Interactable : MonoBehaviour
         {
             highlight.enabled = false;
         }
+    }
+
+    public void ToggleHighlight()
+    {
+        if (highlight.enabled)
+        {
+            highlight.enabled = false;
+        }
+        else
+        {
+            highlight.enabled = true;
+        }
+    }
+
+    public void Visit()
+    {
+        visited = true;
     }
 
     public TextAsset GetInk() 

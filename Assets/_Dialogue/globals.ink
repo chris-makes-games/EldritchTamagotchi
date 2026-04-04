@@ -1,0 +1,1 @@
+VAR currentHat = -1
