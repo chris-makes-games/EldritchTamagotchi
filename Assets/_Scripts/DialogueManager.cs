@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Ink.UnityIntegration;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class DialogueManager : MonoBehaviour
     string[] choiceList;
     private bool waitingchoice = false;
 
+    //will listen to variables being changed in ink scripts
+    private InkManager InkManager;
+    [SerializeField] private InkFile inkGlobals;
+
     //keeps track of player - to release them when they're done interacting
     [SerializeField] private PlayerController player;
 
@@ -37,6 +42,7 @@ public class DialogueManager : MonoBehaviour
     {
         instance = this;//ensure singleton
         select = InputSystem.actions.FindAction("Interact/Continue");
+        InkManager = new InkManager(inkGlobals.filePath, player);
     }
 
     public static DialogueManager GetInstance()
@@ -52,17 +58,25 @@ public class DialogueManager : MonoBehaviour
     }
 
     
-    public void EnterStoryMode(TextAsset ink) //begin a story, accepts an ink
+    public void EnterStoryMode(TextAsset ink, bool visited) //begin a story, accepts an ink
     {    
         currentStory = new Story(ink.text);
+        if (currentStory.variablesState.TryGetDefaultVariableValue("visited"))
+        {
+            Debug.Log("setting visited to " + visited);
+            currentStory.variablesState["visited"] = visited;
+        }
         dialoguePanel.SetActive(true);
+        InkManager.StartListening(currentStory);
         ContinueStory();
     }
 
     public void ExitStoryMode()//when a story is done, exits
     {
         choiceManager.EndChoice(); //hides buttons and selector
+        InkManager.StopListening(currentStory);
         player.endStory(); //lets player move again
+        SetText(""); //clears the text
     }
 
     public void ContinueStory() //goes to next step of story
@@ -105,7 +119,7 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 choiceList = new string[1];
-                choiceList[0] = "Continue";
+                choiceList[0] = "Leave";
             }
              //sends choices as strings to the choice manager
             waitingchoice = true;
@@ -114,6 +128,17 @@ public class DialogueManager : MonoBehaviour
         {
             ExitStoryMode(); //end story if that was the last step
         }
+    }
+
+    public Ink.Runtime.Object GetInkVariable(string variableName)
+    {
+        Ink.Runtime.Object variableValue = null;
+        InkManager.variables.TryGetValue(variableName, out variableValue);
+        if (variableValue == null)
+        {
+            Debug.LogWarning("Error: Ink variable '" + variableName + "' not found! Returning null...");
+        }
+        return variableValue;
     }
 
     public void SetText(string s) //easy way to set the text, set to blank to erase
