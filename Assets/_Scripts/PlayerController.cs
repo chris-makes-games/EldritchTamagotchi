@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -40,11 +41,13 @@ public class PlayerController : MonoBehaviour
     public InputAction interact;
     public bool birdActive;
 
-    //to play sounds on select
+    //to play sounds!
     AudioSource soundSource;
     [SerializeField] AudioClip selectSound;
     [SerializeField] AudioClip errorSound;
-    [SerializeField] AudioClip moveSound;
+    [SerializeField] AudioClip[] walkSounds;
+    public float walkSoundDelay = 0.02f;
+    private bool walkSoundPlaying = false;
     
     void OnEnable() {
         InputActions.FindActionMap("Player").Enable();
@@ -94,6 +97,11 @@ public class PlayerController : MonoBehaviour
         if (bird.WasReleasedThisFrame()) {
             birdActive = true;
             sr.sprite = initSprite;
+        }
+
+        if (moveDirection.x != 0 || moveDirection.y != 0)
+        {
+            WalkSound();
         }
 
         // this is admittedly a very fiddly dodge roll
@@ -200,5 +208,25 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         interactable = true;
+    }
+
+    public void WalkSound()
+    {
+        if (!walkSoundPlaying)
+        {
+            walkSoundPlaying = true;
+            StartCoroutine(PlaySound(walkSounds[Random.Range(0, walkSounds.Length - 1)]));
+        }
+        
+    }
+
+    IEnumerator PlaySound(AudioClip audio)
+    {
+        Debug.Log("test");
+        soundSource.clip = audio;
+        soundSource.loop = false;
+        soundSource.Play();
+        yield return new WaitForSeconds(walkSoundDelay);
+        walkSoundPlaying = false;
     }
 }

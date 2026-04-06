@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
     //to "read" text by character
     public float delay = 0.040f; //delay between characters in seconds
     private bool readingText = false; //keep track of if characters are being read
-    string fullText; //keep track of what all the text should be
+    public string fullText; //keep track of what all the text should be
 
     //game objects to hold the panel and text and choices
     [SerializeField] private GameObject dialoguePanel;
@@ -28,8 +28,7 @@ public class DialogueManager : MonoBehaviour
     private bool waitingchoice = false;
 
     //will listen to variables being changed in ink scripts
-    private InkManager InkManager;
-    [SerializeField] private InkFile inkGlobals;
+    [SerializeField] private InkManager InkManager;
 
     //keeps track of player - to release them when they're done interacting
     [SerializeField] private PlayerController player;
@@ -44,7 +43,6 @@ public class DialogueManager : MonoBehaviour
     {
         instance = this;//ensure singleton
         select = InputSystem.actions.FindAction("Interact/Continue");
-        InkManager = new InkManager(inkGlobals.filePath, player);
     }
 
     public static DialogueManager GetInstance()
@@ -147,6 +145,7 @@ public class DialogueManager : MonoBehaviour
     public void SetText(string s) //easy way to set the text, set to blank to erase
     {
         body.text = s;
+        readingText = false;
     }
 
     public void SayText(string text) //to "say" the letters one by one
