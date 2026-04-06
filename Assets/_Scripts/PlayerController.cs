@@ -222,7 +222,6 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator PlaySound(AudioClip audio)
     {
-        Debug.Log("test");
         soundSource.clip = audio;
         soundSource.loop = false;
         soundSource.Play();
