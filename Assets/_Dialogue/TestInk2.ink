@@ -1,2 +1,4 @@
-This is another dialogue test!
+INCLUDE globals.ink
+
+Current Hat: {currentHat}
 ->END
