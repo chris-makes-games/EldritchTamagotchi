@@ -39,6 +39,12 @@ public class PlayerController : MonoBehaviour
     public InputAction dodge;
     public InputAction interact;
     public bool birdActive;
+
+    //to play sounds on select
+    AudioSource soundSource;
+    [SerializeField] AudioClip selectSound;
+    [SerializeField] AudioClip errorSound;
+    [SerializeField] AudioClip moveSound;
     
     void OnEnable() {
         InputActions.FindActionMap("Player").Enable();
@@ -53,6 +59,8 @@ public class PlayerController : MonoBehaviour
         interact = InputSystem.actions.FindAction("Interact/Continue");
 
         hatSprite = hat.GetComponent<SpriteRenderer>();
+
+        soundSource = GetComponent<AudioSource>();
 
     }
 
@@ -100,6 +108,8 @@ public class PlayerController : MonoBehaviour
         {
             if (interactable && !storyMode && !waitInput)
             {
+                soundSource.clip = selectSound;
+                soundSource.Play();
                 DialogueManager.EnterStoryMode(story, storyVisited);
                 interactionObject.ToggleHighlight(); //turns highlight off when you interact
                 startStory();
@@ -107,8 +117,15 @@ public class PlayerController : MonoBehaviour
             }
             else if (storyMode && !waitInput) 
             {
+                soundSource.clip = selectSound;
+                soundSource.Play();
                 DialogueManager.ContinueStory();
                 waitInput = true;
+            }
+            else if (!interactable)
+            {
+                soundSource.clip = errorSound;
+                soundSource.Play();
             }
         }
 

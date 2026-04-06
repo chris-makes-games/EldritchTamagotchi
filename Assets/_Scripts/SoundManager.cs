@@ -1,10 +1,13 @@
 using UnityEngine;
+using System.Collections;
 
 public class SoundManager : MonoBehaviour
 {
     private static SoundManager instance; //singleton
     AudioSource player;
-    [SerializeField] AudioClip[] alphabet;
+    [SerializeField] AudioClip[] voice;
+    [SerializeField] AudioClip error;
+    [SerializeField] AudioClip select;
 
     private void Awake()
     {
@@ -14,8 +17,14 @@ public class SoundManager : MonoBehaviour
 
     public void SpeakChar(int index)
     {
-        player.clip = alphabet[index];
+        StartCoroutine(PlaySound(voice[Random.Range(0, voice.Length - 1)]));
+    }
+
+    IEnumerator PlaySound(AudioClip audio)
+    {
+        player.clip = audio;
         player.loop = false;
         player.Play();
+        yield return null;
     }
 }
