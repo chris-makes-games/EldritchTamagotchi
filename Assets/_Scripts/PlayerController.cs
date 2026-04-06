@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public InputAction bird;
     public InputAction dodge;
     public InputAction interact;
+    public InputAction menu;
     public bool birdActive;
     
     void OnEnable() {
@@ -51,6 +53,7 @@ public class PlayerController : MonoBehaviour
         bird = InputSystem.actions.FindAction("FlipTheBird");
         dodge = InputSystem.actions.FindAction("Dodge");
         interact = InputSystem.actions.FindAction("Interact/Continue");
+        menu = InputSystem.actions.FindAction("Pause/Quit");
 
         hatSprite = hat.GetComponent<SpriteRenderer>();
 
@@ -75,6 +78,14 @@ public class PlayerController : MonoBehaviour
     {
         // reading movement input (joystick, wasd, whatever)
         moveDirection = move.ReadValue<Vector2>();
+
+        // return to start menu with pause/quit button 
+        // (i didn't know where else to put this)
+        if (menu.WasPressedThisFrame()) {
+            Cursor.visible = true;
+            Debug.Log("Returning to main menu...");
+            SceneManager.LoadScene("StartMenu");
+        }
 
         // middle finger logic
         // might need to make this it's own method call
