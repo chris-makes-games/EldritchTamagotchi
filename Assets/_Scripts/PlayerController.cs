@@ -163,6 +163,7 @@ public class PlayerController : MonoBehaviour
 
     public void endStory() //to toggle player movement by Dialoguemanager
     {
+        interactionObject.Visit(); //sets the interactable as being visited after story is completed
         canMove = true;
         storyMode = false;
         resetInteraction();//need to wait before turning interact back on
@@ -172,14 +173,24 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("Interaction"))
         {
-            interactable = true;
-            interactionObject = collision.GetComponent<Interactable>();
-            story = collision.GetComponent<Interactable>().GetInk();
-            DialogueManager.SetText(interactionObject.description); //sets the description of the interactable
+            if (interactable) //already interactable with a different object
+            {
+                interactionObject.ToggleHighlight(); //turns highlight off on old object
+                interactionObject = interactionObject = collision.GetComponent<Interactable>();
+                story = collision.GetComponent<Interactable>().GetInk();
+                DialogueManager.SetText(interactionObject.description);
+            }
+            else
+            {
+                interactable = true;
+                interactionObject = collision.GetComponent<Interactable>();
+                story = collision.GetComponent<Interactable>().GetInk();
+                DialogueManager.SetText(interactionObject.description); //sets the description of the interactable
+            }
+            
             //if it has not been visited yet
             if (!interactionObject.visited)
             {
-                interactionObject.Visit(); //sets the interactable as being visited
                 storyVisited = false; //this is the first visit
             }
             else
@@ -193,6 +204,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("Interaction"))
         {
+            if (collision.GetComponent<Interactable>() != interactionObject)
+            {
+                return;
+            }
             interactable = false;
             story = null;
             DialogueManager.SetText("");
