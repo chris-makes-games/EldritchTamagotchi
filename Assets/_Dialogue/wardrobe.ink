@@ -30,8 +30,6 @@ You decide not to put on a hat, content with your lack of style.
 +{currentHat != 1}[Cowboy Hat] -> cowboy
 +{currentHat != 2}[Propeller Hat] -> spinny
 +{currentHat != 3}[Paper Crown] -> burger
-+{currentHat != 4}[Dunce Cap] -> dunce
-+{currentHat != 5}[Hatless] -> remove
 +{hat < 5}[Done] -> leave_hat
 +{hat == 5}[Done] -> leave_nohat
 
