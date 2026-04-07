@@ -21,7 +21,6 @@ public class StartMenuManager : MonoBehaviour
     void Start()
     {
         Cursor.visible = true;
-        Debug.Log(startGame.ToString());
     }
 
     // if you push the start button (on screen) it starts the game
@@ -29,7 +28,7 @@ public class StartMenuManager : MonoBehaviour
     {
         Cursor.visible = false;
         Debug.Log("Starting game...");
-        SceneManager.LoadScene("InitScene");
+        SceneManager.LoadScene("MainScene");
     }
 
     // if you push the quit button (on screen) it quits the game
