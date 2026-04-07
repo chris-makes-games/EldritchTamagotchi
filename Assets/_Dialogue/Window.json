@@ -1,1 +1,1 @@
-﻿{"inkVersion":21,"root":[[["done",{"#f":5,"#n":"g-0"}],null],"done",{"#f":1}],"listDefs":{}}
+﻿{"inkVersion":21,"root":[["^There is a beautiful landscape outside, with lush trees and grassy meadows.","\n","ev","str","^Continue","/str","/ev",{"*":"0.c-0","flg":4},{"c-0":["^ ",{"->":"cont"},"\n",{"->":"0.g-0"},{"#f":5}],"g-0":["done",{"#f":5}]}],"done",{"cont":["^Upon closer inspection, this is a sticker applied to the wall.","\n","end",{"#f":1}],"#f":1}],"listDefs":{}}
