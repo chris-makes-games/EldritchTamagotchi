@@ -1,7 +1,5 @@
 using Ink.Runtime;
-using Ink.UnityIntegration;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 //this bad boi keeps track of all the ink global variables
@@ -10,7 +8,7 @@ using UnityEngine;
 //most of this follows this tutorial exactly: https://www.youtube.com/watch?v=fA79neqH21s
 public class InkManager : MonoBehaviour {
 
-    [SerializeField] private InkFile inkGlobals;
+    [SerializeField] private TextAsset inkGlobalsJSON;
     [SerializeField] private PlayerController player;
     [SerializeField] private QuestManager questManager;
 
@@ -41,9 +39,7 @@ public class InkManager : MonoBehaviour {
 
     public void Awake()
     {
-        string fileContents = File.ReadAllText(inkGlobals.filePath);
-        Ink.Compiler compiler = new Ink.Compiler(fileContents);
-        Story globalVars = compiler.Compile();
+        Story globalVars = new Story(inkGlobalsJSON.text);
         variables = new Dictionary<string, Ink.Runtime.Object>();
         foreach (string name in globalVars.variablesState)
         {
