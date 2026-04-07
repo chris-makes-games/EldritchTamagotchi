@@ -1829,7 +1829,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 6d96a43dc6ed6d143a243816f6e22ad5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.225
+  m_Volume: 0.5
   m_Pitch: 0.81
   Loop: 1
   Mute: 0
@@ -1994,7 +1994,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ac1c0a9f8e922479c812f4a2124a9b0a, type: 3}
+  m_Sprite: {fileID: 4478806928032562832, guid: b050aaaa25de6499090bfee29fc263da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4568,18 +4568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06881f7a4829d04288f8f7eaf05e0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InkManager
-  inkGlobals:
-    inkAsset: {fileID: 102900000, guid: c72fb00dbca8da9459134d7450f77b11, type: 3}
-    jsonAssetDirectory: {fileID: 0}
-    jsonAsset: {fileID: 0}
-    unhandledCompileErrors: []
-    recursiveIncludeErrorPaths: []
-    errors: []
-    warnings: []
-    todos: []
-    masterInkAssets: []
-    localIncludePaths: []
-    includes: []
+  inkGlobalsJSON: {fileID: 4900000, guid: 395a286fc4444b74bb905f5d0aa05449, type: 3}
   player: {fileID: 1907600273}
   questManager: {fileID: 2035514358}
 --- !u!4 &1746455164
@@ -4759,10 +4748,12 @@ MonoBehaviour:
   dodgeSpeedMin: 1
   dodgeSpeedDrop: 0.2
   hats:
+  - {fileID: 1264071554992867118, guid: 1d3fda77224b3f842bc3257dbc015b96, type: 3}
   - {fileID: 2918390082441977289, guid: 1d3fda77224b3f842bc3257dbc015b96, type: 3}
-  - {fileID: 8441616803186250514, guid: 1d3fda77224b3f842bc3257dbc015b96, type: 3}
-  - {fileID: -1615644945460103005, guid: 1d3fda77224b3f842bc3257dbc015b96, type: 3}
   - {fileID: 7922159864823484835, guid: 1d3fda77224b3f842bc3257dbc015b96, type: 3}
+  - {fileID: -1615644945460103005, guid: 1d3fda77224b3f842bc3257dbc015b96, type: 3}
+  - {fileID: 8441616803186250514, guid: 1d3fda77224b3f842bc3257dbc015b96, type: 3}
+  - {fileID: 4478806928032562832, guid: b050aaaa25de6499090bfee29fc263da, type: 3}
   hat: {fileID: 991639900}
   sr: {fileID: 1907600276}
   hand: {fileID: 467665289}
@@ -5793,8 +5784,14 @@ MonoBehaviour:
   loveDecrement: 0
   careTakerPanel: {fileID: 715130265}
   careTakerText: {fileID: 2141508195}
-  screams: []
-  delay: 0.025
+  screams:
+  - {fileID: 8300000, guid: 8915f48ead00a39488438bf154b05978, type: 3}
+  - {fileID: 8300000, guid: adecf94a3ee2dbd4192d0ec56d409c04, type: 3}
+  - {fileID: 8300000, guid: 2a303951bf674884ca4065757564938b, type: 3}
+  - {fileID: 8300000, guid: 836c81c866258854bba7a0dc7e758b9d, type: 3}
+  - {fileID: 8300000, guid: 5004cd312ca6128458327e118d1ebfe4, type: 3}
+  - {fileID: 8300000, guid: 304d9cd566820f84d98c1dfd8e1777eb, type: 3}
+  delay: 0.15
 --- !u!82 &2035514359
 AudioSource:
   m_ObjectHideFlags: 0
