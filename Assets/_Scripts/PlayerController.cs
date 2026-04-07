@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
 
     // sprite/animation variables
     public SpriteRenderer sr;
-    public Sprite initSprite, fuckYou;
+    // public Sprite initSprite, fuckYou; // no longer used, placeholder
+    [SerializeField] private GameObject hand;
 
     //interaction variables
     public DialogueManager DialogueManager;
@@ -103,11 +104,11 @@ public class PlayerController : MonoBehaviour
         // once (or if) animations are implemented to deal with that
         if (bird.WasPressedThisFrame()) {
             birdActive = true;
-            sr.sprite = fuckYou;
+            hand.SetActive(true);
         }
         if (bird.WasReleasedThisFrame()) {
             birdActive = true;
-            sr.sprite = initSprite;
+            hand.SetActive(false);
         }
 
         if (moveDirection.x != 0 || moveDirection.y != 0)
