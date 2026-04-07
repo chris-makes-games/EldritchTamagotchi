@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -41,6 +42,14 @@ public class PlayerController : MonoBehaviour
     public InputAction interact;
     public InputAction menu;
     public bool birdActive;
+
+    //to play sounds!
+    AudioSource soundSource;
+    [SerializeField] AudioClip selectSound;
+    [SerializeField] AudioClip errorSound;
+    [SerializeField] AudioClip[] walkSounds;
+    public float walkSoundDelay = 0.02f;
+    private bool walkSoundPlaying = false;
     
     void OnEnable() {
         InputActions.FindActionMap("Player").Enable();
@@ -56,6 +65,8 @@ public class PlayerController : MonoBehaviour
         menu = InputSystem.actions.FindAction("Pause/Quit");
 
         hatSprite = hat.GetComponent<SpriteRenderer>();
+
+        soundSource = GetComponent<AudioSource>();
 
     }
 
@@ -99,6 +110,11 @@ public class PlayerController : MonoBehaviour
             sr.sprite = initSprite;
         }
 
+        if (moveDirection.x != 0 || moveDirection.y != 0)
+        {
+            WalkSound();
+        }
+
         // this is admittedly a very fiddly dodge roll
         if (dodge.WasPressedThisFrame()) {
             dodgeSpeed = 15;
@@ -111,6 +127,8 @@ public class PlayerController : MonoBehaviour
         {
             if (interactable && !storyMode && !waitInput)
             {
+                soundSource.clip = selectSound;
+                soundSource.Play();
                 DialogueManager.EnterStoryMode(story, storyVisited);
                 interactionObject.ToggleHighlight(); //turns highlight off when you interact
                 startStory();
@@ -118,8 +136,15 @@ public class PlayerController : MonoBehaviour
             }
             else if (storyMode && !waitInput) 
             {
+                soundSource.clip = selectSound;
+                soundSource.Play();
                 DialogueManager.ContinueStory();
                 waitInput = true;
+            }
+            else if (!interactable)
+            {
+                soundSource.clip = errorSound;
+                soundSource.Play();
             }
         }
 
@@ -194,5 +219,24 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         interactable = true;
+    }
+
+    public void WalkSound()
+    {
+        if (!walkSoundPlaying)
+        {
+            walkSoundPlaying = true;
+            StartCoroutine(PlaySound(walkSounds[Random.Range(0, walkSounds.Length - 1)]));
+        }
+        
+    }
+
+    IEnumerator PlaySound(AudioClip audio)
+    {
+        soundSource.clip = audio;
+        soundSource.loop = false;
+        soundSource.Play();
+        yield return new WaitForSeconds(walkSoundDelay);
+        walkSoundPlaying = false;
     }
 }

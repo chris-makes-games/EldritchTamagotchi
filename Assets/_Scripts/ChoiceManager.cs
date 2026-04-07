@@ -4,9 +4,6 @@ using UnityEngine.InputSystem;
 
 public class ChoiceManager : MonoBehaviour
 {
-    //manager script
-    [SerializeField] DialogueManager dialogueManager;
-
     //choice button objects
     [SerializeField] private GameObject[] choices;
     [SerializeField] private TMP_Text[] textList;
@@ -23,14 +20,20 @@ public class ChoiceManager : MonoBehaviour
     public InputAction choiceInput;
     private Vector2 moveDirection;
 
+    //for swapping choice selection sound
+    AudioSource player;
+    [SerializeField] AudioClip changeSelectSound;
+
     private void Awake()
     {
         choiceInput = InputSystem.actions.FindAction("Move");
+        player = GetComponent<AudioSource>();
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        player.clip = changeSelectSound;
         //sets all the buttons to inactive to begin
         for (int i = 0; i < choices.Length; i++)
         {
@@ -47,11 +50,13 @@ public class ChoiceManager : MonoBehaviour
         {
             if (moveDirection.x > 0 && !choiceWait) //moves once to the right
             {
+                player.Play();
                 choiceWait = true;
                 moveCursor(true);
             }
             else if (moveDirection.x < 0 && !choiceWait) //moves once to the left
-            { 
+            {
+                player.Play();
                 choiceWait = true;
                 moveCursor(false);
             }
