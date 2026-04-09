@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Sprite stand1, stand2;
     [SerializeField] private GameObject hand;
     private int animationFrameCounter = 0;
+    private int dodgeFrameCounter = 0;
 
     //interaction variables
     public DialogueManager DialogueManager;
@@ -90,31 +91,47 @@ public class PlayerController : MonoBehaviour
 
         // animation stuff!
         animationFrameCounter++;
+        dodgeFrameCounter++;
 
         // walking animation
-        if (moveDirection.x != 0 || moveDirection.y != 0)
-        {
-            if (animationFrameCounter == 15)
+            if (moveDirection.x != 0 || moveDirection.y != 0)
             {
-                if (sr.sprite == walk1) sr.sprite = walk2;
-                else if (sr.sprite == walk2) sr.sprite = walk1;
-                else if (sr.sprite == stand1) sr.sprite = walk2;
-                else if (sr.sprite == stand2) sr.sprite = walk1;
-                animationFrameCounter = 0;
+                if (animationFrameCounter == 15)
+                {
+                    if (sr.sprite == walk1) sr.sprite = walk2;
+                    else if (sr.sprite == walk2) sr.sprite = walk1;
+                    else if (sr.sprite == stand1) sr.sprite = walk2;
+                    else if (sr.sprite == stand2) sr.sprite = walk1;
+                    animationFrameCounter = 0;
+                }
             }
-        }
 
-        // idle animation
-        else if (moveDirection.x == 0 || moveDirection.y == 0)
-        {
-            if (animationFrameCounter == 15)
+            // idle animation
+            else if (moveDirection.x == 0 || moveDirection.y == 0)
             {
-                if (sr.sprite == stand1) sr.sprite = stand2;
-                else if (sr.sprite == stand2) sr.sprite = stand1;
-                else if (sr.sprite == walk1) sr.sprite = stand2;
-                else if (sr.sprite == walk2) sr.sprite = stand1;
-                animationFrameCounter = 0;
+                if (animationFrameCounter == 30)
+                {
+                    if (sr.sprite == stand1) sr.sprite = stand2;
+                    else if (sr.sprite == stand2) sr.sprite = stand1;
+                    else if (sr.sprite == walk1) sr.sprite = stand2;
+                    else if (sr.sprite == walk2) sr.sprite = stand1;
+                    animationFrameCounter = 0;
+                }
             }
+
+        // dodging animation (???)
+        if (dodgeFrameCounter == 5)
+        {
+            if (dodging)
+            {
+                if (!sr.flipY) sr.flipY = true;
+                else if (sr.flipY) sr.flipY = false;
+            }
+            if (!dodging)
+            {
+                sr.flipY = false;
+            }
+            dodgeFrameCounter = 0;
         }
     }
 
