@@ -3241,6 +3241,7 @@ GameObject:
   - component: {fileID: 1632587436}
   - component: {fileID: 1632587435}
   - component: {fileID: 1632587438}
+  - component: {fileID: 1632587439}
   m_Layer: 0
   m_Name: Interactable
   m_TagString: Interaction
@@ -3295,7 +3296,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -3385,6 +3386,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!58 &1632587439
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632587434}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.8
 --- !u!1 &1638465214
 GameObject:
   m_ObjectHideFlags: 0
@@ -3804,8 +3841,7 @@ MonoBehaviour:
   - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   hat: {fileID: 991639900}
   sr: {fileID: 1907600276}
-  initSprite: {fileID: -2413806693520163455, guid: ac1c0a9f8e922479c812f4a2124a9b0a, type: 3}
-  fuckYou: {fileID: 7482667652216324306, guid: a30cb6d4340dc4af6874225b17705efd, type: 3}
+  hand: {fileID: 0}
   DialogueManager: {fileID: 681542480}
   InputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   move:
@@ -4065,7 +4101,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.0438132
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -4461,7 +4497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06881f7a4829d04288f8f7eaf05e0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InkManager
-  inkGlobalsJSON: {fileID: 0}
+  inkGlobalsJSON: {fileID: 4900000, guid: 395a286fc4444b74bb905f5d0aa05449, type: 3}
   player: {fileID: 1907600273}
   questManager: {fileID: 2035514358}
 --- !u!4 &1947576019
