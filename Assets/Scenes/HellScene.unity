@@ -3845,7 +3845,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   menu:
-    m_Name: 
+    m_Name: Menu
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 26b12e98-987a-45d9-a957-66b7454cf6d5
@@ -4461,18 +4461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06881f7a4829d04288f8f7eaf05e0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InkManager
-  inkGlobals:
-    inkAsset: {fileID: 102900000, guid: c72fb00dbca8da9459134d7450f77b11, type: 3}
-    jsonAssetDirectory: {fileID: 0}
-    jsonAsset: {fileID: 0}
-    unhandledCompileErrors: []
-    recursiveIncludeErrorPaths: []
-    errors: []
-    warnings: []
-    todos: []
-    masterInkAssets: []
-    localIncludePaths: []
-    includes: []
+  inkGlobalsJSON: {fileID: 0}
   player: {fileID: 1907600273}
   questManager: {fileID: 2035514358}
 --- !u!4 &1947576019
