@@ -133,6 +133,9 @@ public class PlayerController : MonoBehaviour
             }
             dodgeFrameCounter = 0;
         }
+
+        if (animationFrameCounter >= 31) animationFrameCounter = 0;
+        if (dodgeFrameCounter >= 6) dodgeFrameCounter = 0;
     }
 
     void Update()
