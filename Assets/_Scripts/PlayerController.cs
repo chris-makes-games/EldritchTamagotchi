@@ -177,6 +177,7 @@ public class PlayerController : MonoBehaviour
             {
                 interactionObject.ToggleHighlight(); //turns highlight off on old object
                 interactionObject = interactionObject = collision.GetComponent<Interactable>();
+                interactionObject.ToggleHighlight(); //turn on the other one
                 story = collision.GetComponent<Interactable>().GetInk();
                 DialogueManager.SetText(interactionObject.description);
             }
@@ -184,6 +185,7 @@ public class PlayerController : MonoBehaviour
             {
                 interactable = true;
                 interactionObject = collision.GetComponent<Interactable>();
+                interactionObject.ToggleHighlight();
                 story = collision.GetComponent<Interactable>().GetInk();
                 DialogueManager.SetText(interactionObject.description); //sets the description of the interactable
             }
@@ -208,6 +210,7 @@ public class PlayerController : MonoBehaviour
             {
                 return;
             }
+            interactionObject.ToggleHighlight();
             interactable = false;
             story = null;
             DialogueManager.SetText("");
