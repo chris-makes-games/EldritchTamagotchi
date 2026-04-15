@@ -1,4 +1,5 @@
 using Ink.Runtime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,10 @@ public class InkManager : MonoBehaviour {
     [SerializeField] private TextAsset inkGlobalsJSON;
     [SerializeField] private PlayerController player;
     [SerializeField] private QuestManager questManager;
+    [SerializeField] private GameObject musicManager;
+    private AudioSource musicSource;
+    [SerializeField] private AudioClip musicClip;
+    [SerializeField] private wakeUp sleepScreen;
 
     private Story currentStory;
     public Dictionary<string, Ink.Runtime.Object> variables { get; private set; }
@@ -31,14 +36,31 @@ public class InkManager : MonoBehaviour {
                 questManager.SetQuestText((string)currentStory.variablesState[name]);
                 break;
 
-                //will do nothing if there is no match
-                default:
+            case "awaken":
+                sleepScreen.Awaken();
+                questManager.SetQuestText("Good Morning");
+                StartCoroutine(DelayedQuest(5f, "Relax and drink some water"));
+                musicSource.clip = musicClip;
+                musicSource.volume = 0.15f;
+                musicSource.Play();
+                break;
+
+            case "sinkFix":
+                Debug.Log("test");
+                questManager.SetQuestText("Apologies");
+                StartCoroutine(DelayedQuest(3f, "The sink appears to be broken"));
+                StartCoroutine(DelayedQuest(8f, "Try it again"));
+                break;
+
+            //will do nothing if there is no match
+            default:
                 break;
         }
     }
 
     public void Awake()
     {
+        musicSource = musicManager.GetComponent<AudioSource>();
         Story globalVars = new Story(inkGlobalsJSON.text);
         variables = new Dictionary<string, Ink.Runtime.Object>();
         foreach (string name in globalVars.variablesState)
@@ -76,6 +98,44 @@ public class InkManager : MonoBehaviour {
         foreach(KeyValuePair<string, Ink.Runtime.Object> variable in variables)
         {
             story.variablesState.SetGlobal(variable.Key, variable.Value);
+        }
+    }
+
+    IEnumerator DelayedQuest(float seconds, string text)
+    {
+        yield return new WaitForSeconds(seconds);
+        questManager.SetQuestText(text);
+    }
+
+    public void setBoolVariable(string name, bool value)
+    {
+        if (variables.ContainsKey(name))
+        {
+            if (variables[name].GetType() != typeof(bool))
+            {
+                Debug.Log("InkManager error: tried to set a bool that isn't a bool");
+                return;
+            }
+            Ink.Runtime.Object ink = variables[name];
+            variables.Remove(name);
+            variables.Add(name, ink);
+            UpdateGame(name);
+        }
+    }
+
+    public void setStringVariable(string name, bool value)
+    {
+        if (variables.ContainsKey(name))
+        {
+            if (variables[name].GetType() != typeof(string))
+            {
+                Debug.Log("InkManager error: tried to set a string that isn't a string");
+                return;
+            }
+            Ink.Runtime.Object ink = variables[name];
+            variables.Remove(name);
+            variables.Add(name, ink);
+            UpdateGame(name);
         }
     }
 }

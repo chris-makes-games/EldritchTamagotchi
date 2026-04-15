@@ -50,7 +50,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip[] walkSounds;
     public float walkSoundDelay = 0.02f;
     private bool walkSoundPlaying = false;
-    
+
+    [SerializeField] private Interactable bed; //for the wakeUp sequence
+    bool awoken = false;
+
     void OnEnable() {
         InputActions.FindActionMap("Player").Enable();
     }
@@ -67,6 +70,11 @@ public class PlayerController : MonoBehaviour
         hatSprite = hat.GetComponent<SpriteRenderer>();
 
         soundSource = GetComponent<AudioSource>();
+
+        //for intro cinematic
+        interactionObject = bed;
+        story = bed.GetInk();
+        startStory();//begins wakeUp story
 
     }
 
@@ -110,7 +118,7 @@ public class PlayerController : MonoBehaviour
             hand.SetActive(false);
         }
 
-        if (moveDirection.x != 0 || moveDirection.y != 0)
+        if (canMove && moveDirection.x != 0 || moveDirection.y != 0)
         {
             WalkSound();
         }
@@ -159,22 +167,34 @@ public class PlayerController : MonoBehaviour
         canMove = false;
         storyMode = true;
         interactable = false;
+        interactionObject.Visit(); //sets the interactable as being visited after story is completed
     }
 
     public void endStory() //to toggle player movement by Dialoguemanager
     {
-        interactionObject.Visit(); //sets the interactable as being visited after story is completed
+        if (!awoken)
+        {
+            awoken = true;
+        }
         canMove = true;
         storyMode = false;
-        resetInteraction();//need to wait before turning interact back on
+        interactionObject.ToggleHighlight();
+        interactable = true;
+        DialogueManager.SetText(interactionObject.description);
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!awoken)
+        {
+            return;
+        }
         if (collision.CompareTag("Interaction"))
         {
             if (interactable) //already interactable with a different object
             {
+                interactable = true;
                 interactionObject.ToggleHighlight(); //turns highlight off on old object
                 interactionObject = interactionObject = collision.GetComponent<Interactable>();
                 interactionObject.ToggleHighlight(); //turn on the other one
@@ -231,12 +251,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
         hatSprite.sprite = hats[hatChoice];
-    }
-
-    IEnumerator resetInteraction()
-    {
-        yield return new WaitForSeconds(0.5f);
-        interactable = true;
     }
 
     public void WalkSound()
