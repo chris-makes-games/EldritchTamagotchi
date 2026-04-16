@@ -46,11 +46,25 @@ public class InkManager : MonoBehaviour {
                 break;
 
             case "sinkFix":
-                Debug.Log("test");
                 questManager.SetQuestText("Apologies");
                 StartCoroutine(DelayedQuest(3f, "The sink appears to be broken"));
                 StartCoroutine(DelayedQuest(8f, "Try it again"));
                 break;
+
+            case "drank":
+                if ((int)currentStory.variablesState[name] == 1)
+                {
+                    questManager.SetQuestText("Good job");
+                    StartCoroutine(DelayedQuest(3f, "Self care is important"));
+                    StartCoroutine(DelayedQuest(8f, "Now: put on the cowboy hat"));
+                }
+                else
+                {
+                    questManager.SetQuestText("Suit yourself");
+                    StartCoroutine(DelayedQuest(3f, "More precious water for me"));
+                    StartCoroutine(DelayedQuest(8f, "Now: put on the cowboy hat"));
+                }
+                    break;
 
             //will do nothing if there is no match
             default:
