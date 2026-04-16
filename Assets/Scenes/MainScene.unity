@@ -594,6 +594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   highlightSize: 1.3
+  highlightColor: {r: 0.854902, g: 0.6470588, b: 0.1254902, a: 1}
   outcomes: 
   ink: {fileID: 4900000, guid: c886a3fb70dd0424d9f1b12b99dcce9f, type: 3}
   description: Examine Dresser
@@ -657,8 +658,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 1
-  m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
 --- !u!1 &274103143
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   sceneToLoad: UnderScene
   doorLocked: 0
+  doorCooldown: 0
 --- !u!61 &274103146
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2453,6 +2453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   highlightSize: 1.3
+  highlightColor: {r: 0.854902, g: 0.6470588, b: 0.1254902, a: 1}
   outcomes: 
   ink: {fileID: 4900000, guid: 506c5219c20b6e44fb26f525b5b1a7b8, type: 3}
   description: Examine Sink
@@ -3136,6 +3137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   highlightSize: 1.3
+  highlightColor: {r: 0.854902, g: 0.6470588, b: 0.1254902, a: 1}
   outcomes: 
   ink: {fileID: 4900000, guid: d1e6b196a18a4024d8b7a3c04f44b904, type: 3}
   description: Examine Ball
@@ -3351,6 +3353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   highlightSize: 1.3
+  highlightColor: {r: 0.854902, g: 0.6470588, b: 0.1254902, a: 1}
   outcomes: 
   ink: {fileID: 4900000, guid: d8d8768173c6145e580fe9234cc3ba0a, type: 3}
   description: Examine Bed
@@ -3726,6 +3729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   highlightSize: 1.3
+  highlightColor: {r: 0.854902, g: 0.6470588, b: 0.1254902, a: 1}
   outcomes: 
   ink: {fileID: 4900000, guid: 506c5219c20b6e44fb26f525b5b1a7b8, type: 3}
   description: Examine Sink
@@ -4236,6 +4240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   highlightSize: 1.3
+  highlightColor: {r: 0.854902, g: 0.6470588, b: 0.1254902, a: 1}
   outcomes: 
   ink: {fileID: 4900000, guid: 91e36c664cc4f42098a7fa6c28524500, type: 3}
   description: Examine.... Dog?
@@ -5612,10 +5617,10 @@ MonoBehaviour:
   - {fileID: 4478806928032562832, guid: b050aaaa25de6499090bfee29fc263da, type: 3}
   hat: {fileID: 991639900}
   sr: {fileID: 1907600276}
-  walk1: {fileID: 6757282713640645180, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
-  walk2: {fileID: 7388399842426930641, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
-  stand1: {fileID: 509207791, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
-  stand2: {fileID: 4334783836991956000, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
+  walk1: {fileID: -948532232, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
+  walk2: {fileID: -925252850, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
+  stand1: {fileID: -1690895445, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
+  stand2: {fileID: -628028561, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
   hand: {fileID: 467665289}
   DialogueManager: {fileID: 681542480}
   InputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
@@ -6322,6 +6327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   highlightSize: 1.3
+  highlightColor: {r: 0.854902, g: 0.6470588, b: 0.1254902, a: 1}
   outcomes: 
   ink: {fileID: 4900000, guid: f3fb4b5d247e1e84ea147cf21c38cdf5, type: 3}
   description: Examine Door
@@ -6998,6 +7004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   highlightSize: 1.3
+  highlightColor: {r: 0.854902, g: 0.6470588, b: 0.1254902, a: 1}
   outcomes: 
   ink: {fileID: 4900000, guid: f0f69114c33e63e43ba1f6f9f8281169, type: 3}
   description: Examine Window

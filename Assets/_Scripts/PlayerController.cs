@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject hand;
     private int animationFrameCounter = 0;
     private int dodgeFrameCounter = 0;
+    private bool standing;
 
     //interaction variables
     public DialogueManager DialogueManager;
@@ -96,7 +97,12 @@ public class PlayerController : MonoBehaviour
         // walking animation
             if (moveDirection.x != 0 || moveDirection.y != 0)
             {
-                if (animationFrameCounter == 15)
+                if (standing)
+                {
+                    animationFrameCounter = 4;
+                    standing = false;
+                }
+                if (animationFrameCounter == 5)
                 {
                     if (sr.sprite == walk1) sr.sprite = walk2;
                     else if (sr.sprite == walk2) sr.sprite = walk1;
@@ -109,7 +115,8 @@ public class PlayerController : MonoBehaviour
             // idle animation
             else if (moveDirection.x == 0 || moveDirection.y == 0)
             {
-                if (animationFrameCounter == 30)
+                standing = true;
+                if (animationFrameCounter == 15)
                 {
                     if (sr.sprite == stand1) sr.sprite = stand2;
                     else if (sr.sprite == stand2) sr.sprite = stand1;
@@ -134,7 +141,7 @@ public class PlayerController : MonoBehaviour
             dodgeFrameCounter = 0;
         }
 
-        if (animationFrameCounter >= 31) animationFrameCounter = 0;
+        if (animationFrameCounter >= 16) animationFrameCounter = 0;
         if (dodgeFrameCounter >= 6) dodgeFrameCounter = 0;
     }
 
