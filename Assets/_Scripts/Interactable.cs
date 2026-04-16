@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEditor;
 
 public class Interactable : MonoBehaviour
 {
     private SpriteRenderer sprite;
     private SpriteRenderer highlight;
-    public float highlightSize = 1.3f;
+    public float highlightSize = 1.1f;
+
+    //to change the highlight color
+    [SerializeField] private Color highlightColor = Color.goldenRod;
 
     //choice outcomes for quests - complete quests or not
     [SerializeField] public bool[] outcomes;
@@ -43,34 +47,16 @@ public class Interactable : MonoBehaviour
         //sets the sprite as a copy of original sprite, copies the layer - 1
         highlight.sprite = sprite.sprite;
         highlight.sortingLayerID = sprite.sortingLayerID;
-        highlight.sortingOrder = sprite.sortingOrder - 1;
         highlight.material.shader = shaderGUItext; //should be solid color
 
         //makes the highlight a little bigger
         highlight.transform.localScale *= highlightSize;
 
-        //light yellow color
-        highlight.color = Color.lightGoldenRod;
+        //set color to one in field
+        highlight.color = highlightColor;
 
         //disables the highlight on start
         highlight.enabled = false;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player")) 
-        {
-            highlight.enabled = true;
-        }
-
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            highlight.enabled = false;
-        }
     }
 
     public void ToggleHighlight()
