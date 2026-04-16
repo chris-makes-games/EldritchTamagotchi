@@ -2028,23 +2028,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9085723341002686310, guid: 56e552cdedc2c3b4faa28c551a73cc4f, type: 3}
   m_PrefabInstance: {fileID: 1566800594}
   m_PrefabAsset: {fileID: 0}
---- !u!111 &620724721
-Animation:
+--- !u!212 &620724724 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7217946529922338611, guid: 56e552cdedc2c3b4faa28c551a73cc4f, type: 3}
+  m_PrefabInstance: {fileID: 1566800594}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &620724725
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620724719}
   m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 0dbcae86bd160c64ba4ab092a093d110, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 0dbcae86bd160c64ba4ab092a093d110, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e91961c614ef437db37cec0829e4ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  sr: {fileID: 620724724}
+  dog0: {fileID: 5607651031836452936, guid: 4cfe44ce3b4036a42877d6fd0ccc25db, type: 3}
+  dog1: {fileID: -518272012, guid: 4cfe44ce3b4036a42877d6fd0ccc25db, type: 3}
 --- !u!1 &681542479
 GameObject:
   m_ObjectHideFlags: 0
@@ -4017,14 +4020,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6738387206034657715, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
-      propertyPath: m_Animation
-      value: 
-      objectReference: {fileID: 7400000, guid: 0dbcae86bd160c64ba4ab092a093d110, type: 2}
     - target: {fileID: 7679266217882416731, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
       propertyPath: bed
       value: 
       objectReference: {fileID: 1754189770033074820}
+    - target: {fileID: 7679266217882416731, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
+      propertyPath: walk1
+      value: 
+      objectReference: {fileID: -948532232, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
+    - target: {fileID: 7679266217882416731, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
+      propertyPath: walk2
+      value: 
+      objectReference: {fileID: -925252850, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
+    - target: {fileID: 7679266217882416731, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
+      propertyPath: stand1
+      value: 
+      objectReference: {fileID: -1690895445, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
+    - target: {fileID: 7679266217882416731, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
+      propertyPath: stand2
+      value: 
+      objectReference: {fileID: -628028561, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
     - target: {fileID: 7679266217882416731, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
       propertyPath: DialogueManager
       value: 
@@ -5689,7 +5704,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6234994463840131941, guid: 56e552cdedc2c3b4faa28c551a73cc4f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 620724721}
+      addedObject: {fileID: 620724725}
   m_SourcePrefab: {fileID: 100100000, guid: 56e552cdedc2c3b4faa28c551a73cc4f, type: 3}
 --- !u!1 &1572243106
 GameObject:
