@@ -23,10 +23,6 @@ You feel incredibly stylish. You close the wardrobe.
 You decide not to put on a hat, content with your lack of style.
 -> DONE
 
-===leave_again===
-You close the wardrobe, content with your current style choices.
--> DONE
-
 === hatmode === // at most only 5 options, i know it looks scary though
 {hat_text}
 +{currentHat != 0}[Party Hat] -> party

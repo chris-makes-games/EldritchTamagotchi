@@ -1,5 +1,6 @@
 VAR totalInteractions = 0
 VAR currentHat = 5
+VAR hatTime = false
 VAR setQuestText = ""
 VAR sinkTurned = false
 VAR fridgeOpen = false
@@ -10,3 +11,4 @@ VAR love = 0
 VAR waterTemp = ""
 VAR sinkRunning = false
 VAR drank = 0
+VAR correctHat = false

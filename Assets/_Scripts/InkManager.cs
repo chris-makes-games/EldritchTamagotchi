@@ -28,6 +28,19 @@ public class InkManager : MonoBehaviour {
         {
             //update the player's hat
             case "currentHat":
+                if ((bool)currentStory.variablesState["hatTime"])
+                {
+                    if ((int)currentStory.variablesState[name] == 1)
+                    {
+                        questManager.SetQuestText("You look great");
+                    }
+                    else
+                    {
+                        questManager.SetQuestText("You look ridiculous");
+                        StartCoroutine(DelayedQuest(4f, "I have a better hat for you"));
+                        StartCoroutine(DelayedHat(8f, 4));
+                    }
+                }
                 player.SetHat((int)currentStory.variablesState[name]);
                 break;
 
@@ -151,5 +164,11 @@ public class InkManager : MonoBehaviour {
             variables.Add(name, ink);
             UpdateGame(name);
         }
+    }
+
+    IEnumerator DelayedHat(float seconds, int hat)
+    {
+        yield return new WaitForSeconds(seconds);
+        player.SetHat(4);
     }
 }

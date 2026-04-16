@@ -57,6 +57,7 @@ The sink is silent and ominous. There are two knobs, labeled using the hot face 
 ==ignore==
 You decide not to try the sink again.
 ~ drank = 2
+~ hatTime = true
 ~ love -= 1
 -> END
 
@@ -106,6 +107,7 @@ You shut off the water. the sink is silent again. There are two knobs, labeled u
 
 ==drink==
 You have a drink of the {waterTemp} water. It tastes slightly metallic.
+~ hatTime = true
 ~ love += 1
 ~ drank = 1
 -> END

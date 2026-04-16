@@ -4,34 +4,35 @@ VAR visited = false
 {visited == true && fridgeOpen == false: -> backClosed}
 {visited == true && fridgeOpen == true: -> backOpen}
 {visited == false: -> open0}
+{visited == true}
 
 ==backClosed==
-The refridgerator hums ominously.
+The refrigerator hums ominously.
 +[Open it] -> OpenUp
 +[Leave] -> LeaveClosed
 
 ==backOpen==
-The refridgerator hums ominously. The door is wide open.
+The refrigerator hums ominously. The door is wide open.
 +[Close it] -> CloseDoor
 +[Leave] -> DoorOpen
 
 ==open0==
-This appears to be a refridgerator.
+This appears to be a refrigerator.
 ~ totalInteractions += 1
 +[Continue] -> open1
 
 ==open1==
-On the front of the refridgerator there are several pictures of a green slime creature attached using dog footprint magnets.
+On the front of the refrigerator there are several pictures of a green slime creature attached using dog footprint magnets.
 +[Continue] -> open2
 
 ==open2==
-The refridgerator hums incessantly, the noise filling up most of the space around it.
+The refrigerator hums incessantly, the noise filling up most of the space around it.
 +[Open it] -> OpenUp
-+[Leave] -> END
++[Leave] -> LeaveClosed
 
 ==OpenUp==
-Inside, the refridgerator is completely empty and pristinely clean. The white light you would expect seems to be emitting from the back, blinding and hot.
-+[Close it] -> END
+Inside, the refrigerator is completely empty and pristinely clean. The white light you would expect seems to be emitting from the back, blinding and hot.
++[Close it] -> CloseDoor
 +[Leave] -> DoorOpen
 
 ==DoorOpen==
@@ -40,13 +41,14 @@ You decide to leave the door open. The white-hot light spills out into the room 
 -> END
 
 ==CloseDoor==
-{visited == true: totalInteractions += 1}
-~ visited = true
 ~ fridgeOpen = false
 You decide to close the door. The blinding light is mercifully cut off.
 -> END
 
 ==LeaveClosed==
-~ visited = true
 You decide to leave it closed.
+-> END
+
+==leaveIgnore==
+You decide to leave the refrigerator as it is.
 -> END

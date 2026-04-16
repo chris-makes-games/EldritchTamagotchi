@@ -12,5 +12,4 @@ You pet the dog. {~You feel a little slimier.|You feel like a good owner.|Good..
 
 === leave ===
 {~whine|whimper}...
-~ setQuestText = "KILL YOUR DOG"
 -> DONE
