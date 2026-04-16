@@ -1005,7 +1005,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1938,7 +1938,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2469,7 +2469,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2765,7 +2765,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3915,7 +3915,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4032,6 +4032,14 @@ PrefabInstance:
       propertyPath: walk2
       value: 
       objectReference: {fileID: -925252850, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
+    - target: {fileID: 7679266217882416731, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
+      propertyPath: dodge1
+      value: 
+      objectReference: {fileID: -1438097152968548648, guid: 0f2f82160fbeb4fd1a7511aeeb90dd84, type: 3}
+    - target: {fileID: 7679266217882416731, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
+      propertyPath: dodge2
+      value: 
+      objectReference: {fileID: -3274539473010328519, guid: 0f2f82160fbeb4fd1a7511aeeb90dd84, type: 3}
     - target: {fileID: 7679266217882416731, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
       propertyPath: stand1
       value: 

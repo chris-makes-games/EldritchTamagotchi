@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer sr;
     [SerializeField] private Sprite walk1, walk2;
     [SerializeField] private Sprite stand1, stand2;
+    [SerializeField] private Sprite dodge1, dodge2;
     [SerializeField] private GameObject hand;
     private int animationFrameCounter = 0;
     private int dodgeFrameCounter = 0;
@@ -117,6 +118,8 @@ public class PlayerController : MonoBehaviour
                     else if (sr.sprite == walk2) sr.sprite = walk1;
                     else if (sr.sprite == stand1) sr.sprite = walk2;
                     else if (sr.sprite == stand2) sr.sprite = walk1;
+                    else if (sr.sprite == dodge1) sr.sprite = walk2;
+                    else if (sr.sprite == dodge2) sr.sprite = walk1;
                     animationFrameCounter = 0;
                 }
             }
@@ -136,27 +139,27 @@ public class PlayerController : MonoBehaviour
                     else if (sr.sprite == stand2) sr.sprite = stand1;
                     else if (sr.sprite == walk1) sr.sprite = stand2;
                     else if (sr.sprite == walk2) sr.sprite = stand1;
+                    else if (sr.sprite == dodge1) sr.sprite = stand2;
+                    else if (sr.sprite == dodge2) sr.sprite = stand1;
                     animationFrameCounter = 0;
                 }
             }
 
-            // dodge animation (vertical sprite flip)
-            if (dodgeFrameCounter == 5)
+            // dodge animation (vertical sprite flip) (not an animation)
+            if (dodging) sr.sprite = dodge1;
+
+            if (dodgeFrameCounter == 8)
             {
                 if (dodging)
                 {
-                    if (!sr.flipY) sr.flipY = true;
-                    else if (sr.flipY) sr.flipY = false;
-                }
-                if (!dodging)
-                {
-                    sr.flipY = false;
+                    if (sr.sprite == dodge1) sr.sprite = dodge2;
+                    else if (sr.sprite == dodge2) sr.sprite = dodge1;
                 }
                 dodgeFrameCounter = 0;
             }
 
             if (animationFrameCounter >= 21) animationFrameCounter = 0;
-            if (dodgeFrameCounter >= 6) dodgeFrameCounter = 0;
+            if (dodgeFrameCounter >= 9) dodgeFrameCounter = 0;
         }
     }
 
