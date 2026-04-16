@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
             else if (moveDirection.x == 0 || moveDirection.y == 0)
             {
                 standing = true;
-                if (animationFrameCounter == 15)
+                if (animationFrameCounter == 20)
                 {
                     if (sr.sprite == stand1) sr.sprite = stand2;
                     else if (sr.sprite == stand2) sr.sprite = stand1;
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
             dodgeFrameCounter = 0;
         }
 
-        if (animationFrameCounter >= 16) animationFrameCounter = 0;
+        if (animationFrameCounter >= 21) animationFrameCounter = 0;
         if (dodgeFrameCounter >= 6) dodgeFrameCounter = 0;
     }
 
