@@ -183,7 +183,6 @@ GameObject:
   - component: {fileID: 6988848377883208832}
   - component: {fileID: 7679266217882416731}
   - component: {fileID: 5150981800892661227}
-  - component: {fileID: 6738387206034657715}
   - component: {fileID: 5110990167011394921}
   - component: {fileID: 3202410866377414774}
   m_Layer: 0
@@ -353,6 +352,10 @@ MonoBehaviour:
   - {fileID: 4478806928032562832, guid: b050aaaa25de6499090bfee29fc263da, type: 3}
   hat: {fileID: 757531932928472493}
   sr: {fileID: 9117199139658737331}
+  walk1: {fileID: -948532232, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
+  walk2: {fileID: -925252850, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
+  stand1: {fileID: -1690895445, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
+  stand2: {fileID: -628028561, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
   hand: {fileID: 4147211712773065062}
   DialogueManager: {fileID: 0}
   InputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
@@ -414,6 +417,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 733577e61a197e644b865690e1677406, type: 3}
   - {fileID: 8300000, guid: 7e1de932c5d2f2e4eb1b370213248e35, type: 3}
   walkSoundDelay: 0.1
+  bed: {fileID: 0}
 --- !u!61 &5150981800892661227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -460,23 +464,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.23006983}
   m_EdgeRadius: 0
---- !u!111 &6738387206034657715
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1888420442874148708}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 0dbcae86bd160c64ba4ab092a093d110, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!82 &5110990167011394921
 AudioSource:
   m_ObjectHideFlags: 0
@@ -636,7 +623,7 @@ Transform:
   m_GameObject: {fileID: 4147211712773065062}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.44, y: 0, z: 0}
+  m_LocalPosition: {x: -0.44, y: 0.43, z: 0}
   m_LocalScale: {x: 0.35, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

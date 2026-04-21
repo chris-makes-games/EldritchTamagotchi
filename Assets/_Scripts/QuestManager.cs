@@ -4,6 +4,8 @@ using System.Collections;
 
 public class QuestManager : MonoBehaviour
 {
+    [SerializeField] private InkManager inkManager;
+
     //to be able to turn off the currently talking text if necessary
     [SerializeField] private SoundManager soundManager;
     private AudioSource talkingAudio;
@@ -31,6 +33,9 @@ public class QuestManager : MonoBehaviour
 
     //delay between characters
     [SerializeField] float delay = 0.025f;
+
+    //so it doesn't yell straight away
+    [SerializeField] float waitToYell;
 
 
     // Called on game launch to make sure there's only one controller
@@ -90,10 +95,11 @@ public class QuestManager : MonoBehaviour
 
     IEnumerator SlowText(string text) //waits for the delay in-between characters of the given text
     {
+        yield return new WaitForSeconds(waitToYell);
         string output = "";
         for (int i = 0; i < text.Length; i++)
         {
-            output = output + text[i];
+            output = output + char.ToUpper(text[i]);
             careTakerText.text = output;
             int index = char.ToUpper(text[i]) - 65; //turns char to position in alphabet
             if (index >= 0 && index < 27)

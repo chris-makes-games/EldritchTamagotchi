@@ -47,6 +47,7 @@ public class Interactable : MonoBehaviour
         //sets the sprite as a copy of original sprite, copies the layer - 1
         highlight.sprite = sprite.sprite;
         highlight.sortingLayerID = sprite.sortingLayerID;
+        highlight.sortingOrder = sprite.sortingOrder;
         highlight.material.shader = shaderGUItext; //should be solid color
 
         //makes the highlight a little bigger
