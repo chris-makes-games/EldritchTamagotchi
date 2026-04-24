@@ -38,6 +38,9 @@ public class DialogueManager : MonoBehaviour
     //singleton instance
     private static DialogueManager instance;
 
+    //the wakeup story to start the game
+    [SerializeField] private TextAsset wakeUpStory;
+
     private void Awake()
     {
         instance = this;//ensure singleton
@@ -51,9 +54,8 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        //starts inactive until text is shown
-        body.text = "";
         choiceManager = choicePanel.GetComponent<ChoiceManager>(); //grabs the choices manager script
+        EnterStoryMode(wakeUpStory, false);
     }
 
     
@@ -63,7 +65,6 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(ink.text);
         if (currentStory.variablesState.TryGetDefaultVariableValue("visited"))
         {
-            Debug.Log("setting visited to " + visited);
             currentStory.variablesState["visited"] = visited;
         }
         dialoguePanel.SetActive(true);
@@ -76,7 +77,6 @@ public class DialogueManager : MonoBehaviour
         choiceManager.EndChoice(); //hides buttons and selector
         InkManager.StopListening(currentStory);
         player.endStory(); //lets player move again
-        SetText(""); //clears the text
     }
 
     public void ContinueStory() //goes to next step of story
@@ -100,6 +100,7 @@ public class DialogueManager : MonoBehaviour
             else //no choice to make, ends the interaction
             {
                 ExitStoryMode();
+                return;
             }
         }
 
@@ -119,7 +120,7 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 choiceList = new string[1];
-                choiceList[0] = "Leave";
+                choiceList[0] = "Done";
             }
              //sends choices as strings to the choice manager
             waitingchoice = true;

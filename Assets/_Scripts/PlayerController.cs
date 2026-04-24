@@ -23,10 +23,11 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer sr;
     [SerializeField] private Sprite walk1, walk2;
     [SerializeField] private Sprite stand1, stand2;
+    [SerializeField] private Sprite dodge1, dodge2;
     [SerializeField] private GameObject hand;
     private int animationFrameCounter = 0;
     private int dodgeFrameCounter = 0;
-    private bool standing;
+    private bool standing, walking;
 
     //interaction variables
     public DialogueManager DialogueManager;
@@ -54,7 +55,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip[] walkSounds;
     public float walkSoundDelay = 0.02f;
     private bool walkSoundPlaying = false;
-    
+
+    [SerializeField] private Interactable bed; //for the wakeUp sequence
+    bool awoken = false;
+
     void OnEnable() {
         InputActions.FindActionMap("Player").Enable();
     }
@@ -72,7 +76,10 @@ public class PlayerController : MonoBehaviour
 
         soundSource = GetComponent<AudioSource>();
 
-        sr.sprite = stand2;
+        //for intro cinematic
+        interactionObject = bed;
+        story = bed.GetInk();
+        startStory();//begins wakeUp story
 
     }
 
@@ -90,24 +97,29 @@ public class PlayerController : MonoBehaviour
         }
         if (dodgeSpeed <= dodgeSpeedMin) dodging = false;
 
-        // animation stuff!
-        animationFrameCounter++;
-        dodgeFrameCounter++;
+        // animation stuff
+        if (awoken)
+        {
+            animationFrameCounter++;
+            dodgeFrameCounter++;
 
-        // walking animation
+            // walking animation
             if (moveDirection.x != 0 || moveDirection.y != 0)
             {
                 if (standing)
                 {
-                    animationFrameCounter = 4;
+                    animationFrameCounter = 5;
                     standing = false;
                 }
+                walking = true;
                 if (animationFrameCounter == 5)
                 {
                     if (sr.sprite == walk1) sr.sprite = walk2;
                     else if (sr.sprite == walk2) sr.sprite = walk1;
                     else if (sr.sprite == stand1) sr.sprite = walk2;
                     else if (sr.sprite == stand2) sr.sprite = walk1;
+                    else if (sr.sprite == dodge1) sr.sprite = walk2;
+                    else if (sr.sprite == dodge2) sr.sprite = walk1;
                     animationFrameCounter = 0;
                 }
             }
@@ -115,6 +127,11 @@ public class PlayerController : MonoBehaviour
             // idle animation
             else if (moveDirection.x == 0 || moveDirection.y == 0)
             {
+                if (walking)
+                {
+                    animationFrameCounter = 20;
+                    walking = false;
+                }
                 standing = true;
                 if (animationFrameCounter == 20)
                 {
@@ -122,27 +139,28 @@ public class PlayerController : MonoBehaviour
                     else if (sr.sprite == stand2) sr.sprite = stand1;
                     else if (sr.sprite == walk1) sr.sprite = stand2;
                     else if (sr.sprite == walk2) sr.sprite = stand1;
+                    else if (sr.sprite == dodge1) sr.sprite = stand2;
+                    else if (sr.sprite == dodge2) sr.sprite = stand1;
                     animationFrameCounter = 0;
                 }
             }
 
-        // dodging animation (???)
-        if (dodgeFrameCounter == 5)
-        {
-            if (dodging)
-            {
-                if (!sr.flipY) sr.flipY = true;
-                else if (sr.flipY) sr.flipY = false;
-            }
-            if (!dodging)
-            {
-                sr.flipY = false;
-            }
-            dodgeFrameCounter = 0;
-        }
+            // dodge animation (vertical sprite flip) (not an animation)
+            if (dodging) sr.sprite = dodge1;
 
-        if (animationFrameCounter >= 21) animationFrameCounter = 0;
-        if (dodgeFrameCounter >= 6) dodgeFrameCounter = 0;
+            if (dodgeFrameCounter == 8)
+            {
+                if (dodging)
+                {
+                    if (sr.sprite == dodge1) sr.sprite = dodge2;
+                    else if (sr.sprite == dodge2) sr.sprite = dodge1;
+                }
+                dodgeFrameCounter = 0;
+            }
+
+            if (animationFrameCounter >= 21) animationFrameCounter = 0;
+            if (dodgeFrameCounter >= 9) dodgeFrameCounter = 0;
+        }
     }
 
     void Update()
@@ -170,7 +188,7 @@ public class PlayerController : MonoBehaviour
             hand.SetActive(false);
         }
 
-        if (moveDirection.x != 0 || moveDirection.y != 0)
+        if (canMove && moveDirection.x != 0 || moveDirection.y != 0)
         {
             WalkSound();
         }
@@ -219,22 +237,34 @@ public class PlayerController : MonoBehaviour
         canMove = false;
         storyMode = true;
         interactable = false;
+        interactionObject.Visit(); //sets the interactable as being visited after story is completed
     }
 
     public void endStory() //to toggle player movement by Dialoguemanager
     {
-        interactionObject.Visit(); //sets the interactable as being visited after story is completed
+        if (!awoken)
+        {
+            awoken = true;
+        }
         canMove = true;
         storyMode = false;
-        resetInteraction();//need to wait before turning interact back on
+        interactionObject.ToggleHighlight();
+        interactable = true;
+        DialogueManager.SetText(interactionObject.description);
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!awoken)
+        {
+            return;
+        }
         if (collision.CompareTag("Interaction"))
         {
             if (interactable) //already interactable with a different object
             {
+                interactable = true;
                 interactionObject.ToggleHighlight(); //turns highlight off on old object
                 interactionObject = interactionObject = collision.GetComponent<Interactable>();
                 interactionObject.ToggleHighlight(); //turn on the other one
@@ -291,12 +321,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
         hatSprite.sprite = hats[hatChoice];
-    }
-
-    IEnumerator resetInteraction()
-    {
-        yield return new WaitForSeconds(0.5f);
-        interactable = true;
     }
 
     public void WalkSound()
