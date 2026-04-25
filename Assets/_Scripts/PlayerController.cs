@@ -77,9 +77,12 @@ public class PlayerController : MonoBehaviour
         soundSource = GetComponent<AudioSource>();
 
         //for intro cinematic
-        interactionObject = bed;
-        story = bed.GetInk();
-        startStory();//begins wakeUp story
+        if (DialogueManager.doWakeUpStory) {
+            interactionObject = bed;
+            story = bed.GetInk();
+            startStory(); //begins wakeUp story
+        }
+        else if (!DialogueManager.doWakeUpStory) awoken = true;
 
     }
 

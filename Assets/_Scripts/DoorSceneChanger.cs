@@ -8,7 +8,14 @@ public class DoorSceneChanger : MonoBehaviour
     // can have different things in different scenes
     [SerializeField] private string sceneToLoad;
     public bool doorLocked;
-    public int doorCooldown;
+    private int doorCooldown;
+    public static DoorSceneChanger instance;
+
+    void Awake()
+    {
+        // allows you to call this script and change door from locked/unlocked
+        instance = this;
+    }
 
     void Start()
     {
