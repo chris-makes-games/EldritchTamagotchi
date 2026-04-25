@@ -4,7 +4,7 @@ public class Knife : MonoBehaviour
 {
     public Interactable knifeInteractable;
     private bool newVisit = true;
-    [SerializeField] private GameObject knife;
+    [SerializeField] private SpriteRenderer knife;
 
 
     // Update is called once per frame
@@ -13,7 +13,7 @@ public class Knife : MonoBehaviour
         if (knifeInteractable.visited && newVisit)
         {
             newVisit = false;
-            knife.SetActive(false);
+            knife.enabled = false;
         }
     }
 }

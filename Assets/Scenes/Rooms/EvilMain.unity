@@ -7106,7 +7106,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   knifeInteractable: {fileID: 1754189770085463301}
-  knife: {fileID: 6234994464693432312}
+  knife: {fileID: 9085723342393265150}
+--- !u!212 &9085723342393265150 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3352413607018513787, guid: 8c1c775bdc1314c8ab407e82faa43f01, type: 3}
+  m_PrefabInstance: {fileID: 6137008441688708605}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
