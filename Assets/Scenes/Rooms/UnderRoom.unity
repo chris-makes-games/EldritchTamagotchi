@@ -4864,6 +4864,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1009314333}
     m_Modifications:
+    - target: {fileID: -7469182267488566888, guid: 494a5ec453e4a4f76959f03718f5566e, type: 3}
+      propertyPath: visited
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6234994463840131941, guid: 494a5ec453e4a4f76959f03718f5566e, type: 3}
       propertyPath: m_Name
       value: UnderNPC-2

@@ -3,22 +3,14 @@ using Ink;
 
 public class NPC : MonoBehaviour
 {
-    public string nickame;
-    public string description;
-
-    [SerializeField] private TextAsset ink;
-
-    public SpriteRenderer icon;
-    public SpriteRenderer portrait;
-    
-    void Start()
-    {
-        // icon = GetComponent<SpriteRenderer>();
-        // portrait = GetComponent<SpriteRenderer>();
-    }
+    public Interactable npcInteractable;
 
     void Update()
     {
-        
+        // if NPC is visited, door unlocks
+        if (npcInteractable.visited)
+        {
+            DoorSceneChanger.instance.doorLocked = false;
+        }
     }
 }
