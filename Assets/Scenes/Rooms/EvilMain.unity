@@ -6941,6 +6941,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1009314333}
     m_Modifications:
+    - target: {fileID: 3352413607018513787, guid: 8c1c775bdc1314c8ab407e82faa43f01, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 761100573506273824, guid: 3c00ac13c910c47a8ad0b2a2969ccd37, type: 3}
     - target: {fileID: 5399082104278994540, guid: 8c1c775bdc1314c8ab407e82faa43f01, type: 3}
       propertyPath: m_Name
       value: Knife
