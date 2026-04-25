@@ -11,9 +11,9 @@ public class StartMenuManager : MonoBehaviour
 
     void Awake()
     {
-        // for whatever reason, these inputs are ignored if you come return to this scene from InitScene
+        // for whatever reason, these inputs are ignored if you come return to this scene from any other scene
         // this is a pretty major bug because it means you can't quit the game after you start it
-        // (with controller/keyboard buttons, mouse/trackpad still works with in-game buttons)
+        // (with controller/keyboard buttons, mouse/trackpad/touchscreen still works with in-game buttons)
         closeGame = InputSystem.actions.FindAction("Pause/Quit");
         startGame = InputSystem.actions.FindAction("Interact/Continue");
     }
