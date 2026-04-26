@@ -1,10 +1,11 @@
 using UnityEngine;
-using UnityEditor;
+using UnityEngine.UI;
 
 public class Interactable : MonoBehaviour
 {
     private SpriteRenderer sprite;
     private SpriteRenderer highlight;
+    private SpriteMask mask;
     public float highlightSize = 1.1f;
 
     //to change the highlight color
@@ -41,14 +42,22 @@ public class Interactable : MonoBehaviour
         highlightObj.transform.localPosition = Vector3.zero;
         highlightObj.transform.localScale = transform.localScale;
 
-        //adds a spriterenderer to that object
+        //adds a spriterenderer to that object, copies the sprite
         highlight = highlightObj.AddComponent<SpriteRenderer>();
 
-        //sets the sprite as a copy of original sprite, copies the layer - 1
+        //copies sprite the layer + 1
         highlight.sprite = sprite.sprite;
         highlight.sortingLayerID = sprite.sortingLayerID;
-        highlight.sortingOrder = sprite.sortingOrder;
-        highlight.material.shader = shaderGUItext; //should be solid color
+        highlight.sortingOrder = sprite.sortingOrder + 1;
+        highlight.material.shader = shaderGUItext; //set to solid color
+
+        //adding a mask for the highlight to the interactable, sets layer to highlight layer
+        mask = gameObject.AddComponent<SpriteMask>();
+        mask.sprite = sprite.sprite;
+        mask.sortingLayerID = sprite.sortingLayerID;
+        mask.sortingOrder = sprite.sortingOrder + 1;
+        //set mask interaction
+        highlight.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
 
         //makes the highlight a little bigger
         highlight.transform.localScale *= highlightSize;
@@ -58,6 +67,22 @@ public class Interactable : MonoBehaviour
 
         //disables the highlight on start
         highlight.enabled = false;
+    }
+
+    private void OnEnable()
+    {
+        Animateable.ChangeSpriteEvent += ChangeHighlightSprite;
+    }
+
+    private void OnDisable()
+    {
+        Animateable.ChangeSpriteEvent -= ChangeHighlightSprite;
+    }
+
+    private void ChangeHighlightSprite(Animateable animationSwap)
+    {
+        highlight.sprite = sprite.sprite;
+        mask.sprite = sprite.sprite;
     }
 
     public void ToggleHighlight()

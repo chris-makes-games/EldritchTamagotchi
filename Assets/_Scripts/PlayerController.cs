@@ -1,7 +1,10 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.U2D;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +21,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Sprite[] hats; //list of hat sprites
     public GameObject hat; //the child hat object
     private SpriteRenderer hatSprite;
+
+    //the mast to use with highlightable stuff
+    private SpriteMask mask;
 
     // sprite/animation variables
     public SpriteRenderer sr;
@@ -61,8 +67,9 @@ public class PlayerController : MonoBehaviour
 
     void OnEnable() {
         InputActions.FindActionMap("Player").Enable();
+        mask = GetComponent<SpriteMask>();
     }
-    
+
     void Awake() {
         instance = this;
         
@@ -124,6 +131,7 @@ public class PlayerController : MonoBehaviour
                     else if (sr.sprite == dodge1) sr.sprite = walk2;
                     else if (sr.sprite == dodge2) sr.sprite = walk1;
                     animationFrameCounter = 0;
+                    mask.sprite = sr.sprite; //sets the mask to match the sprite
                 }
             }
 
@@ -145,11 +153,16 @@ public class PlayerController : MonoBehaviour
                     else if (sr.sprite == dodge1) sr.sprite = stand2;
                     else if (sr.sprite == dodge2) sr.sprite = stand1;
                     animationFrameCounter = 0;
+                    mask.sprite = sr.sprite; //sets the mask to match the sprite
                 }
             }
 
             // dodge animation (vertical sprite flip) (not an animation)
-            if (dodging) sr.sprite = dodge1;
+            if (dodging)
+            {
+                sr.sprite = dodge1;
+                mask.sprite = sr.sprite; //sets the mask to match the sprite
+            }
 
             if (dodgeFrameCounter == 8)
             {
@@ -157,6 +170,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (sr.sprite == dodge1) sr.sprite = dodge2;
                     else if (sr.sprite == dodge2) sr.sprite = dodge1;
+                    mask.sprite = sr.sprite; //sets the mask to match the sprite
                 }
                 dodgeFrameCounter = 0;
             }

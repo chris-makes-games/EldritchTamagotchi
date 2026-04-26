@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4049025600488416952}
   - component: {fileID: 2322122823244947471}
   - component: {fileID: 2624506177268501157}
+  - component: {fileID: -6637248506739349876}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Interaction
@@ -129,8 +130,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.3}
-  m_Radius: 0.32
+  m_Offset: {x: 0, y: 0.14}
+  m_Radius: 0.4
 --- !u!114 &2322122823244947471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5422897061665290910}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e91961c614ef437db37cec0829e4ecd, type: 3}
   m_Name: 
@@ -164,6 +165,22 @@ MonoBehaviour:
   sr: {fileID: 811226805672120519}
   dog0: {fileID: 5607651031836452936, guid: 4cfe44ce3b4036a42877d6fd0ccc25db, type: 3}
   dog1: {fileID: -518272012, guid: 4cfe44ce3b4036a42877d6fd0ccc25db, type: 3}
+--- !u!114 &-6637248506739349876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5422897061665290910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e58c2440bc7e7947bf5a762f26db0e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Animateable
+  frames:
+  - {fileID: -518272012, guid: 4cfe44ce3b4036a42877d6fd0ccc25db, type: 3}
+  - {fileID: 5607651031836452936, guid: 4cfe44ce3b4036a42877d6fd0ccc25db, type: 3}
+  frameDelay: 18
 --- !u!1 &7533465482598464567
 GameObject:
   m_ObjectHideFlags: 0
