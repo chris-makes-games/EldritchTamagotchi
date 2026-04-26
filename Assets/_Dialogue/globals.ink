@@ -8,6 +8,7 @@ VAR love = 0
 VAR totalInteractions = 0
 
 //current hat being worn
+VAR hat = 5
 // 0 - Party Hat
 // 1 - Cowboy Hat
 // 2 - Spinny Hat
