@@ -35,3 +35,9 @@ VAR drank = 0
 VAR correctHat = false
 VAR hatTime = false
 VAR hatNeeded = 5
+
+
+//endgame variables
+VAR dogKilled = 0 //0 is before, 1 is killed, 2 is spared
+VAR killTime = false //when it's time to kill the dog
+VAR holdingKnife = false //picked up knife?
