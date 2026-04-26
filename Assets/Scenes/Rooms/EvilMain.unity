@@ -966,6 +966,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1258201472}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &325450062 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5233903903227351545, guid: 603c948d39cb24cac801e7d06be9f48e, type: 3}
+  m_PrefabInstance: {fileID: 2311154278580779173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &346239232
 GameObject:
   m_ObjectHideFlags: 0
@@ -6615,6 +6620,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1009314333}
     m_Modifications:
+    - target: {fileID: 2322122823244947471, guid: 603c948d39cb24cac801e7d06be9f48e, type: 3}
+      propertyPath: ink
+      value: 
+      objectReference: {fileID: 4900000, guid: c89a7579fe20b4a4aac379a458899fac, type: 3}
+    - target: {fileID: 2624506177268501157, guid: 603c948d39cb24cac801e7d06be9f48e, type: 3}
+      propertyPath: dog2
+      value: 
+      objectReference: {fileID: 3214907087651728376, guid: ed8def856fb81404a8c0906b15dda090, type: 3}
+    - target: {fileID: 2624506177268501157, guid: 603c948d39cb24cac801e7d06be9f48e, type: 3}
+      propertyPath: dogWall
+      value: 
+      objectReference: {fileID: 325450062}
     - target: {fileID: 5422897061665290910, guid: 603c948d39cb24cac801e7d06be9f48e, type: 3}
       propertyPath: m_Name
       value: Dog

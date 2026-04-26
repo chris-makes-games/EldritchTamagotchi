@@ -6,6 +6,7 @@ VAR visited = false
 
 == grab ==
 You picked up the knife.
+~ holdingKnife = true
     -> END
 
 == grabbed ==
