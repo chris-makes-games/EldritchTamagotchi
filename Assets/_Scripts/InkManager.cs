@@ -92,6 +92,14 @@ public class InkManager : MonoBehaviour {
                 // 1 is dog was killed
                 // 2 is dog was not killed
                 // you can get the int that it is by (int)currentStory.variablesState[name]
+                if ((int)currentStory.variablesState["dogKilled"] == 1)
+                {
+                    Dog.instance.dead = true;
+                }
+                else if ((int)currentStory.variablesState["dogKilled"] == 2)
+                {
+                    
+                }
                 break;
 
             //will do nothing if there is no match
