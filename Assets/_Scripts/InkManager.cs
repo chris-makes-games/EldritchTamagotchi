@@ -78,6 +78,21 @@ public class InkManager : MonoBehaviour {
                     StartCoroutine(DelayedQuest(8f, "Now: put on the cowboy hat"));
                 }
                     break;
+            case "killTime":
+                //bool for it's time to kill the dog (or not)
+                //might want to do a questManager.SetQuestText("Kill the Dog") here
+                break;
+
+            case "holdingKnife":
+                //bool for if the player is holding the knife or not
+                break;
+
+            case "dogKilled":
+                //int value, 0 is the default, no choicse has been made
+                // 1 is dog was killed
+                // 2 is dog was not killed
+                // you can get the int that it is by (int)currentStory.variablesState[name]
+                break;
 
             //will do nothing if there is no match
             default:
