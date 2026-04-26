@@ -16,7 +16,7 @@ It's your dresser. It is exclusively filled with peculiar hats.
 +{hat == -1}[Leave] -> leave_nohat
 
 === leave_hat ===
-You feel incredibly stylish. You close the wardrobe.
+You feel incredibly stylish. You close the drawers.
 -> DONE
 
 === leave_nohat ===
@@ -31,7 +31,7 @@ You decide not to put on a hat, content with your lack of style.
 +{currentHat != 3}[Paper Crown] -> burger
 +{hat < 5}{!visited}[Done] -> leave_hat
 +{hat < 5}{visited}[Done] -> leave_hat
-+{hat == 5}[Done] -> leave_nohat
++{hat == 5}[Leave] -> leave_nohat
 
 === party ===
 You put on the party hat. You are ready for the cake.
