@@ -40,6 +40,7 @@ public class DialogueManager : MonoBehaviour
 
     //the wakeup story to start the game
     [SerializeField] private TextAsset wakeUpStory;
+    public bool doWakeUpStory;
 
     private void Awake()
     {
@@ -55,7 +56,7 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         choiceManager = choicePanel.GetComponent<ChoiceManager>(); //grabs the choices manager script
-        EnterStoryMode(wakeUpStory, false);
+        if (doWakeUpStory) EnterStoryMode(wakeUpStory, false);
     }
 
     

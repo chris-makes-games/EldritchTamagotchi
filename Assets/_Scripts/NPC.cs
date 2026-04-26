@@ -3,23 +3,16 @@ using Ink;
 
 public class NPC : MonoBehaviour
 {
-    public string nickame;
-    public string description;
+    public Interactable npcInteractable;
+    private bool newVisit = true;
 
-    [SerializeField] private TextAsset ink;
-
-    public SpriteRenderer icon;
-    public SpriteRenderer portrait;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        icon = GetComponent<SpriteRenderer>();
-        portrait = GetComponent<SpriteRenderer>();
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        //maybe we can have animations play here, or have them wander
+        // if NPC is visited, door unlocks
+        if (npcInteractable.visited && newVisit)
+        {
+            DoorSceneChanger.instance.doorLocked = false;
+            newVisit = false;
+        }
     }
 }

@@ -1,0 +1,1417 @@
+fileFormatVersion: 2
+guid: ed8def856fb81404a8c0906b15dda090
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9031794081810855415
+    second: greenblood_0
+  - first:
+      213: -8151877416836573592
+    second: greenblood_1
+  - first:
+      213: -708600198113261600
+    second: greenblood_2
+  - first:
+      213: 5345235466511633688
+    second: greenblood_3
+  - first:
+      213: 8294401071271855944
+    second: greenblood_4
+  - first:
+      213: 2452505554093960860
+    second: greenblood_5
+  - first:
+      213: -7194126633626622525
+    second: greenblood_6
+  - first:
+      213: 2728166894581341086
+    second: greenblood_7
+  - first:
+      213: 2738273854222829670
+    second: greenblood_8
+  - first:
+      213: -1801514885189461665
+    second: greenblood_9
+  - first:
+      213: 8391006169071228617
+    second: greenblood_10
+  - first:
+      213: 4463195503776668185
+    second: greenblood_11
+  - first:
+      213: 8310875184991974964
+    second: greenblood_12
+  - first:
+      213: -1209219383651465174
+    second: greenblood_13
+  - first:
+      213: 3214907087651728376
+    second: greenblood_14
+  - first:
+      213: -5947277352733487068
+    second: greenblood_15
+  - first:
+      213: -4513803474420177213
+    second: greenblood_16
+  - first:
+      213: 7417969663887884064
+    second: greenblood_17
+  - first:
+      213: -1934553638593343135
+    second: greenblood_18
+  - first:
+      213: -3547366954245457854
+    second: greenblood_19
+  - first:
+      213: -4925085471211143789
+    second: greenblood_20
+  - first:
+      213: 3385940433017239849
+    second: greenblood_21
+  - first:
+      213: -3563043084277679977
+    second: greenblood_22
+  - first:
+      213: 6253515089554290978
+    second: greenblood_23
+  - first:
+      213: 3870989140819798173
+    second: greenblood_24
+  - first:
+      213: -6860029763148442946
+    second: greenblood_25
+  - first:
+      213: 7278238531128064813
+    second: greenblood_26
+  - first:
+      213: -7312699500671723204
+    second: greenblood_27
+  - first:
+      213: -8470968891855886221
+    second: greenblood_28
+  - first:
+      213: 5815060505741998192
+    second: greenblood_29
+  - first:
+      213: 5244457359035898244
+    second: greenblood_30
+  - first:
+      213: 5646340070360340045
+    second: greenblood_31
+  - first:
+      213: 5397752644119450449
+    second: greenblood_32
+  - first:
+      213: -7570545377436068302
+    second: greenblood_33
+  - first:
+      213: -8064689616358476826
+    second: greenblood_34
+  - first:
+      213: 5725949147591310465
+    second: greenblood_35
+  - first:
+      213: -7500776792143648260
+    second: greenblood_36
+  - first:
+      213: -9122967960286436007
+    second: greenblood_37
+  - first:
+      213: 2487976403138864638
+    second: greenblood_38
+  - first:
+      213: -1613212454229858699
+    second: greenblood_39
+  - first:
+      213: 8049050152342642135
+    second: greenblood_40
+  - first:
+      213: -7048301328435786827
+    second: greenblood_41
+  - first:
+      213: -6460497228785184706
+    second: greenblood_42
+  - first:
+      213: -5997663191210281651
+    second: greenblood_43
+  - first:
+      213: 2812480671009090884
+    second: greenblood_44
+  - first:
+      213: 7481684943384028656
+    second: greenblood_45
+  - first:
+      213: 1893571635923647458
+    second: greenblood_46
+  - first:
+      213: 5213559354513146885
+    second: greenblood_47
+  - first:
+      213: -1604772672014629465
+    second: greenblood_48
+  - first:
+      213: 7013356433148267553
+    second: greenblood_49
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: greenblood_0
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 467
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90a4035922f98a280800000000000000
+      internalID: -9031794081810855415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_1
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 460
+        width: 19
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8665dec0ea6bede80800000000000000
+      internalID: -8151877416836573592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_2
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 415
+        width: 22
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e700b7cfdb8a26f0800000000000000
+      internalID: -708600198113261600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_3
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 453
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81dce3626571e2a40800000000000000
+      internalID: 5345235466511633688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_4
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 425
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84747c524d1ab1370800000000000000
+      internalID: 8294401071271855944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_5
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 428
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9e6179becc090220800000000000000
+      internalID: 2452505554093960860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_6
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 439
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c5228d51f3592c90800000000000000
+      internalID: -7194126633626622525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_7
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 408
+        width: 6
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9b508f06556cd520800000000000000
+      internalID: 2728166894581341086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_8
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 413
+        width: 11
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66801baff8d400620800000000000000
+      internalID: 2738273854222829670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_9
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 429
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5914bab1cbbff6e0800000000000000
+      internalID: -1801514885189461665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_10
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 411
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c61a9f37a7d27470800000000000000
+      internalID: 8391006169071228617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_11
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 401
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91a9ab5e9a470fd30800000000000000
+      internalID: 4463195503776668185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_12
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 369
+        width: 26
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4363e06a2f8265370800000000000000
+      internalID: 8310875184991974964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_13
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 389
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2800f5906df73fe0800000000000000
+      internalID: -1209219383651465174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_14
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 181
+        width: 209
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fbed5186f4ad9c20800000000000000
+      internalID: 3214907087651728376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_15
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 395
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4205899f1c6077da0800000000000000
+      internalID: -5947277352733487068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_16
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 372
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c6e249b7afbb51c0800000000000000
+      internalID: -4513803474420177213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_17
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 379
+        width: 24
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02f39a27b1ce1f660800000000000000
+      internalID: 7417969663887884064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_18
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 336
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16154b427b51725e0800000000000000
+      internalID: -1934553638593343135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_19
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 331
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2487d34cc8835cec0800000000000000
+      internalID: -3547366954245457854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_20
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 296
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39db500bbd496abb0800000000000000
+      internalID: -4925085471211143789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_21
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 299
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 929ff9462e64dfe20800000000000000
+      internalID: 3385940433017239849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_22
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 281
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 798773251378d8ec0800000000000000
+      internalID: -3563043084277679977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_23
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 251
+        width: 51
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 229bd6667d2f8c650800000000000000
+      internalID: 6253515089554290978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_24
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 234
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9865fb3d1488b530800000000000000
+      internalID: 3870989140819798173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_25
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 257
+        width: 29
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb21ee2c6474cc0a0800000000000000
+      internalID: -6860029763148442946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_26
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 230
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2bf27ed16f710560800000000000000
+      internalID: 7278238531128064813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_27
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 198
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3919496c82148a90800000000000000
+      internalID: -7312699500671723204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_28
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 187
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 378ab898ca2117a80800000000000000
+      internalID: -8470968891855886221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_29
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 172
+        width: 12
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 078b72078be33b050800000000000000
+      internalID: 5815060505741998192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_30
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 189
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48994058e2e08c840800000000000000
+      internalID: 5244457359035898244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_31
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 180
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d46d1eed064db5e40800000000000000
+      internalID: 5646340070360340045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_32
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 166
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1535a2a6e6ba8ea40800000000000000
+      internalID: 5397752644119450449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_33
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 175
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23692f5f61500f690800000000000000
+      internalID: -7570545377436068302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_34
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 155
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e3fb21c587741090800000000000000
+      internalID: -8064689616358476826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_35
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 187
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18c71209968a67f40800000000000000
+      internalID: 5725949147591310465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_36
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 177
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf9a8c49f33e7e790800000000000000
+      internalID: -7500776792143648260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_37
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 151
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9556bd5c9f4b46180800000000000000
+      internalID: -9122967960286436007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_38
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 158
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef565a65b51178220800000000000000
+      internalID: 2487976403138864638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_39
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 156
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 576a46ee1d7bc99e0800000000000000
+      internalID: -1613212454229858699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_40
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 116
+        width: 17
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dddfa5c778f3bf60800000000000000
+      internalID: 8049050152342642135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_41
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 140
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bbcba809476f2e90800000000000000
+      internalID: -7048301328435786827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_42
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 143
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e301dd5eff3b756a0800000000000000
+      internalID: -6460497228785184706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_43
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 129
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d45b975ca1504cca0800000000000000
+      internalID: -5997663191210281651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_44
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 72
+        width: 56
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44d2625e440f70720800000000000000
+      internalID: 2812480671009090884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_45
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 123
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f52bcbf0d844d760800000000000000
+      internalID: 7481684943384028656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_46
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 115
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ebfbfbce51574a10800000000000000
+      internalID: 1893571635923647458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_47
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 41
+        width: 54
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 504cb2d3c984a5840800000000000000
+      internalID: 5213559354513146885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_48
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 71
+        width: 8
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a5405bd1c3bab9e0800000000000000
+      internalID: -1604772672014629465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenblood_49
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 10
+        width: 13
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12cc0018482745160800000000000000
+      internalID: 7013356433148267553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      greenblood_0: -9031794081810855415
+      greenblood_1: -8151877416836573592
+      greenblood_10: 8391006169071228617
+      greenblood_11: 4463195503776668185
+      greenblood_12: 8310875184991974964
+      greenblood_13: -1209219383651465174
+      greenblood_14: 3214907087651728376
+      greenblood_15: -5947277352733487068
+      greenblood_16: -4513803474420177213
+      greenblood_17: 7417969663887884064
+      greenblood_18: -1934553638593343135
+      greenblood_19: -3547366954245457854
+      greenblood_2: -708600198113261600
+      greenblood_20: -4925085471211143789
+      greenblood_21: 3385940433017239849
+      greenblood_22: -3563043084277679977
+      greenblood_23: 6253515089554290978
+      greenblood_24: 3870989140819798173
+      greenblood_25: -6860029763148442946
+      greenblood_26: 7278238531128064813
+      greenblood_27: -7312699500671723204
+      greenblood_28: -8470968891855886221
+      greenblood_29: 5815060505741998192
+      greenblood_3: 5345235466511633688
+      greenblood_30: 5244457359035898244
+      greenblood_31: 5646340070360340045
+      greenblood_32: 5397752644119450449
+      greenblood_33: -7570545377436068302
+      greenblood_34: -8064689616358476826
+      greenblood_35: 5725949147591310465
+      greenblood_36: -7500776792143648260
+      greenblood_37: -9122967960286436007
+      greenblood_38: 2487976403138864638
+      greenblood_39: -1613212454229858699
+      greenblood_4: 8294401071271855944
+      greenblood_40: 8049050152342642135
+      greenblood_41: -7048301328435786827
+      greenblood_42: -6460497228785184706
+      greenblood_43: -5997663191210281651
+      greenblood_44: 2812480671009090884
+      greenblood_45: 7481684943384028656
+      greenblood_46: 1893571635923647458
+      greenblood_47: 5213559354513146885
+      greenblood_48: -1604772672014629465
+      greenblood_49: 7013356433148267553
+      greenblood_5: 2452505554093960860
+      greenblood_6: -7194126633626622525
+      greenblood_7: 2728166894581341086
+      greenblood_8: 2738273854222829670
+      greenblood_9: -1801514885189461665
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -77,9 +77,12 @@ public class PlayerController : MonoBehaviour
         soundSource = GetComponent<AudioSource>();
 
         //for intro cinematic
-        interactionObject = bed;
-        story = bed.GetInk();
-        startStory();//begins wakeUp story
+        if (DialogueManager.doWakeUpStory) {
+            interactionObject = bed;
+            story = bed.GetInk();
+            startStory(); //begins wakeUp story
+        }
+        else if (!DialogueManager.doWakeUpStory) awoken = true;
 
     }
 
@@ -166,7 +169,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // reading movement input (joystick, wasd, whatever)
-        moveDirection = move.ReadValue<Vector2>();
+        if (canMove) moveDirection = move.ReadValue<Vector2>();
+        else if (!canMove) moveDirection = Vector2.zero;
 
         // return to start menu with pause/quit button 
         // (i didn't know where else to put this)
@@ -194,11 +198,13 @@ public class PlayerController : MonoBehaviour
         }
 
         // this is admittedly a very fiddly dodge roll
-        if (dodge.WasPressedThisFrame()) {
-            dodgeSpeed = 15;
-            dodgeDirection = moveDirection;
-            rb.linearVelocity = dodgeDirection * dodgeSpeed;
-            dodging = true;
+        if (canMove) {
+            if (dodge.WasPressedThisFrame()) {
+                dodgeSpeed = 15;
+                dodgeDirection = moveDirection;
+                rb.linearVelocity = dodgeDirection * dodgeSpeed;
+                dodging = true;
+            }
         }
 
         if (interact.WasPressedThisFrame())
