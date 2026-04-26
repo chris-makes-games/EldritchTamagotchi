@@ -1,13 +1,11 @@
 INCLUDE globals.ink
-VAR hat = -1
-VAR visited = false
-~ hat = currentHat
+
 //ORDER:
 //party_hat - 0
 //cow_hat - 1
 //spin_hat - 2
 //burg_hat - 3
-//dunce_hat - 4
+//dunce_hat - 4 (unused here)
 //empty - 5
 
 It's your dresser. It is exclusively filled with peculiar hats.
@@ -17,10 +15,12 @@ It's your dresser. It is exclusively filled with peculiar hats.
 
 === leave_hat ===
 You feel incredibly stylish. You close the drawers.
+~ currentHat = hat
 -> DONE
 
 === leave_nohat ===
 You decide not to put on a hat, content with your lack of style.
+~ currentHat = hat
 -> DONE
 
 === hatmode === // at most only 5 options, i know it looks scary though
@@ -29,6 +29,7 @@ You decide not to put on a hat, content with your lack of style.
 +{currentHat != 1}[Cowboy Hat] -> cowboy
 +{currentHat != 2}[Propeller Hat] -> spinny
 +{currentHat != 3}[Paper Crown] -> burger
++{currentHat != 5}[Remove Hat] -> remove
 +{hat < 5}{!visited}[Done] -> leave_hat
 +{hat < 5}{visited}[Done] -> leave_hat
 +{hat == 5}[Leave] -> leave_nohat
@@ -37,40 +38,28 @@ You decide not to put on a hat, content with your lack of style.
 You put on the party hat. You are ready for the cake.
 ~ hat_text = "You are wearing the party hat. Try a different hat?"
 ~ hat = 0
-~ currentHat = hat
 +[Continue]-> hatmode
 
 === cowboy ===
 You put on the cowboy hat. You feel rowdy.
 ~ hat_text = "You are wearing the cowboy hat. Try a different hat?"
 ~ hat = 1
-~ currentHat = hat
 +[Continue]-> hatmode
 
 === spinny ===
 You put on the propeller hat. You don't really know why it has a propeller.
 ~ hat_text = "You are wearing the propeller hat. Try a different hat?"
 ~ hat = 2
-~ currentHat = hat
 +[Continue]-> hatmode
 
 === burger ===
 You put on the paper crown. You feel powerful.
 ~ hat_text = "You are wearing the paper crown. Try a different hat?"
 ~ hat = 3
-~ currentHat = hat
-+[Continue]-> hatmode
-
-=== dunce ===
-You put on the dunce cap. You feel like an idiot.
-~ hat_text = "You are wearing the dunce cap. Try a different hat?"
-~ hat = 4
-~ currentHat = hat
 +[Continue]-> hatmode
 
 === remove ===
 You take off your hat. Your bald head feels cold in the wind.
 ~ hat_text = "You are no longer wearing a hat. Try a hat?"
 ~ hat = 5
-~ currentHat = hat
 +[Continue]-> hatmode
