@@ -6949,6 +6949,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knife
       objectReference: {fileID: 0}
+    - target: {fileID: 5399082104278994540, guid: 8c1c775bdc1314c8ab407e82faa43f01, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6543838865451731323, guid: 8c1c775bdc1314c8ab407e82faa43f01, type: 3}
       propertyPath: highlightSize
       value: 1.3
@@ -7110,10 +7114,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   knifeInteractable: {fileID: 1754189770085463301}
-  knife: {fileID: 9085723342393265150}
+  knifeSprite: {fileID: 9085723342393265150}
+  knifeObject: {fileID: 6234994464693432312}
+  trigger: {fileID: 9085723342393265151}
 --- !u!212 &9085723342393265150 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3352413607018513787, guid: 8c1c775bdc1314c8ab407e82faa43f01, type: 3}
+  m_PrefabInstance: {fileID: 6137008441688708605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &9085723342393265151 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4250419000864591215, guid: 8c1c775bdc1314c8ab407e82faa43f01, type: 3}
   m_PrefabInstance: {fileID: 6137008441688708605}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
