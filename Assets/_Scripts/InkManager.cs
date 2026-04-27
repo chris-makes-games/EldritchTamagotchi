@@ -1,7 +1,9 @@
 using Ink.Runtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 //this bad boi keeps track of all the ink global variables
 //checks the globals.ink when constructed, creates a dictionary of variableNameString, inkObject
@@ -17,6 +19,9 @@ public class InkManager : MonoBehaviour {
     [SerializeField] private AudioClip musicClip;
     [SerializeField] private wakeUp sleepScreen;
 
+    //hatsequence completed event
+    public static event Action<int> HatEvent;
+
     private Story currentStory;
     public Dictionary<string, Ink.Runtime.Object> variables { get; private set; }
 
@@ -30,18 +35,29 @@ public class InkManager : MonoBehaviour {
             case "currentHat":
                 if ((bool)currentStory.variablesState["hatTime"])
                 {
-                    if ((int)currentStory.variablesState[name] == 1)
+                    if ((int)currentStory.variablesState[name] == (int)currentStory.variablesState["hatNeeded"])
                     {
+                        setIntVariable("correctHat", 1); //sets the correcthat variable to correct
                         questManager.SetQuestText("You look great");
                     }
                     else
                     {
-                        questManager.SetQuestText("You look ridiculous");
-                        StartCoroutine(DelayedQuest(4f, "I have a better hat for you"));
+                        if ((int)currentStory.variablesState[name] == 5)
+                        {
+                            questManager.SetQuestText("You look naked");
+                        }
+                        else
+                        {
+                            questManager.SetQuestText("You look ridiculous");
+                        }
+                        setIntVariable("correctHat", 2); //sets the correcthat variable to incorrect
+
+                        StartCoroutine(DelayedQuest(4f, "I recommend this headwear instead"));
                         StartCoroutine(DelayedHat(8f, 4));
                     }
                 }
                 player.SetHat((int)currentStory.variablesState[name]);
+                HatEvent?.Invoke((int)currentStory.variablesState[name]);
                 break;
 
             //set the text the caretaker displays
@@ -69,13 +85,41 @@ public class InkManager : MonoBehaviour {
                 {
                     questManager.SetQuestText("Good job");
                     StartCoroutine(DelayedQuest(3f, "Self care is important"));
-                    StartCoroutine(DelayedQuest(8f, "Now: put on the cowboy hat"));
+                    switch ((int)currentStory.variablesState["hatNeeded"])
+                    {
+                        case 0:
+                            StartCoroutine(DelayedQuest(8f, "Now: put on the party hat"));
+                            break;
+                        case 1:
+                            StartCoroutine(DelayedQuest(8f, "Now: put on the cowboy hat"));
+                            break;
+                        case 2:
+                            StartCoroutine(DelayedQuest(8f, "Now: put on the spinny hat"));
+                            break;
+                        case 3:
+                            StartCoroutine(DelayedQuest(8f, "Now: put on the paper crown"));
+                            break;
+                    }
                 }
                 else
                 {
                     questManager.SetQuestText("Suit yourself");
                     StartCoroutine(DelayedQuest(3f, "More precious water for me"));
-                    StartCoroutine(DelayedQuest(8f, "Now: put on the cowboy hat"));
+                    switch ((int)currentStory.variablesState["hatNeeded"])
+                    {
+                        case 0:
+                            StartCoroutine(DelayedQuest(8f, "Now: put on the party hat"));
+                            break;
+                        case 1:
+                            StartCoroutine(DelayedQuest(8f, "Now: put on the cowboy hat"));
+                            break;
+                        case 2:
+                            StartCoroutine(DelayedQuest(8f, "Now: put on the spinny hat"));
+                            break;
+                        case 3:
+                            StartCoroutine(DelayedQuest(8f, "Now: put on the paper crown"));
+                            break;
+                    }
                 }
                     break;
             case "killTime":
@@ -187,6 +231,27 @@ public class InkManager : MonoBehaviour {
             variables.Add(name, ink);
             UpdateGame(name);
         }
+    }
+
+    public void setIntVariable(string name, int value)
+    {
+        if (variables.ContainsKey(name))
+        {
+            if (variables[name].GetType() != typeof(bool))
+            {
+                Debug.Log("InkManager error: tried to set an int that isn't an int");
+                return;
+            }
+            Ink.Runtime.Object ink = variables[name];
+            variables.Remove(name);
+            variables.Add(name, ink);
+            UpdateGame(name);
+        }
+    }
+
+    public int getIntVariable(string name)
+    {
+        return (int)currentStory.variablesState[name];
     }
 
     IEnumerator DelayedHat(float seconds, int hat)
