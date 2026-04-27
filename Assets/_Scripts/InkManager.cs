@@ -31,7 +31,7 @@ public class InkManager : MonoBehaviour {
     {
         switch (name)
         {
-            //update the player's hat
+            //update the player's hat status after they put on correct/incorrect hat
             case "currentHat":
                 if ((bool)currentStory.variablesState["hatTime"])
                 {
@@ -56,10 +56,12 @@ public class InkManager : MonoBehaviour {
                         StartCoroutine(DelayedHat(8f, 4));
                     }
                 }
-                player.SetHat((int)currentStory.variablesState[name]);
-                HatEvent?.Invoke((int)currentStory.variablesState[name]);
+                HatEvent?.Invoke((int)currentStory.variablesState["correctHat"]);
                 break;
-
+            //sets player hat - during hat dresser deciding
+            case "hat":
+                player.SetHat((int)currentStory.variablesState[name]);
+                break;
             //set the text the caretaker displays
             case "setQuestText":
                 questManager.SetQuestText((string)currentStory.variablesState[name]);
