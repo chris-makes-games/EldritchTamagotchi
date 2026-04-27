@@ -4570,7 +4570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9097006618915250838, guid: d03a4b8e366e84a2b805d641dc7774b4, type: 3}
       propertyPath: sceneToLoad
-      value: AltMain
+      value: EvilMain
       objectReference: {fileID: 0}
     - target: {fileID: 9097006618915250838, guid: d03a4b8e366e84a2b805d641dc7774b4, type: 3}
       propertyPath: doorCooldown

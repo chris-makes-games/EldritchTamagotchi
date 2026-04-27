@@ -2144,7 +2144,7 @@ MonoBehaviour:
   InkManager: {fileID: 1746455163}
   player: {fileID: 1877586184}
   wakeUpStory: {fileID: 4900000, guid: 62156c23808c6aa48bee049fa7ec3a66, type: 3}
-  doWakeUpStory: 0
+  doWakeUpStory: 1
 --- !u!4 &681542481
 Transform:
   m_ObjectHideFlags: 0
@@ -2387,7 +2387,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.19999999, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6037,7 +6037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1905511808
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7438,7 +7438,7 @@ PrefabInstance:
     - target: {fileID: 5716502509027128020, guid: c3e260dd2fc5f554cb7175fc221f5cd7, type: 3}
       propertyPath: ink
       value: 
-      objectReference: {fileID: 4900000, guid: f0f69114c33e63e43ba1f6f9f8281169, type: 3}
+      objectReference: {fileID: 4900000, guid: 1bd8ef1fb41264b638268dd876a42b42, type: 3}
     - target: {fileID: 6398084316497476319, guid: c3e260dd2fc5f554cb7175fc221f5cd7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.89
