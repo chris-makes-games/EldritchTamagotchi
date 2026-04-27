@@ -37,6 +37,8 @@ VAR correctHat = false
 VAR hatTime = false
 VAR hatNeeded = 5
 
+//tried to open the bottom door yet?
+VAR doorTried = false
 
 //endgame variables
 VAR dogKilled = 0 //0 is before, 1 is killed, 2 is spared
