@@ -6,9 +6,11 @@ public class ChoiceManager : MonoBehaviour
 {
     //choice button objects
     [SerializeField] private GameObject[] choices;
-    [SerializeField] private TMP_Text[] textList;
     [SerializeField] private GameObject selector;
-    
+    [SerializeField] private TMP_Text[] textList;
+    [SerializeField] private SpriteRenderer[] buttonImages;
+
+
     //keep track of state
     bool choosing = false;
     bool choiceWait = false;
