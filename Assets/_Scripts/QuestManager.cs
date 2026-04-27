@@ -70,8 +70,7 @@ public class QuestManager : MonoBehaviour
 
     public void SetQuestText(string text)
     {
-        //stops any talking text, turn on after
-        talkingAudio.mute = true;
+        talkingAudio.mute = true; //stops audio
         StartCoroutine(SlowText(text));
     }
 
@@ -96,6 +95,7 @@ public class QuestManager : MonoBehaviour
     IEnumerator SlowText(string text) //waits for the delay in-between characters of the given text
     {
         yield return new WaitForSeconds(waitToYell);
+        talkingAudio.mute = false;
         string output = "";
         for (int i = 0; i < text.Length; i++)
         {
@@ -108,7 +108,6 @@ public class QuestManager : MonoBehaviour
             }
             yield return new WaitForSeconds(delay);
         }
-        talkingAudio.mute = false;
     }
 
 
