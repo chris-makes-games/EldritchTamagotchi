@@ -1733,6 +1733,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 2722039595431547601, guid: 99aff43bbd688604d87031f99466a647, type: 3}
+      propertyPath: ink
+      value: 
+      objectReference: {fileID: 4900000, guid: 877d34528cad3458c8ee20dd17e122c1, type: 3}
     - target: {fileID: 3873963014902083019, guid: 99aff43bbd688604d87031f99466a647, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -6537,6 +6541,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6832820448238211754, guid: 36db8eef398553d4385dcd6a52f4c16c, type: 3}
+      propertyPath: ink
+      value: 
+      objectReference: {fileID: 4900000, guid: 208fa07c32dc64f52a9b460d63b0b081, type: 3}
     - target: {fileID: 9159699473693962601, guid: 36db8eef398553d4385dcd6a52f4c16c, type: 3}
       propertyPath: m_Name
       value: Sink
@@ -6583,7 +6591,7 @@ PrefabInstance:
     - target: {fileID: 5716502509027128020, guid: c3e260dd2fc5f554cb7175fc221f5cd7, type: 3}
       propertyPath: ink
       value: 
-      objectReference: {fileID: 4900000, guid: f0f69114c33e63e43ba1f6f9f8281169, type: 3}
+      objectReference: {fileID: 4900000, guid: 1bd8ef1fb41264b638268dd876a42b42, type: 3}
     - target: {fileID: 6398084316497476319, guid: c3e260dd2fc5f554cb7175fc221f5cd7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.89
@@ -6774,6 +6782,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8812942569330215222, guid: 4019b51a24ddde543b039c88af1e240c, type: 3}
+      propertyPath: ink
+      value: 
+      objectReference: {fileID: 4900000, guid: 2b36db02fb1804324a6c3bfbdbba085e, type: 3}
     - target: {fileID: 9218760877151498744, guid: 4019b51a24ddde543b039c88af1e240c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.09
@@ -6904,6 +6916,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1009314333}
     m_Modifications:
+    - target: {fileID: 260552455309957944, guid: 1fc36964a492fff44af72ecf13e857ff, type: 3}
+      propertyPath: ink
+      value: 
+      objectReference: {fileID: 4900000, guid: 414daafb5c4b94b3caf350d3e87c45d0, type: 3}
     - target: {fileID: 1114780610422329826, guid: 1fc36964a492fff44af72ecf13e857ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.74
