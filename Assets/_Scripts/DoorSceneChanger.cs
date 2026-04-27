@@ -1,6 +1,9 @@
+using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
+using UnityEngine.U2D;
+using UnityEngine.UI;
 
 public class DoorSceneChanger : MonoBehaviour
 {
@@ -20,6 +23,24 @@ public class DoorSceneChanger : MonoBehaviour
     void Start()
     {
         doorCooldown = 0;
+    }
+
+    private void OnEnable()
+    {
+        InkManager.HatEvent += HatEvent;
+    }
+
+    private void OnDisable()
+    {
+        InkManager.HatEvent -= HatEvent;
+    }
+
+    private void HatEvent(int hatEvent)
+    {
+        //hatEvent int
+        // 0 - not tried yet
+        // 1 - correct hat
+        // 2 - incorrect hat
     }
 
     void FixedUpdate() 
