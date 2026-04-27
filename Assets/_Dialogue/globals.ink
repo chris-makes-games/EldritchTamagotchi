@@ -27,15 +27,17 @@ VAR fridgeOpen = false
 
 //sink variables
 VAR sinkTurned = false
+VAR hotTurned = false
+VAR coldTurned = false
 VAR sinkFix = false
 VAR waterTemp = ""
 VAR sinkRunning = false
 VAR drank = 0
 
 //hat status variables
-VAR correctHat = false
+VAR correctHat = 0 // 0 is not tried yet, 1 is correct, 2 is wrong hat
 VAR hatTime = false
-VAR hatNeeded = 5
+VAR hatNeeded = 3 //starting spinny
 
 //tried to open the bottom door yet?
 VAR doorTried = false
