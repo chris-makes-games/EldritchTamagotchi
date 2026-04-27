@@ -26,6 +26,8 @@ public class QuestManager : MonoBehaviour
     //for the caretaker text display
     [SerializeField] private GameObject careTakerPanel;
     [SerializeField] private TextMeshProUGUI careTakerText;
+    //arrlist to hold all of the incoming text
+    private ArrayList words;
 
     //to scream the characters
     AudioSource soundSource;
@@ -41,6 +43,7 @@ public class QuestManager : MonoBehaviour
     // Called on game launch to make sure there's only one controller
     void Awake()
     {
+        words = new ArrayList();
         careTakerText.text = ""; //start empty of text
         soundSource = GetComponent<AudioSource>();
         talkingAudio = soundManager.GetComponent<AudioSource>();
@@ -70,8 +73,11 @@ public class QuestManager : MonoBehaviour
 
     public void SetQuestText(string text)
     {
+        words.Insert(0, text);
+        Debug.Log("adding: " + text);
+        Debug.Log("new count: " + words.Count);
         talkingAudio.mute = true; //stops audio
-        StartCoroutine(SlowText(text));
+        StartCoroutine(SlowText());
     }
 
     public void ClearQuestText()
@@ -92,21 +98,29 @@ public class QuestManager : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator SlowText(string text) //waits for the delay in-between characters of the given text
+    IEnumerator SlowText() //waits for the delay in-between characters of the given text
     {
-        yield return new WaitForSeconds(waitToYell);
-        talkingAudio.mute = false;
-        string output = "";
-        for (int i = 0; i < text.Length; i++)
+        while (words.Count > 0)
         {
-            output = output + char.ToUpper(text[i]);
-            careTakerText.text = output;
-            int index = char.ToUpper(text[i]) - 65; //turns char to position in alphabet
-            if (index >= 0 && index < 27)
+            careTakerText.text = "";
+            Debug.Log("new iteration for: " + words[words.Count - 1].ToString());
+            yield return new WaitForSeconds(waitToYell);
+            talkingAudio.mute = false;
+            string output = "";
+            for (int i = 0; i < words[words.Count - 1].ToString().Length; i++)
             {
-                ScreamChar(index);
+                output = output + char.ToUpper(words[words.Count - 1].ToString()[i]);
+                careTakerText.text = output;
+                int index = char.ToUpper(words[words.Count - 1].ToString()[i]) - 65; //turns char to position in alphabet
+                if (index >= 0 && index < 27)
+                {
+                    ScreamChar(index);
+                }
+                yield return new WaitForSeconds(delay);
             }
-            yield return new WaitForSeconds(delay);
+            words.RemoveAt(words.Count - 1);
+            Debug.Log("removed last");
+            
         }
     }
 

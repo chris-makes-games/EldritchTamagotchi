@@ -27,11 +27,9 @@ VAR fridgeOpen = false
 
 //sink variables
 VAR sinkTurned = false
-VAR hotTurned = false
-VAR coldTurned = false
 VAR sinkFix = false
 VAR waterTemp = ""
-VAR sinkRunning = false
+VAR sinkRunning = 0
 VAR drank = 0
 
 //hat status variables
