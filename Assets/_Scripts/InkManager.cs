@@ -132,7 +132,7 @@ public class InkManager : MonoBehaviour {
                 break;
 
             case "dogKilled":
-                //int value, 0 is the default, no choicse has been made
+                //int value, 0 is the default, no choices has been made
                 // 1 is dog was killed
                 // 2 is dog was not killed
                 // you can get the int that it is by (int)currentStory.variablesState[name]
