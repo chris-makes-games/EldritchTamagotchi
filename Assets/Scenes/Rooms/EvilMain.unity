@@ -1743,6 +1743,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 2722039595431547601, guid: 99aff43bbd688604d87031f99466a647, type: 3}
+      propertyPath: ink
+      value: 
+      objectReference: {fileID: 4900000, guid: 3bacbe924dae74795a03df0b07354eed, type: 3}
     - target: {fileID: 4494268495233543721, guid: 99aff43bbd688604d87031f99466a647, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.63
@@ -1966,7 +1970,7 @@ PrefabInstance:
     - target: {fileID: -7469182267488566888, guid: 56e552cdedc2c3b4faa28c551a73cc4f, type: 3}
       propertyPath: ink
       value: 
-      objectReference: {fileID: 4900000, guid: d1e6b196a18a4024d8b7a3c04f44b904, type: 3}
+      objectReference: {fileID: 4900000, guid: 18a0ceec3cfd44843af96c24833d44f5, type: 3}
     - target: {fileID: -7469182267488566888, guid: 56e552cdedc2c3b4faa28c551a73cc4f, type: 3}
       propertyPath: description
       value: Examine Basketball
@@ -6509,6 +6513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sink
       objectReference: {fileID: 0}
+    - target: {fileID: 9159699473693962601, guid: 36db8eef398553d4385dcd6a52f4c16c, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6569,6 +6577,10 @@ PrefabInstance:
     - target: {fileID: 4254657565775546327, guid: a4966a37d7164374988fb4ed5ad6464f, type: 3}
       propertyPath: m_Name
       value: Bowls
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254657565775546327, guid: a4966a37d7164374988fb4ed5ad6464f, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6693,6 +6705,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cabinet
       objectReference: {fileID: 0}
+    - target: {fileID: 2129732863914254650, guid: e0803cc9339d266468ea5721b7c69a28, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 2473083415325938456, guid: e0803cc9339d266468ea5721b7c69a28, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.166
@@ -6774,6 +6790,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drawers
       objectReference: {fileID: 0}
+    - target: {fileID: 5018696483149948445, guid: 4019b51a24ddde543b039c88af1e240c, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 9218760877151498744, guid: 4019b51a24ddde543b039c88af1e240c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.09
@@ -6830,6 +6850,10 @@ PrefabInstance:
     - target: {fileID: 3341945723659837982, guid: 1d57505fb9f8ca646bfe04cbb57374df, type: 3}
       propertyPath: m_Name
       value: Window
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341945723659837982, guid: 1d57505fb9f8ca646bfe04cbb57374df, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7379761259501950258, guid: 1d57505fb9f8ca646bfe04cbb57374df, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6935,6 +6959,10 @@ PrefabInstance:
     - target: {fileID: 3551179810383660895, guid: 1fc36964a492fff44af72ecf13e857ff, type: 3}
       propertyPath: m_Name
       value: Fridge
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551179810383660895, guid: 1fc36964a492fff44af72ecf13e857ff, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7081118028389763775, guid: 1fc36964a492fff44af72ecf13e857ff, type: 3}
       propertyPath: m_Radius
