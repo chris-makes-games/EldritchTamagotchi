@@ -41,6 +41,17 @@ public class DoorSceneChanger : MonoBehaviour
         // 0 - not tried yet
         // 1 - correct hat
         // 2 - incorrect hat
+        if (hatEvent == 1)
+        {
+            sceneToLoad = "UnderRoom";
+            doorLocked = false;
+        }
+        else if (hatEvent == 2)
+        {
+            // change to OverRoom once you make that
+            sceneToLoad = "UnderRoom";
+            doorLocked = false;
+        }
     }
 
     void FixedUpdate() 
