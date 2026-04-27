@@ -45,12 +45,14 @@ public class DoorSceneChanger : MonoBehaviour
         {
             sceneToLoad = "UnderRoom";
             doorLocked = false;
+            Debug.Log("Door unlocked (Underachiever)");
         }
         else if (hatEvent == 2)
         {
             // change to OverRoom once you make that
             sceneToLoad = "UnderRoom";
             doorLocked = false;
+            Debug.Log("Door unlocked (Overachiever)");
         }
     }
 
