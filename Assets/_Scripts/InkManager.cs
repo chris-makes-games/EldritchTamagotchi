@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 //this bad boi keeps track of all the ink global variables
 //checks the globals.ink when constructed, creates a dictionary of variableNameString, inkObject
@@ -37,7 +36,7 @@ public class InkManager : MonoBehaviour {
                 {
                     if ((int)currentStory.variablesState[name] == (int)currentStory.variablesState["hatNeeded"])
                     {
-                        setIntVariable("correctHat", 1); //sets the correcthat variable to correct
+                        setVariable("correctHat", 1); //sets the correcthat variable to correct
                         questManager.SetQuestText("You look great");
                     }
                     else
@@ -50,17 +49,42 @@ public class InkManager : MonoBehaviour {
                         {
                             questManager.SetQuestText("You look ridiculous");
                         }
-                        setIntVariable("correctHat", 2); //sets the correcthat variable to incorrect
+                        setVariable("correctHat", 2); //sets the correcthat variable to incorrect
 
                         StartCoroutine(DelayedQuest(4f, "I recommend this headwear instead"));
                         StartCoroutine(DelayedHat(8f, 4));
                     }
+                    Debug.Log((int)currentStory.variablesState["correctHat"]);
+                    HatEvent?.Invoke((int)currentStory.variablesState["correctHat"]);
                 }
-                HatEvent?.Invoke((int)currentStory.variablesState["correctHat"]);
                 break;
             //sets player hat - during hat dresser deciding
             case "hat":
                 player.SetHat((int)currentStory.variablesState[name]);
+                if (!(bool)currentStory.variablesState["hatTime"]) //if it isn't yet hat time, swap hatNeeded
+                {
+                    switch ((int)currentStory.variablesState[name])
+                    {
+                        case 0:
+                            setVariable("hatNeeded", 1); // if party, go cowboy
+                            break;
+                        case 1:
+                            setVariable("hatNeeded", 2); //if cowboy, go spinny
+                            break;
+                        case 2:
+                            setVariable("hatNeeded", 3); //if spinny, go paper
+                            break;
+                        case 3:
+                            setVariable("hatNeeded", 0); //if paper, go party
+                            break;
+                        //there is no case 4, player cannot wear dunce by choice
+                        case 5:
+                            setVariable("hatNeeded", 3); //if bald, go spinny
+                            break;
+                    }
+                }
+                
+                
                 break;
             //set the text the caretaker displays
             case "setQuestText":
@@ -96,7 +120,7 @@ public class InkManager : MonoBehaviour {
                             StartCoroutine(DelayedQuest(8f, "Now: put on the cowboy hat"));
                             break;
                         case 2:
-                            StartCoroutine(DelayedQuest(8f, "Now: put on the spinny hat"));
+                            StartCoroutine(DelayedQuest(8f, "Now: put on the propeller hat"));
                             break;
                         case 3:
                             StartCoroutine(DelayedQuest(8f, "Now: put on the paper crown"));
@@ -203,57 +227,32 @@ public class InkManager : MonoBehaviour {
         questManager.SetQuestText(text);
     }
 
-    public void setBoolVariable(string name, bool value)
+    public void setVariable<T>(string name, T value)
     {
         if (variables.ContainsKey(name))
         {
-            if (variables[name].GetType() != typeof(bool))
+            if (currentStory.variablesState[name].GetType() != typeof(T))
             {
-                Debug.Log("InkManager error: tried to set a bool that isn't a bool");
+                Debug.Log("InkManager error: tried to set variable as the wrong type");
+                Debug.Log("variable: " + name);
+                Debug.Log("value: " + value);
+                Debug.Log("type is: " + value.GetType());
+                Debug.Log("type should be: " + variables[name].GetType());
                 return;
             }
+            currentStory.variablesState[name] = value;
             Ink.Runtime.Object ink = variables[name];
+            Debug.Log("changing var: " + currentStory.variablesState[name]);
+            Debug.Log("to: " + value);
             variables.Remove(name);
             variables.Add(name, ink);
             UpdateGame(name);
         }
     }
 
-    public void setStringVariable(string name, bool value)
+    public T getVariable<T>(string name) //gets any variable from the dict by string name
     {
-        if (variables.ContainsKey(name))
-        {
-            if (variables[name].GetType() != typeof(string))
-            {
-                Debug.Log("InkManager error: tried to set a string that isn't a string");
-                return;
-            }
-            Ink.Runtime.Object ink = variables[name];
-            variables.Remove(name);
-            variables.Add(name, ink);
-            UpdateGame(name);
-        }
-    }
-
-    public void setIntVariable(string name, int value)
-    {
-        if (variables.ContainsKey(name))
-        {
-            if (variables[name].GetType() != typeof(bool))
-            {
-                Debug.Log("InkManager error: tried to set an int that isn't an int");
-                return;
-            }
-            Ink.Runtime.Object ink = variables[name];
-            variables.Remove(name);
-            variables.Add(name, ink);
-            UpdateGame(name);
-        }
-    }
-
-    public int getIntVariable(string name)
-    {
-        return (int)currentStory.variablesState[name];
+        return (T)currentStory.variablesState[name];
     }
 
     IEnumerator DelayedHat(float seconds, int hat)
