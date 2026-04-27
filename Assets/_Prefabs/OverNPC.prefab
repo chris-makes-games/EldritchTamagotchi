@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: -7469182267488566888}
   - component: {fileID: 6203144378801270038}
   m_Layer: 0
-  m_Name: UnderNPC-2
+  m_Name: OverNPC
   m_TagString: Interaction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +163,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 8279311018145665285, guid: b08dc7760529005459cfe76b34c7c3f5, type: 3}
+  m_Sprite: {fileID: -7982360886948410965, guid: 9e801bc6ce946db42b24cddaedac3cb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -224,8 +224,8 @@ MonoBehaviour:
   highlightSize: 1.1
   highlightColor: {r: 1, g: 0.91013426, b: 0.3075471, a: 0.5019608}
   outcomes: 
-  ink: {fileID: 4900000, guid: 1e574008138c040cd93a26d7b6aa2776, type: 3}
-  description: Talk to Flea
+  ink: {fileID: 0}
+  description: Talk to Krent
   visited: 0
 --- !u!114 &6203144378801270038
 MonoBehaviour:
@@ -240,6 +240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Animateable
   frames:
-  - {fileID: 8279311018145665285, guid: b08dc7760529005459cfe76b34c7c3f5, type: 3}
-  - {fileID: 3481894204206708805, guid: b08dc7760529005459cfe76b34c7c3f5, type: 3}
+  - {fileID: -7982360886948410965, guid: 9e801bc6ce946db42b24cddaedac3cb1, type: 3}
+  - {fileID: -4287739127330283549, guid: 9e801bc6ce946db42b24cddaedac3cb1, type: 3}
   frameDelay: 18
