@@ -55,7 +55,11 @@ public class DialogueManager : MonoBehaviour
 
     private void SceneLoaded(QuestManager sceneLoad)
     {
-        ExitStoryMode();
+        if (currentStory != null)
+        {
+            ExitStoryMode();
+        }
+        
     }
 
     private void Awake()
@@ -102,6 +106,7 @@ public class DialogueManager : MonoBehaviour
         choiceManager.EndChoice(); //hides buttons and selector
         InkManager.StopListening(currentStory);
         player.endStory(); //lets player move again
+        currentStory = null;
     }
 
     public void ContinueStory() //goes to next step of story

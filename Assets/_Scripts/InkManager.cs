@@ -106,15 +106,23 @@ public class InkManager : MonoBehaviour {
                 }
                 break;
             case "fridgeOpen":
-                FridgeEvent?.Invoke((bool)currentStory.variablesState[name]);
-                break;
+                if ((bool)currentStory.variablesState[name])
+                {
+                    FridgeEvent?.Invoke(true);
+                }
+                else
+                {
+                    FridgeEvent?.Invoke(false);
+                }
+
+                    break;
 
             case "sinkRunning":
                 if ((int)currentStory.variablesState[name] == 0)
                 {
                     SinkEvent?.Invoke(0); //turn off if 0 in any case
                 }
-                else if ((bool)currentStory.variablesState["sinkFixed"])
+                else if ((bool)currentStory.variablesState["sinkFix"])
                 {
                     SinkEvent?.Invoke(2); //turn blue if fixed and not 0
                 }
@@ -140,6 +148,8 @@ public class InkManager : MonoBehaviour {
 
             case "sinkFix":
                 phrases = new List<string> {"that's a great catch!", "the sink does not dispense water", "let me fix that for you", "drink from the sink now"};
+                setVariable("sinkRunning", 0);
+                SinkEvent?.Invoke(0);
                 StartCoroutine(questManager.ChainText(phrases));
                 break;
 
