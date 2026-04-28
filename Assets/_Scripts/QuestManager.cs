@@ -124,8 +124,8 @@ public class QuestManager : MonoBehaviour
 
     public IEnumerator LoadScene(string sceneName)
     {
-        yield return StartCoroutine(sleepManager.FadeToBlack());
         SceneLoadEvent?.Invoke(this);
+        yield return StartCoroutine(sleepManager.FadeToBlack());
         SceneManager.LoadScene(sceneName);
     }
 
