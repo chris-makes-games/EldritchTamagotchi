@@ -1477,13 +1477,19 @@ MonoBehaviour:
   - {fileID: 1076447711}
   - {fileID: 2100401790}
   - {fileID: 1900292639}
+  selector: {fileID: 537152988}
   textList:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  selector: {fileID: 537152988}
+  buttonImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   choiceInput:
     m_Name: Choice Input
     m_Type: 0
