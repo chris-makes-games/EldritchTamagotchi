@@ -5,7 +5,7 @@ VAR visited = false
 {visited == true: -> still}
 
 ==sphere==
-The perfect sphereical ball seems like it should roll but it won't budge. At first it seems too heavy but it's just frozen in place.
+The perfect spherical ball seems like it should roll but it won't budge. At first it seems too heavy but it's just frozen in place.
 +[Kick it] -> kick
 +[Leave] -> leave
 
