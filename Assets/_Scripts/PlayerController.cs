@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     private int dodgeFrameCounter = 0;
     private bool standing, walking;
 
+    //ink manager
+    [SerializeField] InkManager inkManager;
+
     //interaction variables
     public DialogueManager DialogueManager;
     private Interactable interactionObject; //the thing being interacted with
@@ -72,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     private void SceneLoaded(QuestManager sceneLoad)
     {
-        if (SceneManager.GetActiveScene().name == "EvilMain")
+        if (inkManager.getVariable<bool>("evilReady"))
         {
             transform.position = enterMain;
         }

@@ -5,7 +5,7 @@ VAR visited = false
 {visited == true: -> back}
 
 "Oh. It's another one."
-+[What?] -> earlyLeave
++[What?] -> what
 +[Who are you?] -> who
 +[Leave] -> earlyLeave
 

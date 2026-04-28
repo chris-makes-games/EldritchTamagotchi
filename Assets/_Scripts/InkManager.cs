@@ -139,7 +139,7 @@ public class InkManager : MonoBehaviour {
 
             case "awaken":
                 sleepScreen.Awaken();
-                phrases = new List<string> {"good morning", "i'm you're new caretaker", "why don't you relax and drink some water"};
+                phrases = new List<string> {"good morning", "i'm your new caretaker", "why don't you relax and drink some water"};
                 StartCoroutine(questManager.ChainText(phrases));
                 musicSource.clip = musicClip;
                 musicSource.volume = 0.15f;
@@ -321,7 +321,7 @@ public class InkManager : MonoBehaviour {
     IEnumerator DelayedDoor(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        phrases = new List<string> { "it's time you met a new friend", "lonliness is bad for your mental health", "I have unlocked the security door" };
+        phrases = new List<string> { "it's time you met a new friend", "loneliness is bad for your mental health", "I have unlocked the security door" };
         StartCoroutine(questManager.ChainText(phrases));
         yield return new WaitForSeconds(8f);
         lockedDoor.SetActive(false);
