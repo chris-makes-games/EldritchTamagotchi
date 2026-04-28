@@ -53,7 +53,7 @@ public class DoorSceneChanger : MonoBehaviour
         else if (hatEvent == 2)
         {
             // change to OverRoom once you make that
-            sceneToLoad = "UnderRoom";
+            sceneToLoad = "OverRoom";
             doorLocked = false;
             Debug.Log("Door unlocked (Overachiever)");
         }
