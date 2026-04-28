@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4eabc2c46e94364cab1d9293cee532a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  highlightColor: {r: 0, g: 0, b: 0, a: 0}
+  highlightColor: {r: 0.7607843, g: 1, b: 0.7764706, a: 1}
   choices:
   - {fileID: 1926578917}
   - {fileID: 79817710}
