@@ -3,9 +3,11 @@ using UnityEngine;
 public class Fridge : MonoBehaviour
 {
     [SerializeField] private GameObject fridgeOpen;
+    private SpriteRenderer fridgeClosed;
 
     private void Start()
     {
+        fridgeClosed = GetComponent<SpriteRenderer>();
         fridgeOpen.SetActive(false);
     }
 
@@ -23,10 +25,12 @@ public class Fridge : MonoBehaviour
     {
         if (open)
         {
+            fridgeClosed.enabled = false;
             fridgeOpen.SetActive(true);
         }
         else
         {
+            fridgeClosed.enabled = true;
             fridgeOpen.SetActive(false);
         }
     }

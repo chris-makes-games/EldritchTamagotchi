@@ -72,11 +72,8 @@ public class PlayerController : MonoBehaviour
 
     private void SceneLoaded(QuestManager sceneLoad)
     {
-<<<<<<< Updated upstream
         interactionObject = null;
         endStory();
-=======
->>>>>>> Stashed changes
         if (SceneManager.GetActiveScene().name == "EvilMain")
         {
             transform.position = enterMain;
