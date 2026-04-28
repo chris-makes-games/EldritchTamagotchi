@@ -16,11 +16,16 @@ public class InkManager : MonoBehaviour {
     [SerializeField] private GameObject musicManager;
     private AudioSource musicSource;
     [SerializeField] private AudioClip musicClip;
-    [SerializeField] private wakeUp sleepScreen;
+    [SerializeField] private SleepManager sleepScreen;
+
+    //disable this door when it's time for playdate
+    [SerializeField] private GameObject lockedDoor;
 
     //hatsequence completed event
     public static event Action<int> HatEvent;
 
+    //trying to make questmanager yelling phrases easier
+    private List<string> phrases;
     private Story currentStory;
     public Dictionary<string, Ink.Runtime.Object> variables { get; private set; }
 
@@ -30,8 +35,13 @@ public class InkManager : MonoBehaviour {
     {
         switch (name)
         {
+            case "tempText":
+                Debug.Log((string)currentStory.variablesState[name]);
+                StartCoroutine(questManager.TempText((string)currentStory.variablesState[name]));
+                break;
             //update the player's hat status after they put on correct/incorrect hat
             case "currentHat":
+                Debug.Log("currentHat changed to: " + (int)currentStory.variablesState[name]);
                 if ((bool)currentStory.variablesState["hatTime"])
                 {
                     if ((int)currentStory.variablesState[name] == (int)currentStory.variablesState["hatNeeded"])
@@ -43,19 +53,18 @@ public class InkManager : MonoBehaviour {
                     {
                         if ((int)currentStory.variablesState[name] == 5)
                         {
-                            questManager.SetQuestText("You look naked");
+                            phrases = new List<string> {"you look naked", "I recommend this headwear instead"};
                         }
                         else
                         {
-                            questManager.SetQuestText("You look ridiculous");
+                            phrases = new List<string> {"you look ridiculous", "I recommend this headwear instead"};
                         }
                         setVariable("correctHat", 2); //sets the correcthat variable to incorrect
-
-                        StartCoroutine(DelayedQuest(4f, "I recommend this headwear instead"));
+                        StartCoroutine(questManager.ChainText(phrases));
                         StartCoroutine(DelayedHat(8f, 4));
                     }
-                    Debug.Log((int)currentStory.variablesState["correctHat"]);
                     HatEvent?.Invoke((int)currentStory.variablesState["correctHat"]);
+                    StartCoroutine(DelayedDoor(14f));
                 }
                 break;
             //sets player hat - during hat dresser deciding
@@ -93,61 +102,60 @@ public class InkManager : MonoBehaviour {
 
             case "awaken":
                 sleepScreen.Awaken();
-                questManager.SetQuestText("Good Morning");
-                StartCoroutine(DelayedQuest(5f, "Relax and drink some water"));
+                phrases = new List<string> {"good morning", "i'm you're new caretaker", "why don't you relax and drink some water"};
+                StartCoroutine(questManager.ChainText(phrases));
                 musicSource.clip = musicClip;
                 musicSource.volume = 0.15f;
                 musicSource.Play();
                 break;
 
             case "sinkFix":
-                questManager.SetQuestText("Apologies");
-                StartCoroutine(DelayedQuest(3f, "The sink appears to be broken"));
-                StartCoroutine(DelayedQuest(8f, "Try it again"));
+                phrases = new List<string> {"that's a great catch!", "the sink does not dispense water", "let me fix that for you", "drink from the sink now"};
+                StartCoroutine(questManager.ChainText(phrases));
                 break;
 
             case "drank":
                 if ((int)currentStory.variablesState[name] == 1)
                 {
-                    questManager.SetQuestText("Good job");
-                    StartCoroutine(DelayedQuest(3f, "Self care is important"));
+                    phrases = new List<string> { "great work!", "hydration is very important"};
+                    
                     switch ((int)currentStory.variablesState["hatNeeded"])
                     {
                         case 0:
-                            StartCoroutine(DelayedQuest(8f, "Now: put on the party hat"));
+                            phrases.Add("Now: put on the party hat");
                             break;
                         case 1:
-                            StartCoroutine(DelayedQuest(8f, "Now: put on the cowboy hat"));
+                            phrases.Add("Now: put on the cowboy hat");
                             break;
                         case 2:
-                            StartCoroutine(DelayedQuest(8f, "Now: put on the propeller hat"));
+                            phrases.Add("Now: put on the propeller hat");
                             break;
                         case 3:
-                            StartCoroutine(DelayedQuest(8f, "Now: put on the paper crown"));
+                            phrases.Add("Now: put on the paper crown");
                             break;
                     }
                 }
                 else
                 {
-                    questManager.SetQuestText("Suit yourself");
-                    StartCoroutine(DelayedQuest(3f, "More precious water for me"));
+                    phrases = new List<string> {"suit yourself", "More precious coolant for me"};
                     switch ((int)currentStory.variablesState["hatNeeded"])
                     {
                         case 0:
-                            StartCoroutine(DelayedQuest(8f, "Now: put on the party hat"));
+                            phrases.Add("Now: put on the party hat");
                             break;
                         case 1:
-                            StartCoroutine(DelayedQuest(8f, "Now: put on the cowboy hat"));
+                            phrases.Add("Now: put on the cowboy hat");
                             break;
                         case 2:
-                            StartCoroutine(DelayedQuest(8f, "Now: put on the spinny hat"));
+                            phrases.Add("Now: put on the propeller hat");
                             break;
                         case 3:
-                            StartCoroutine(DelayedQuest(8f, "Now: put on the paper crown"));
+                            phrases.Add("Now: put on the paper crown");
                             break;
                     }
                 }
-                    break;
+                StartCoroutine(questManager.ChainText(phrases));
+                break;
             case "killTime":
                 //bool for it's time to kill the dog (or not)
                 //might want to do a questManager.SetQuestText("Kill the Dog") here
@@ -221,12 +229,6 @@ public class InkManager : MonoBehaviour {
         }
     }
 
-    IEnumerator DelayedQuest(float seconds, string text)
-    {
-        yield return new WaitForSeconds(seconds);
-        questManager.SetQuestText(text);
-    }
-
     public void setVariable<T>(string name, T value)
     {
         if (variables.ContainsKey(name))
@@ -242,8 +244,6 @@ public class InkManager : MonoBehaviour {
             }
             currentStory.variablesState[name] = value;
             Ink.Runtime.Object ink = variables[name];
-            Debug.Log("changing var: " + currentStory.variablesState[name]);
-            Debug.Log("to: " + value);
             variables.Remove(name);
             variables.Add(name, ink);
             UpdateGame(name);
@@ -258,6 +258,15 @@ public class InkManager : MonoBehaviour {
     IEnumerator DelayedHat(float seconds, int hat)
     {
         yield return new WaitForSeconds(seconds);
-        player.SetHat(4);
+        player.SetHat(hat);
+    }
+
+    IEnumerator DelayedDoor(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        phrases = new List<string> { "it's time you met a new friend", "lonliness is bad for your mental health", "I have unlocked the security door" };
+        StartCoroutine(questManager.ChainText(phrases));
+        yield return new WaitForSeconds(8f);
+        lockedDoor.SetActive(false);
     }
 }

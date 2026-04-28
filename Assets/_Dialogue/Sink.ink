@@ -7,6 +7,9 @@ VAR visited = false
 //2 - cold
 //3 - both
 
+//turn off sink stuff when hat time begins
+{hatTime == true: -> sinkDone}
+
 {sinkFix == true && sinkRunning == 0: -> fixedNone}
 {sinkFix == true && sinkRunning == 1: -> fixedHot}
 {sinkFix == true && sinkRunning == 2: -> fixedCold}
@@ -18,7 +21,7 @@ VAR visited = false
 {visited == false: -> select}
 
 ==back==
-The sink is still a strange sink. There are two knobs, labeled using the hot face and cold face emojis. There is a small empty glass on the counter nearby.
+This seems to be an ordinary sink. There are two knobs, labeled using the hot face and cold face emojis. There is a small empty glass on the counter nearby.
 +[Turn Hot] -> terrorHot
 +[Turn Cold] -> terrorCold
 
@@ -103,35 +106,36 @@ The sink is silent and ominous. There are two knobs, labeled using the hot face 
 +[Turn Hot] ->  tryFixedHot
 +[Turn Cold] -> tryFixedCold
 +[Leave] -> ignore
+~ sinkRunning = 0
 
 ==fixedHot==
+~ waterTemp = "hot"
 Clear {waterTemp} water is pouring from the sink. There are two knobs, labeled using the hot face and cold face emojis. There is a small empty glass on the counter.
 +[Fill the glass] -> fill
 +[Turn Off Hot] ->  fixedOff
 +[Turn Cold] -> tryFixedWarm
 +[Leave] -> ignore
 ~ sinkRunning = 1
-~ waterTemp = "hot"
 
 
 ==fixedCold==
+~ waterTemp = "cold"
 Clear {waterTemp} water is pouring from the sink. There are two knobs, labeled using the hot face and cold face emojis. There is a small empty glass on the counter.
 +[Fill the glass] -> fill
 +[Turn Hot] ->  tryFixedWarm
 +[Turn Off Cold] -> fixedOff
 +[Leave] -> ignore
 ~ sinkRunning = 2
-~ waterTemp = "cold"
 
 
 ==fixedBoth==
+~ waterTemp = "warm"
 Clear {waterTemp} water is pouring from the sink. There are two knobs, labeled using the hot face and cold face emojis. There is a small empty glass on the counter.
 +[Fill the glass] -> fill
 +[Turn Off Hot] ->  fixedCold
 +[Turn Off Cold] -> fixedHot
 +[Leave] -> ignore
 ~ sinkRunning = 3
-~ waterTemp = "warm"
 
 ==ignore==
 You decide not to have a drink.{sinkRunning > 0: You leave the sink running}
@@ -183,3 +187,48 @@ You have a drink of the {waterTemp} water. It tastes slightly metallic.
 ~ love += 1
 ~ drank = 1
 -> END
+
+==sinkDone==
+The sink is still an ordinary sink. There are two knobs, labeled using the hot face and cold face emojis. There is a small empty glass on the counter nearby.
++{sinkRunning == 0}[Continue]Right now, -> doneOff
++{sinkRunning == 1}[Continue]Right now, -> doneHot
++{sinkRunning == 2}[Continue]Right now, -> doneCold
++{sinkRunning == 3}[Continue]Right now, -> doneWarm
++[Leave] -> doneLeave
+
+==doneOff==
+the sink is silent. The bottom is a little wet.
++[Turn Hot] You turn the hot knob, and now ->   doneHot
++[Turn Cold] You turn the cold knob, and now -> doneCold
++[Leave] -> doneLeave
+~ sinkRunning = 0
+
+==doneHot==
+hot water is pouring from the faucet.
++[Turn Off Hot] You turn the hot knob off, and now ->  doneOff
++[Turn Cold] You turn the cold knob, and now -> doneWarm
++[Leave] -> doneLeave
+~ sinkRunning = 1
+~ waterTemp = "hot"
+
+==doneCold==
+cold water is pouring from the faucet.
++[Turn Hot] You turn the hot knob, and now ->  doneWarm
++[Turn Off Cold] You turn the cold knob off, and now -> doneOff
++[Leave] -> doneLeave
+~ sinkRunning = 2
+~ waterTemp = "cold"
+
+==doneWarm==
+lukewarm water is pouring from the faucet.
++[Turn Off Hot] You turn the hot knob off, and now ->  doneCold
++[Turn Off Cold] You turn the cold knob off, and now -> doneHot
++[Leave] -> doneLeave
+~ sinkRunning = 3
+~ waterTemp = "warm"
+
+==doneLeave==
+You leave the sink as it is. {sinkRunning > 0: It's still running, {waterTemp} is pouring into the drain.}
+-> END
+
+

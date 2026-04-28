@@ -13,10 +13,13 @@ This metal security door is thick and sturdy. There are scratch marks on it near
 
 ==still==
 The door is still locked.
+~ tempText = "I recommend ignoring that for now"
 -> END
 
 ==locked==
 The door won't budge, it's locked.
+~ tempText = "That door is for your protection"
+~ doorTried = true
 +[Leave] -> END
 
 ==leave==

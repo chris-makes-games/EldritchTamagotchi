@@ -2,8 +2,6 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.U2D;
-using UnityEngine.UI;
 
 public class DoorSceneChanger : MonoBehaviour
 {
@@ -13,6 +11,11 @@ public class DoorSceneChanger : MonoBehaviour
     public bool doorLocked;
     private int doorCooldown;
     public static DoorSceneChanger instance;
+
+    [SerializeField] private QuestManager questManager;
+
+    //use this to call fade in and out
+    [SerializeField] private SleepManager sleepManager;
 
     void Awake()
     {
@@ -50,7 +53,7 @@ public class DoorSceneChanger : MonoBehaviour
         else if (hatEvent == 2)
         {
             // change to OverRoom once you make that
-            sceneToLoad = "UnderRoom";
+            sceneToLoad = "OverRoom";
             doorLocked = false;
             Debug.Log("Door unlocked (Overachiever)");
         }
@@ -67,8 +70,8 @@ public class DoorSceneChanger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!doorLocked && doorCooldown >= 60) {
-            SceneManager.LoadScene(sceneToLoad);
             Debug.Log("Loading " + sceneToLoad + "...");
+            StartCoroutine(questManager.LoadScene(sceneToLoad));
         }
     }
 }

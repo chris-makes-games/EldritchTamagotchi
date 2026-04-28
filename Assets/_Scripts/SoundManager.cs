@@ -6,8 +6,6 @@ public class SoundManager : MonoBehaviour
     private static SoundManager instance; //singleton
     AudioSource player;
     [SerializeField] AudioClip[] voice;
-    [SerializeField] AudioClip error;
-    [SerializeField] AudioClip select;
 
     private void Awake()
     {
