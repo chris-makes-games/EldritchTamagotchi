@@ -1,10 +1,7 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.U2D;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -120,10 +117,17 @@ public class PlayerController : MonoBehaviour
                 {
                     animationFrameCounter = 5;
                     standing = false;
+                    hatSprite.flipY = false;
+                    hatSprite.flipX = false;
+                    hat.transform.localPosition = new Vector2(0f, 1.15f);
+                    hat.transform.localPosition = new Vector2(0f, 1.15f);
                 }
                 walking = true;
                 if (animationFrameCounter == 5)
                 {
+                    hatSprite.flipY = false;
+                    hatSprite.flipX = false;
+                    hat.transform.localPosition = new Vector2(0f, 1.15f);
                     if (sr.sprite == walk1) sr.sprite = walk2;
                     else if (sr.sprite == walk2) sr.sprite = walk1;
                     else if (sr.sprite == stand1) sr.sprite = walk2;
@@ -142,10 +146,16 @@ public class PlayerController : MonoBehaviour
                 {
                     animationFrameCounter = 20;
                     walking = false;
+                    hatSprite.flipY = false;
+                    hatSprite.flipX = false;
+                    hat.transform.localPosition = new Vector2(0f, 1.15f);
                 }
                 standing = true;
                 if (animationFrameCounter == 20)
                 {
+                    hatSprite.flipY = false;
+                    hatSprite.flipX = false;
+                    hat.transform.localPosition = new Vector2(0f, 1.15f);
                     if (sr.sprite == stand1) sr.sprite = stand2;
                     else if (sr.sprite == stand2) sr.sprite = stand1;
                     else if (sr.sprite == walk1) sr.sprite = stand2;
@@ -161,6 +171,9 @@ public class PlayerController : MonoBehaviour
             if (dodging)
             {
                 sr.sprite = dodge1;
+                hatSprite.flipY = true;
+                hatSprite.flipX = true;
+                hat.transform.localPosition = new Vector2(0f, -0.21f);
                 mask.sprite = sr.sprite; //sets the mask to match the sprite
             }
 

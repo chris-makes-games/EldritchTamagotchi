@@ -20,6 +20,7 @@ public class Animateable : MonoBehaviour //moved animation stuff from Owen's dog
 
     void FixedUpdate()
     {
+
         animationFrameCounter++;
         if (animationFrameCounter == frameDelay)
         {
@@ -40,5 +41,6 @@ public class Animateable : MonoBehaviour //moved animation stuff from Owen's dog
         }
         //resets counter
         if (animationFrameCounter > frameDelay) animationFrameCounter = 0;
+        
     }
 }

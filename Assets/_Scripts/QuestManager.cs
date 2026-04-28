@@ -1,10 +1,16 @@
-using UnityEngine;
-using TMPro;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class QuestManager : MonoBehaviour
 {
     [SerializeField] private InkManager inkManager;
+
+    [SerializeField] private SleepManager sleepManager;
 
     //to be able to turn off the currently talking text if necessary
     [SerializeField] private SoundManager soundManager;
@@ -17,8 +23,6 @@ public class QuestManager : MonoBehaviour
     private float love;
     public float loveIncrement; //how much to increase love per quest
     public float loveDecrement; //how much to decrease
-    private int questsCompleted;
-    private int questsFailed;
 
     //list of quests that have not been completed
     private Quest[] activeQuests;
@@ -26,12 +30,11 @@ public class QuestManager : MonoBehaviour
     //for the caretaker text display
     [SerializeField] private GameObject careTakerPanel;
     [SerializeField] private TextMeshProUGUI careTakerText;
-    //arrlist to hold all of the incoming text
-    private ArrayList words;
+    private string currentText = "";
 
     //to scream the characters
     AudioSource soundSource;
-    [SerializeField] AudioClip[] screams;
+    [SerializeField] AudioClip scream;
 
     //delay between characters
     [SerializeField] float delay = 0.025f;
@@ -39,11 +42,13 @@ public class QuestManager : MonoBehaviour
     //so it doesn't yell straight away
     [SerializeField] float waitToYell;
 
+    //unity event: I am a wizard - Chris
+    public static event Action<QuestManager> SceneLoadEvent;
+
 
     // Called on game launch to make sure there's only one controller
     void Awake()
     {
-        words = new ArrayList();
         careTakerText.text = ""; //start empty of text
         soundSource = GetComponent<AudioSource>();
         talkingAudio = soundManager.GetComponent<AudioSource>();
@@ -73,11 +78,28 @@ public class QuestManager : MonoBehaviour
 
     public void SetQuestText(string text)
     {
-        words.Insert(0, text);
-        Debug.Log("adding: " + text);
-        Debug.Log("new count: " + words.Count);
+        ClearQuestText();
+        currentText = text;
         talkingAudio.mute = true; //stops audio
-        StartCoroutine(SlowText());
+        StartCoroutine(SlowText(text));
+    }
+
+    public IEnumerator TempText(string text)
+    {
+        StopAllCoroutines();
+        string oldText = currentText;
+        yield return StartCoroutine(SlowText(text));
+        yield return new WaitForSeconds(delay);
+        yield return StartCoroutine(SlowText(oldText));
+    }
+
+    public IEnumerator ChainText(List<string> phrases)
+    {
+        StopAllCoroutines();
+        foreach ( string phrase in phrases)
+        {
+            yield return StartCoroutine(SlowText(phrase));
+        }
     }
 
     public void ClearQuestText()
@@ -87,40 +109,45 @@ public class QuestManager : MonoBehaviour
 
     public void ScreamChar(int index)
     {
-        StartCoroutine(PlaySound(screams[Random.Range(0, screams.Length - 1)]));
+        StartCoroutine(PlaySound(scream));
     }
 
     IEnumerator PlaySound(AudioClip audio)
     {
         soundSource.clip = audio;
         soundSource.loop = false;
+        soundSource.pitch = Random.Range(0.7f, 1.1f);
         soundSource.Play();
         yield return null;
     }
 
-    IEnumerator SlowText() //waits for the delay in-between characters of the given text
+    public IEnumerator LoadScene(string sceneName)
     {
-        while (words.Count > 0)
+        Debug.Log("test");
+        yield return StartCoroutine(sleepManager.FadeToBlack());
+        Debug.Log("test");
+        SceneLoadEvent?.Invoke(this);
+        Debug.Log("test");
+        SceneManager.LoadScene(sceneName);
+        Debug.Log("test");
+    }
+
+    IEnumerator SlowText(string text) //waits for the delay in-between characters of the given text
+    {
+        currentText = text;
+        yield return new WaitForSeconds(waitToYell);
+        talkingAudio.mute = false;
+        string output = "";
+        for (int i = 0; i < text.Length; i++)
         {
-            careTakerText.text = "";
-            Debug.Log("new iteration for: " + words[words.Count - 1].ToString());
-            yield return new WaitForSeconds(waitToYell);
-            talkingAudio.mute = false;
-            string output = "";
-            for (int i = 0; i < words[words.Count - 1].ToString().Length; i++)
+            output = output + char.ToUpper(text[i]);
+            careTakerText.text = output;
+            int index = char.ToUpper(text[i]) - 65; //turns char to position in alphabet
+            if (index >= 0 && index < 27)
             {
-                output = output + char.ToUpper(words[words.Count - 1].ToString()[i]);
-                careTakerText.text = output;
-                int index = char.ToUpper(words[words.Count - 1].ToString()[i]) - 65; //turns char to position in alphabet
-                if (index >= 0 && index < 27)
-                {
-                    ScreamChar(index);
-                }
-                yield return new WaitForSeconds(delay);
+                ScreamChar(index);
             }
-            words.RemoveAt(words.Count - 1);
-            Debug.Log("removed last");
-            
+            yield return new WaitForSeconds(delay);
         }
     }
 
