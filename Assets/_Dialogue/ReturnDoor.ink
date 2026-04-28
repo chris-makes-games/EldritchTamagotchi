@@ -16,7 +16,7 @@ Return to your quarters?
 +[Stay Here] -> stay
 
 ==denied==
-You try the handle, but it won't budge.
+You try the handle but it won't budge.
 ~ setQuestText = "You need to talk to your new friend"
 ~ tempText = "I'm afraid I can't let you do that"
 -> END

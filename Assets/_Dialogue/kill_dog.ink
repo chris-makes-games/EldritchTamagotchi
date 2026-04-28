@@ -22,7 +22,7 @@ VAR visited = false
 // THIS IS THE BIG CHOICE, LOTS OF THINGS ARE ABOUT TO HAPPEN
 // make sure to keep "leave" at the top, so that if the player accidentally selects something immediately, it's the "leave" option and not something more permanent
 == knifeless_choice ==
-It's your dog. You have no way to effectively harm your dog with only your slimey form.
+It's your dog. You have no way to effectively harm your dog with only your slimy form.
 + [Leave] -> later
 + [Spare] -> spare
 
