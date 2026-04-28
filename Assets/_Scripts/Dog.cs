@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Dog : MonoBehaviour
@@ -11,6 +12,9 @@ public class Dog : MonoBehaviour
     public bool dead = false;
     private bool newDead = true;
     [SerializeField] private Collider2D dogWall;
+
+    //copying the sprite highlight event over here for ease
+    public static event Action<Dog> ChangeSpriteEvent;
 
     void Awake()
     {
@@ -28,6 +32,7 @@ public class Dog : MonoBehaviour
                 else if (sr.sprite == dog1) sr.sprite = dog0;
                 animationFrameCounter = 0;
             }
+            ChangeSpriteEvent?.Invoke(this); //calls the event to change the sprite
             if (animationFrameCounter >= 19) animationFrameCounter = 0;
         }
         else if (newDead && dead)

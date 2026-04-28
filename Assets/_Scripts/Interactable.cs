@@ -72,14 +72,22 @@ public class Interactable : MonoBehaviour
     private void OnEnable()
     {
         Animateable.ChangeSpriteEvent += ChangeHighlightSprite;
+        Dog.ChangeSpriteEvent += OtherChangeHighlightSprite;
     }
 
     private void OnDisable()
     {
         Animateable.ChangeSpriteEvent -= ChangeHighlightSprite;
+        Dog.ChangeSpriteEvent -= OtherChangeHighlightSprite;
     }
 
     private void ChangeHighlightSprite(Animateable animationSwap)
+    {
+        highlight.sprite = sprite.sprite;
+        mask.sprite = sprite.sprite;
+    }
+
+    private void OtherChangeHighlightSprite(Dog animationSwap)
     {
         highlight.sprite = sprite.sprite;
         mask.sprite = sprite.sprite;

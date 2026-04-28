@@ -1,15 +1,16 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ChoiceManager : MonoBehaviour
 {
     //choice button objects
+    [SerializeField] private Color highlightColor;
     [SerializeField] private GameObject[] choices;
     [SerializeField] private GameObject selector;
     [SerializeField] private TMP_Text[] textList;
-    [SerializeField] private SpriteRenderer[] buttonImages;
-
+    [SerializeField] private Image[] buttonImages;
 
     //keep track of state
     bool choosing = false;
@@ -28,6 +29,7 @@ public class ChoiceManager : MonoBehaviour
 
     private void Awake()
     {
+        buttonImages = new Image[choices.Length];
         choiceInput = InputSystem.actions.FindAction("Move");
         player = GetComponent<AudioSource>();
     }
@@ -40,6 +42,8 @@ public class ChoiceManager : MonoBehaviour
         for (int i = 0; i < choices.Length; i++)
         {
             textList[i] = choices[i].GetComponentInChildren<TMP_Text>();
+            buttonImages[i] = choices[i].GetComponent<Image>();
+            choices[i].SetActive(false);
             choices[i].SetActive(false);
         }
         selector.SetActive(false);
@@ -50,21 +54,24 @@ public class ChoiceManager : MonoBehaviour
     {
         if (choosing)
         {
-            if (moveDirection.x > 0 && !choiceWait) //moves once to the right
+            if (numberOfChoices > 1) //cant move if no choices
             {
-                player.Play();
-                choiceWait = true;
-                moveCursor(true);
-            }
-            else if (moveDirection.x < 0 && !choiceWait) //moves once to the left
-            {
-                player.Play();
-                choiceWait = true;
-                moveCursor(false);
-            }
-            if (moveDirection.x == 0) //resets the ability to move
-            {
-                choiceWait = false;
+                if (moveDirection.x > 0 && !choiceWait) //moves once to the right
+                {
+                    player.Play();
+                    choiceWait = true;
+                    moveCursor(true);
+                }
+                else if (moveDirection.x < 0 && !choiceWait) //moves once to the left
+                {
+                    player.Play();
+                    choiceWait = true;
+                    moveCursor(false);
+                }
+                if (moveDirection.x == 0) //resets the ability to move
+                {
+                    choiceWait = false;
+                }
             }
 
         }
@@ -85,6 +92,7 @@ public class ChoiceManager : MonoBehaviour
         numberOfChoices = newChoices.Length;
         choosing = true;
         selector.SetActive(true);
+        buttonImages[0].color = highlightColor;
         for (int i = 0; i < newChoices.Length; i++)
         {
             choices[i].SetActive(true);
@@ -94,6 +102,7 @@ public class ChoiceManager : MonoBehaviour
     }
     private void moveCursor(bool forward) //moves the selector forward or back if false
     {
+        buttonImages[currentChoice].color = Color.white;
         if (forward)
         {
             if (currentChoice == numberOfChoices - 1)
@@ -121,11 +130,13 @@ public class ChoiceManager : MonoBehaviour
         //set position based on current choice button position
         Vector2 newPos = new Vector2(choices[currentChoice].transform.localPosition.x, selector.transform.localPosition.y);
         selector.transform.localPosition = newPos;
+        buttonImages[currentChoice].color = highlightColor;
 
     }
 
     public void EndChoice() //hides all the choices again
     {
+        buttonImages[currentChoice].color = Color.white;
         choosing = false;
         currentChoice = 0;
         numberOfChoices = 0;

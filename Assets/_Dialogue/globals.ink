@@ -21,6 +21,7 @@ VAR hat_text = "Many hats sit before you, begging to be worn."
 
 //setting this will make the caretaker say it
 VAR setQuestText = ""
+VAR tempText = "" //to say something and then return
 
 //keeps track of fridge status
 VAR fridgeOpen = false
