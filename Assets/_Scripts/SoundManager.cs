@@ -3,14 +3,24 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour
 {
-    private static SoundManager instance; //singleton
+    //this is a singleton object, this line makes the instance static
+    private static SoundManager _instance;
+    public static SoundManager instance { get { return _instance; } }
     AudioSource player;
     [SerializeField] AudioClip[] voice;
 
     private void Awake()
     {
         player = GetComponent<AudioSource>();
-        instance = this;//ensure singleton
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 
     public void SpeakChar(int index)
