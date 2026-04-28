@@ -24,6 +24,12 @@ public class InkManager : MonoBehaviour {
     //hatsequence completed event
     public static event Action<int> HatEvent;
 
+    //for fridge opening event
+    public static event Action<bool> FridgeEvent;
+
+    //fpor sink changes
+    public static event Action<int> SinkEvent;
+
     //trying to make questmanager yelling phrases easier
     private List<string> phrases;
     private Story currentStory;
@@ -98,9 +104,26 @@ public class InkManager : MonoBehaviour {
                             break;
                     }
                 }
-                
-                
                 break;
+            case "fridgeOpen":
+                FridgeEvent?.Invoke((bool)currentStory.variablesState[name]);
+                break;
+
+            case "sinkRunning":
+                if ((int)currentStory.variablesState[name] == 0)
+                {
+                    SinkEvent?.Invoke(0); //turn off if 0 in any case
+                }
+                else if ((bool)currentStory.variablesState["sinkFixed"])
+                {
+                    SinkEvent?.Invoke(2); //turn blue if fixed and not 0
+                }
+                else
+                {
+                    SinkEvent?.Invoke(1); //turn black if not fixed yet and not 0
+                }
+
+                    break;
             //set the text the caretaker displays
             case "setQuestText":
                 questManager.SetQuestText((string)currentStory.variablesState[name]);

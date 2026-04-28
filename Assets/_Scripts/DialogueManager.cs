@@ -43,6 +43,21 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextAsset wakeUpStory;
     public bool doWakeUpStory;
 
+    private void OnEnable()
+    {
+        QuestManager.SceneLoadEvent += SceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        QuestManager.SceneLoadEvent -= SceneLoaded;
+    }
+
+    private void SceneLoaded(QuestManager sceneLoad)
+    {
+        ExitStoryMode();
+    }
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
