@@ -4857,7 +4857,7 @@ PrefabInstance:
     - target: {fileID: -7469182267488566888, guid: f97663db0dad1411789f54318017ab94, type: 3}
       propertyPath: ink
       value: 
-      objectReference: {fileID: 4900000, guid: 1e574008138c040cd93a26d7b6aa2776, type: 3}
+      objectReference: {fileID: 4900000, guid: 2f160fe22797c3247a9e86eb69c0be01, type: 3}
     - target: {fileID: 6234994463840131941, guid: f97663db0dad1411789f54318017ab94, type: 3}
       propertyPath: m_Name
       value: OverNPC

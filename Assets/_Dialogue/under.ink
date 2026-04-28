@@ -1,7 +1,7 @@
 INCLUDE globals.ink
 VAR visited = false
 
-{loser == true: -> loser}
+{loser == true: -> sayLoser}
 {visited == true: -> back}
 
 "Oh. It's another one."

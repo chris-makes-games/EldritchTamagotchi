@@ -4467,7 +4467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorSceneChanger
   sceneToLoad: UnderRoom
-  doorLocked: 0
+  doorLocked: 1
   questManager: {fileID: 2035514358}
   sleepManager: {fileID: 1905511809}
 --- !u!1 &1335928106
@@ -8673,7 +8673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7911824527917287397
 Transform:
   m_ObjectHideFlags: 0
