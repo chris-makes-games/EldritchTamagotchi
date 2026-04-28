@@ -49,3 +49,6 @@ VAR holdingKnife = false //picked up knife?
 //for play date
 VAR playdateComplete = false
 VAR evilReady = false
+
+//for flear
+VAR loser = false
