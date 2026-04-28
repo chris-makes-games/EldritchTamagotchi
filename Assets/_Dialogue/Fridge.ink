@@ -31,12 +31,12 @@ The refrigerator hums incessantly, the noise filling up most of the space around
 +[Leave] -> LeaveClosed
 
 ==OpenUp==
+~ fridgeOpen = true
 Inside, the refrigerator is completely empty and pristinely clean. The white light you would expect seems to be emitting from the back, blinding and hot.
 +[Close it] -> CloseDoor
 +[Leave] -> DoorOpen
 
 ==DoorOpen==
-~ fridgeOpen = true
 You decide to leave the door open. The white-hot light spills out into the room and casts a band of eerie glow onto the floor.
 -> END
 

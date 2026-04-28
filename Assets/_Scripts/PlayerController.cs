@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
 
     private void SceneLoaded(QuestManager sceneLoad)
     {
+        interactionObject = null;
         endStory();
         if (SceneManager.GetActiveScene().name == "EvilMain")
         {
