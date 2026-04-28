@@ -11,13 +11,14 @@ public class EvilEvents : MonoBehaviour
     public static EvilEvents instance;
     [SerializeField] private TextMeshProUGUI endText;
     public bool ending = true;
-    [SerializeField] private QuestManager questManager;
+    private QuestManager questManager;
     [SerializeField] private GameObject knife;
 
 
     void Awake()
     {
         instance = this;
+        questManager = FindFirstObjectByType<QuestManager>();
     }
 
     void Start()

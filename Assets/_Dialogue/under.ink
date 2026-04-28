@@ -87,6 +87,7 @@ VAR visited = false
 +[Leave] -> tryLeave
 
 ==tryLeave==
+~ loser = true
 "It won't let you leave until you just say it."
 -> DONE
 

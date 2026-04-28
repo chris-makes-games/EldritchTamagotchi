@@ -1,8 +1,8 @@
 INCLUDE globals.ink
 
+{playdateComplete == true: -> yes}
 {loser == true: -> sayLoser}
 {playdateComplete == false: -> no}
-{playdateComplete == true: -> yes}
 
 ==sayLoser==
 You try the handle, but it won't budge.

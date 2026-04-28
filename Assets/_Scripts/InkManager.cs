@@ -209,6 +209,7 @@ public class InkManager : MonoBehaviour {
                 break;
 
             case "dogKilled":
+                evilManager = FindFirstObjectByType<EvilEvents>();
                 //int value, 0 is the default, no choices has been made
                 // 1 is dog was killed
                 // 2 is dog was not killed
@@ -216,13 +217,11 @@ public class InkManager : MonoBehaviour {
                 if ((int)currentStory.variablesState["dogKilled"] == 1)
                 {
                     Dog.instance.dead = true;
-                    evilManager = GetComponent<EvilEvents>();
                     evilManager.ending = true;
                     evilManager.EndFade();
                 }
                 else if ((int)currentStory.variablesState["dogKilled"] == 2)
                 {
-                    evilManager = GetComponent<EvilEvents>();
                     evilManager.ending = true;
                     evilManager.EndFade();
                 }
