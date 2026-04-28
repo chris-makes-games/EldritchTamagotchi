@@ -111,6 +111,12 @@ public class DialogueManager : MonoBehaviour
 
     public void ContinueStory() //goes to next step of story
     {
+
+        if (currentStory == null)
+        {
+            Debug.Log("story is null...");
+            return;
+        }
         if (readingText) //stop reading text, show full text and return
         {
             StopAllCoroutines();

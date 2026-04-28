@@ -124,9 +124,10 @@ public class QuestManager : MonoBehaviour
 
     public IEnumerator LoadScene(string sceneName)
     {
-        SceneLoadEvent?.Invoke(this);
         yield return StartCoroutine(sleepManager.FadeToBlack());
+        SceneLoadEvent?.Invoke(this);
         SceneManager.LoadScene(sceneName);
+        yield return StartCoroutine(sleepManager.FadeAway());
     }
 
     IEnumerator SlowText(string text) //waits for the delay in-between characters of the given text

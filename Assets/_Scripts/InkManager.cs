@@ -197,7 +197,6 @@ public class InkManager : MonoBehaviour {
                 break;
 
             case "evilReady":
-                StartCoroutine(sleepScreen.FadeToBlack());
                 StartCoroutine(questManager.LoadScene("EvilMain"));
                 break;
             case "killTime":

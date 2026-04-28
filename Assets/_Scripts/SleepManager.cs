@@ -29,7 +29,8 @@ public class SleepManager : MonoBehaviour
 
     private void SceneLoaded(QuestManager sceneLoad)
     {
-        StartCoroutine(FadeAway());
+        //removing fade on load
+        //StartCoroutine(FadeAway());
     }
 
 
@@ -53,6 +54,7 @@ public class SleepManager : MonoBehaviour
     {
         Debug.Log("fading to black");
         yield return StartCoroutine(FadeIn(mainRenderer));
+        yield return new WaitForSeconds(0.5f);
     }
 
     public IEnumerator FadeAway()
@@ -60,6 +62,7 @@ public class SleepManager : MonoBehaviour
         Debug.Log("fading away");
         yield return new WaitForSeconds(0.5f);
         yield return StartCoroutine(FadeOut(mainRenderer));
+
     }
 
     private IEnumerator FadeOut(SpriteRenderer sr)
