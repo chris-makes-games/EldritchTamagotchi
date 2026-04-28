@@ -53,7 +53,7 @@ public class DoorSceneChanger : MonoBehaviour
         else if (hatEvent == 2)
         {
             // change to OverRoom once you make that
-            sceneToLoad = "OverRoom";
+            sceneToLoad = "UnderRoom";
             doorLocked = false;
             Debug.Log("Door unlocked (Overachiever)");
         }
@@ -69,7 +69,7 @@ public class DoorSceneChanger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!doorLocked && doorCooldown >= 60) {
+        if (!doorLocked && doorCooldown >= 60 && collision.CompareTag("Player")) {
             Debug.Log("Loading " + sceneToLoad + "...");
             StartCoroutine(questManager.LoadScene(sceneToLoad));
         }

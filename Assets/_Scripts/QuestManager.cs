@@ -17,7 +17,8 @@ public class QuestManager : MonoBehaviour
     private AudioSource talkingAudio;
 
     //this is a singleton object, this line makes the instance static
-    public static QuestManager instance;
+    private static QuestManager _instance;
+    public static QuestManager instance { get { return _instance; } }
 
     //variables to keep track of game state
     private float love;
@@ -49,18 +50,18 @@ public class QuestManager : MonoBehaviour
     // Called on game launch to make sure there's only one controller
     void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
         careTakerText.text = ""; //start empty of text
         soundSource = GetComponent<AudioSource>();
         talkingAudio = soundManager.GetComponent<AudioSource>();
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else 
-        {
-            Destroy(gameObject);
-        }
-
     }
 
     public void BeginQuest(Quest newQuest)
@@ -123,13 +124,9 @@ public class QuestManager : MonoBehaviour
 
     public IEnumerator LoadScene(string sceneName)
     {
-        Debug.Log("test");
         yield return StartCoroutine(sleepManager.FadeToBlack());
-        Debug.Log("test");
         SceneLoadEvent?.Invoke(this);
-        Debug.Log("test");
         SceneManager.LoadScene(sceneName);
-        Debug.Log("test");
     }
 
     IEnumerator SlowText(string text) //waits for the delay in-between characters of the given text
