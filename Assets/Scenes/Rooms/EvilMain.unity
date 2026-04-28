@@ -765,11 +765,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6f96c2c356b476bb21414c4da94e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EvilEvents
-  sr: {fileID: 0}
-  endText: {fileID: 0}
-  ending: 1
-  questManager: {fileID: 0}
-  knife: {fileID: 0}
+  sr: {fileID: 1493413019}
+  endText: {fileID: 1096015462}
+  ending: 0
+  questManager: {fileID: 2035514358}
+  knife: {fileID: 6234994464693432312}
 --- !u!4 &306090163
 Transform:
   m_ObjectHideFlags: 0
