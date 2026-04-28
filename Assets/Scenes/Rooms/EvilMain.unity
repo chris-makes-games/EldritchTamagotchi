@@ -6106,7 +6106,7 @@ MonoBehaviour:
   loveDecrement: 0
   careTakerPanel: {fileID: 715130265}
   careTakerText: {fileID: 2141508195}
-  scream: {fileID: 0}
+  scream: {fileID: 8300000, guid: da52f5ac7c207b148821d7ce09876bcb, type: 3}
   delay: 0.15
   waitToYell: 2
 --- !u!82 &2035514359
