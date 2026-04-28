@@ -29,6 +29,9 @@ public class InkManager : MonoBehaviour {
     private Story currentStory;
     public Dictionary<string, Ink.Runtime.Object> variables { get; private set; }
 
+    // i'm not even gonna try to explain what this is -owen
+    private EvilEvents evilManager;
+
     //switch to change things -not sure if better system?
     //can only take ints for now
     private void UpdateGame(string name)
@@ -173,10 +176,15 @@ public class InkManager : MonoBehaviour {
                 if ((int)currentStory.variablesState["dogKilled"] == 1)
                 {
                     Dog.instance.dead = true;
+                    evilManager = GetComponent<EvilEvents>();
+                    evilManager.ending = true;
+                    evilManager.EndFade();
                 }
                 else if ((int)currentStory.variablesState["dogKilled"] == 2)
                 {
-                    
+                    evilManager = GetComponent<EvilEvents>();
+                    evilManager.ending = true;
+                    evilManager.EndFade();
                 }
                 break;
 

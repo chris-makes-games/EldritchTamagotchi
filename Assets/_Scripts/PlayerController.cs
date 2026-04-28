@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     private Interactable interactionObject; //the thing being interacted with
     bool interactable = false;
     TextAsset story = null;
-    bool canMove = true; //for toggling player movement
+    public bool canMove = true; //for toggling player movement
     bool storyMode = false;
     bool waitInput = false; //so player doesn't press interact again
     bool storyVisited; // used to keep track of if the player has interacted there before
