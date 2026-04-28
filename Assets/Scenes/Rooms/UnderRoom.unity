@@ -2241,35 +2241,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9085723341002686310, guid: 494a5ec453e4a4f76959f03718f5566e, type: 3}
   m_PrefabInstance: {fileID: 1694869555}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1042526267 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6234994463840131941, guid: 494a5ec453e4a4f76959f03718f5566e, type: 3}
-  m_PrefabInstance: {fileID: 1694869555}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1042526268 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -7469182267488566888, guid: 494a5ec453e4a4f76959f03718f5566e, type: 3}
-  m_PrefabInstance: {fileID: 1694869555}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042526267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca69a13fd5bada548a553c88289f8e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable
---- !u!114 &1042526271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042526267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77e7b7a14317d4c4cbc2f0baedc865d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPC
-  npcInteractable: {fileID: 1042526268}
 --- !u!1 &1053877937
 GameObject:
   m_ObjectHideFlags: 0
@@ -4952,10 +4923,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6234994463840131941, guid: 494a5ec453e4a4f76959f03718f5566e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1042526271}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 494a5ec453e4a4f76959f03718f5566e, type: 3}
 --- !u!1 &1746455162
 GameObject:

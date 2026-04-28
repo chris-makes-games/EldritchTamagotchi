@@ -165,6 +165,9 @@ MonoBehaviour:
   sr: {fileID: 811226805672120519}
   dog0: {fileID: 5607651031836452936, guid: 4cfe44ce3b4036a42877d6fd0ccc25db, type: 3}
   dog1: {fileID: -518272012, guid: 4cfe44ce3b4036a42877d6fd0ccc25db, type: 3}
+  dog2: {fileID: 3214907087651728376, guid: ed8def856fb81404a8c0906b15dda090, type: 3}
+  dead: 0
+  dogWall: {fileID: 4049025600488416952}
 --- !u!114 &-6637248506739349876
 MonoBehaviour:
   m_ObjectHideFlags: 0
