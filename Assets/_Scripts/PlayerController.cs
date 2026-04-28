@@ -4,9 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
-{
-    public static PlayerController instance;
-    
+{    
     // movement variables
     public Rigidbody2D rb;
     public float moveSpeed;
@@ -62,14 +60,52 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Interactable bed; //for the wakeUp sequence
     bool awoken = false;
 
+    private static PlayerController _instance;
+    public static PlayerController instance { get { return _instance; } }
+
+    //need some vector2s to jump the player around
+    //these are the places the player needs to be when they enter these rooms
+    private Vector2 enterMain;
+    private Vector2 enterUnderOver;
+
+
+
+    private void SceneLoaded(QuestManager sceneLoad)
+    {
+        endStory();
+        if (SceneManager.GetActiveScene().name == "EvilMain")
+        {
+            transform.position = enterMain;
+        }
+        else
+        {
+            transform.position = enterUnderOver;
+        }
+            
+    }
+
     void OnEnable() {
+        QuestManager.SceneLoadEvent += SceneLoaded;
+        enterMain = new Vector2(-0.7f, -3.33f);
+        enterUnderOver = new Vector2(8f, 5f);
         InputActions.FindActionMap("Player").Enable();
         mask = GetComponent<SpriteMask>();
     }
+    private void OnDisable()
+    {
+        QuestManager.SceneLoadEvent -= SceneLoaded;
+    }
 
     void Awake() {
-        instance = this;
-        
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
         move = InputSystem.actions.FindAction("Move");
         bird = InputSystem.actions.FindAction("FlipTheBird");
         dodge = InputSystem.actions.FindAction("Dodge");

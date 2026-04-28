@@ -29,6 +29,9 @@ public class InkManager : MonoBehaviour {
     private Story currentStory;
     public Dictionary<string, Ink.Runtime.Object> variables { get; private set; }
 
+    //this is a singleton object, this line makes the instance static
+    private static InkManager _instance;
+    public static InkManager instance { get { return _instance; } }
     // i'm not even gonna try to explain what this is -owen
     private EvilEvents evilManager;
 
@@ -159,6 +162,11 @@ public class InkManager : MonoBehaviour {
                 }
                 StartCoroutine(questManager.ChainText(phrases));
                 break;
+
+            case "evilReady":
+                StartCoroutine(sleepScreen.FadeToBlack());
+                StartCoroutine(questManager.LoadScene("EvilMain"));
+                break;
             case "killTime":
                 //bool for it's time to kill the dog (or not)
                 //might want to do a questManager.SetQuestText("Kill the Dog") here
@@ -196,6 +204,15 @@ public class InkManager : MonoBehaviour {
 
     public void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
         musicSource = musicManager.GetComponent<AudioSource>();
         Story globalVars = new Story(inkGlobalsJSON.text);
         variables = new Dictionary<string, Ink.Runtime.Object>();

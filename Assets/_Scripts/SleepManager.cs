@@ -1,8 +1,5 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.U2D;
-using UnityEngine.UI;
 
 public class SleepManager : MonoBehaviour
 {
@@ -18,19 +15,7 @@ public class SleepManager : MonoBehaviour
     private SpriteRenderer mainRenderer;
     private SpriteRenderer side1Renderer;
     private SpriteRenderer side2Renderer;
-
-    //singleton instance
-    private static SleepManager instance;
-
-    private void Awake()
-    {
-        instance = this;//ensure singleton
-    }
-
-    public static SleepManager GetInstance()
-    {
-        return instance;//ensure singleton
-    }
+    [SerializeField] private float fadeValue;
 
     private void OnEnable()
     {
@@ -44,9 +29,6 @@ public class SleepManager : MonoBehaviour
 
     private void SceneLoaded(QuestManager sceneLoad)
     {
-        Color tmp = mainRenderer.color;
-        tmp.a = 0;
-        mainRenderer.color = tmp;
         StartCoroutine(FadeAway());
     }
 
@@ -69,45 +51,46 @@ public class SleepManager : MonoBehaviour
 
     public IEnumerator FadeToBlack()
     {
+        Debug.Log("fading to black");
         yield return StartCoroutine(FadeIn(mainRenderer));
     }
 
     public IEnumerator FadeAway()
     {
+        Debug.Log("fading away");
+        yield return new WaitForSeconds(0.5f);
         yield return StartCoroutine(FadeOut(mainRenderer));
     }
 
     private IEnumerator FadeOut(SpriteRenderer sr)
     {
-        float alphaVal = sr.color.a;
+        fadeValue = sr.color.a;
         Color tmp = sr.color;
 
         while (sr.color.a > 0)
         {
-            alphaVal -= 0.07f;
-            tmp.a = alphaVal;
+            fadeValue -= 0.07f;
+            tmp.a = fadeValue;
             sr.color = tmp;
 
             yield return new WaitForSeconds(0.10f); // update interval
         }
-        yield return null;
         
     }
 
     private IEnumerator FadeIn(SpriteRenderer sr)
     {
-        float alphaVal = sr.color.a;
+        fadeValue = sr.color.a;
         Color tmp = sr.color;
 
         while (sr.color.a < 1)
         {
-            alphaVal += 0.07f;
-            tmp.a = alphaVal;
+            fadeValue += 0.07f;
+            tmp.a = fadeValue;
             sr.color = tmp;
 
             yield return new WaitForSeconds(0.10f); // update interval
         }
-        yield return null;
 
     }
 }
