@@ -1,8 +1,14 @@
 INCLUDE globals.ink
 
+{loser == true: -> sayLoser}
 {playdateComplete == false: -> no}
 {playdateComplete == true: -> yes}
 
+==sayLoser==
+You try the handle, but it won't budge.
+~ setQuestText = "convince flea they're a pathetic loser"
+~ tempText = "I'm afraid I can't let you do that"
+-> END
 
 ==no==
 Return to your quarters?
