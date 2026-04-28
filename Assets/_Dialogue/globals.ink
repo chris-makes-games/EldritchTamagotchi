@@ -45,3 +45,7 @@ VAR doorTried = false
 VAR dogKilled = 0 //0 is before, 1 is killed, 2 is spared
 VAR killTime = false //when it's time to kill the dog
 VAR holdingKnife = false //picked up knife?
+
+//for play date
+VAR playdateComplete = false
+VAR evilReady = false

@@ -35,8 +35,9 @@ public class DialogueManager : MonoBehaviour
     //ink story JSON - recieves from the player
     private Story currentStory;
 
-    //singleton instance
-    private static DialogueManager instance;
+    //this is a singleton object, this line makes the instance static
+    private static DialogueManager _instance;
+    public static DialogueManager instance { get { return _instance; } }
 
     //the wakeup story to start the game
     [SerializeField] private TextAsset wakeUpStory;
@@ -44,7 +45,15 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;//ensure singleton
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
         select = InputSystem.actions.FindAction("Interact/Continue");
     }
 
