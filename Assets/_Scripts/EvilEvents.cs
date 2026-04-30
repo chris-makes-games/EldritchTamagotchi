@@ -9,15 +9,31 @@ public class EvilEvents : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer sr;
     public static EvilEvents instance;
-    [SerializeField] private TextMeshProUGUI endText;
-    public bool ending = true;
-    [SerializeField] private QuestManager questManager;
+    [SerializeField] private GameObject endText;
     [SerializeField] private GameObject knife;
+    public bool ending = true;
+    private QuestManager questManager;
+
+    private void OnEnable()
+    {
+        InkManager.KnifeEvent += HideKnife;
+    }
+
+    private void OnDisable()
+    {
+        InkManager.KnifeEvent -= HideKnife;
+    }
+
+    private void HideKnife(InkManager ink)
+    {
+        knife.SetActive(false);
+    }
 
 
     void Awake()
     {
         instance = this;
+        questManager = FindFirstObjectByType<QuestManager>();
     }
 
     void Start()
@@ -38,12 +54,9 @@ public class EvilEvents : MonoBehaviour
     private IEnumerator EvilStart()
     {
         List<string> phrases = new List<string> {"oh", "that's no good", "why don't you just get rid of that dog", "here, take this"};
-        
         StartCoroutine(questManager.ChainText(phrases));
         yield return new WaitForSeconds(16.5f);
         knife.SetActive(true);
-
-        yield return null;
     }
 
     private IEnumerator FadeIn(SpriteRenderer sr)
@@ -65,13 +78,13 @@ public class EvilEvents : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // might do a fade-in for the text instead of this, too tired for now
-        endText.enabled = true;
+        endText.SetActive(true);
 
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(10.0f);
 
         Cursor.visible = true;
         Debug.Log("Returning to main menu...");
-        SceneManager.LoadScene("StartMenu");
+        //SceneManager.LoadScene("StartMenu");
 
         yield return null;
     }

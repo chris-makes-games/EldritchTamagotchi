@@ -1,14 +1,14 @@
 INCLUDE globals.ink
-VAR visited = false
 
-{visited == true: -> grabbed}
-{visited == false: -> grab}
+Pick up the knife?
++[Pick Up] -> grab
++[Ignore] -> leave
 
 == grab ==
 You picked up the knife.
 ~ holdingKnife = true
     -> END
-
-== grabbed ==
-You already picked up the knife, so there isn't a knife there anymore.
-    -> END
+    
+==leave==
+You ignore the knife.
+-> END

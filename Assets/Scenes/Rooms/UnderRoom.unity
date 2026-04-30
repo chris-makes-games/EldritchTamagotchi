@@ -119,6 +119,70 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &18563233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 757531932928472493, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
+  m_PrefabInstance: {fileID: 1259648735}
+  m_PrefabAsset: {fileID: 0}
+--- !u!331 &18563236
+SpriteMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18563233}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 0}
+  m_MaskAlphaCutoff: 0.2
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0
+  m_SpriteSortPoint: 0
+  m_MaskSource: 0
 --- !u!1 &49620768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,7 +1764,7 @@ MonoBehaviour:
     m_Flags: 0
   InkManager: {fileID: 1746455163}
   player: {fileID: 1877586184}
-  wakeUpStory: {fileID: 0}
+  wakeUpStory: {fileID: 4900000, guid: 62156c23808c6aa48bee049fa7ec3a66, type: 3}
   doWakeUpStory: 0
 --- !u!4 &681542481
 Transform:
@@ -2323,7 +2387,7 @@ SpriteRenderer:
   m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3021,6 +3085,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -628028561, guid: 40796074261b19b48a1cbd82cffda7a4, type: 3}
     - target: {fileID: 7679266217882416731, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
+      propertyPath: inkManager
+      value: 
+      objectReference: {fileID: 1746455163}
+    - target: {fileID: 7679266217882416731, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
       propertyPath: DialogueManager
       value: 
       objectReference: {fileID: 681542480}
@@ -3031,7 +3099,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 757531932928472493, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 18563236}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea1c414f2d634546a35d048ebc0935d, type: 3}
 --- !u!1 &1284420930
 GameObject:
@@ -4959,8 +5030,9 @@ MonoBehaviour:
   questManager: {fileID: 2035514358}
   musicManager: {fileID: 905019883}
   musicClip: {fileID: 8300000, guid: e790406b84c111f4f974bc71f328c3de, type: 3}
-  sleepScreen: {fileID: 0}
-  lockedDoor: {fileID: 0}
+  sleepScreen: {fileID: 1918405722}
+  lockedDoor: {fileID: 1064033488}
+  floorLight: {fileID: 0}
 --- !u!4 &1746455164
 Transform:
   m_ObjectHideFlags: 0
@@ -5430,7 +5502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1918405721
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6081,7 +6153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   inkManager: {fileID: 1746455163}
-  sleepManager: {fileID: 0}
+  sleepManager: {fileID: 1918405722}
   soundManager: {fileID: 1298633107}
   loveIncrement: 0
   loveDecrement: 0

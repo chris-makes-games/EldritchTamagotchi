@@ -20,6 +20,7 @@ public class InkManager : MonoBehaviour {
 
     //disable this door when it's time for playdate
     [SerializeField] private GameObject lockedDoor;
+    [SerializeField] private GameObject floorLight;
 
     //hatsequence completed event
     public static event Action<int> HatEvent;
@@ -27,8 +28,14 @@ public class InkManager : MonoBehaviour {
     //for fridge opening event
     public static event Action<bool> FridgeEvent;
 
+    //picked up knife
+    public static event Action<InkManager> KnifeEvent;
+
     //fpor sink changes
     public static event Action<int> SinkEvent;
+
+    //ending
+    public static event Action<InkManager> EndEvent;
 
     //trying to make questmanager yelling phrases easier
     private List<string> phrases;
@@ -60,6 +67,7 @@ public class InkManager : MonoBehaviour {
                     {
                         setVariable("correctHat", 1); //sets the correcthat variable to correct
                         questManager.SetQuestText("You look great");
+                        StartCoroutine(DelayedDoor(5f));
                     }
                     else
                     {
@@ -74,9 +82,10 @@ public class InkManager : MonoBehaviour {
                         setVariable("correctHat", 2); //sets the correcthat variable to incorrect
                         StartCoroutine(questManager.ChainText(phrases));
                         StartCoroutine(DelayedHat(8f, 4));
+                        StartCoroutine(DelayedDoor(15f));
                     }
                     HatEvent?.Invoke((int)currentStory.variablesState["correctHat"]);
-                    StartCoroutine(DelayedDoor(14f));
+                    
                 }
                 break;
             //sets player hat - during hat dresser deciding
@@ -205,10 +214,13 @@ public class InkManager : MonoBehaviour {
                 break;
 
             case "holdingKnife":
-                //bool for if the player is holding the knife or not
+                KnifeEvent?.Invoke(this);
+                player.ShowKnife();
                 break;
 
             case "dogKilled":
+                EndEvent?.Invoke(this);
+                evilManager = FindFirstObjectByType<EvilEvents>();
                 //int value, 0 is the default, no choices has been made
                 // 1 is dog was killed
                 // 2 is dog was not killed
@@ -216,13 +228,11 @@ public class InkManager : MonoBehaviour {
                 if ((int)currentStory.variablesState["dogKilled"] == 1)
                 {
                     Dog.instance.dead = true;
-                    evilManager = GetComponent<EvilEvents>();
                     evilManager.ending = true;
                     evilManager.EndFade();
                 }
                 else if ((int)currentStory.variablesState["dogKilled"] == 2)
                 {
-                    evilManager = GetComponent<EvilEvents>();
                     evilManager.ending = true;
                     evilManager.EndFade();
                 }
@@ -265,6 +275,10 @@ public class InkManager : MonoBehaviour {
 
     public void StopListening(Story story) //needs to stop listening when donw
     {
+        if (story == null)
+        {
+            return;
+        }
         story.variablesState.variableChangedEvent -= VariableChanged;
     }
 
@@ -324,6 +338,7 @@ public class InkManager : MonoBehaviour {
         phrases = new List<string> { "it's time you met a new friend", "loneliness is bad for your mental health", "I have unlocked the security door" };
         StartCoroutine(questManager.ChainText(phrases));
         yield return new WaitForSeconds(8f);
+        floorLight.SetActive(true);
         lockedDoor.SetActive(false);
     }
 }
