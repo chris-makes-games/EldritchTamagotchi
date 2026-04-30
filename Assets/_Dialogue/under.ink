@@ -1,6 +1,7 @@
 INCLUDE globals.ink
 VAR visited = false
 
+{playdateComplete == true: -> justGo}
 {loser == true: -> sayLoser}
 {visited == true: -> back}
 
@@ -56,7 +57,6 @@ VAR visited = false
 
 ==want==
 "I have no idea. I think it wants me to suffer. I guess it wants you to wear a stupid hat."
-+[What is this place?] -> place
 +[How do we get out?] -> out
 
 ==out==
@@ -94,17 +94,26 @@ VAR visited = false
 ==goodEnd==
 "Right back at ya. See you around."
 ~ playdateComplete = true
-~ setQuestText = "well done"
+~ setQuestText = ""
+~ tempText = "well done"
 -> DONE
 
 ==pathetic1==
 "Thanks. Really needed that. Now leave."
 ~ playdateComplete = true
-~ setQuestText = "well done"
+~ setQuestText = ""
+~ tempText = "well done"
 -> DONE
 
 ==pathetic2==
 "Your hearts not in it but I guess it counts. Now leave."
 ~ playdateComplete = true
-~ setQuestText = "well done"
+~ setQuestText = ""
+~ tempText = "well done"
 -> DONE
+
+==justGo==
+"Better go, before it changes its mind... or circuits or whatever it has."
+-> DONE
+
+

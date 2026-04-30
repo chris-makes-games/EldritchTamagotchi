@@ -8,6 +8,9 @@ public class Dog : MonoBehaviour
     [SerializeField] private Sprite dog0, dog1, dog2;
     private int animationFrameCounter = 0;
 
+    //adding this to turn off when dead
+    private Collider2D triggerCollider;
+
     // death related variables
     public bool dead = false;
     private bool newDead = true;
@@ -18,6 +21,7 @@ public class Dog : MonoBehaviour
 
     void Awake()
     {
+        triggerCollider = GetComponent<Collider2D>();
         instance = this;
     }
 
@@ -37,6 +41,7 @@ public class Dog : MonoBehaviour
         }
         else if (newDead && dead)
         {
+            triggerCollider.enabled = false;
             sr.sprite = dog2;
             dogWall.enabled = false;
             transform.GetChild(1).gameObject.SetActive(false);

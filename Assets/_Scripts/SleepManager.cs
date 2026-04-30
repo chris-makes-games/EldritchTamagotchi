@@ -60,13 +60,13 @@ public class SleepManager : MonoBehaviour
     public IEnumerator FadeAway()
     {
         Debug.Log("fading away");
-        yield return new WaitForSeconds(0.5f);
         yield return StartCoroutine(FadeOut(mainRenderer));
 
     }
 
     private IEnumerator FadeOut(SpriteRenderer sr)
     {
+        yield return new WaitForSeconds(0.5f);
         fadeValue = sr.color.a;
         Color tmp = sr.color;
 

@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Sprite[] hats; //list of hat sprites
     public GameObject hat; //the child hat object
     private SpriteRenderer hatSprite;
+    private SpriteMask hatMask;
+
+    //knife
+    [SerializeField] private GameObject knife;
 
     //the mast to use with highlightable stuff
     private SpriteMask mask;
@@ -71,8 +75,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 enterMain;
     private Vector2 enterUnderOver;
 
-
-
     private void SceneLoaded(QuestManager sceneLoad)
     {
         if (inkManager.getVariable<bool>("evilReady"))
@@ -115,6 +117,7 @@ public class PlayerController : MonoBehaviour
         menu = InputSystem.actions.FindAction("Pause/Quit");
 
         hatSprite = hat.GetComponent<SpriteRenderer>();
+        hatMask = hat.GetComponent<SpriteMask>();
 
         soundSource = GetComponent<AudioSource>();
 
@@ -157,6 +160,7 @@ public class PlayerController : MonoBehaviour
                     standing = false;
                     hatSprite.flipY = false;
                     hatSprite.flipX = false;
+                    hatMask.sprite = hatSprite.sprite;
                     hat.transform.localPosition = new Vector2(0f, 1.15f);
                     hat.transform.localPosition = new Vector2(0f, 1.15f);
                 }
@@ -165,6 +169,7 @@ public class PlayerController : MonoBehaviour
                 {
                     hatSprite.flipY = false;
                     hatSprite.flipX = false;
+                    hatMask.sprite = hatSprite.sprite;
                     hat.transform.localPosition = new Vector2(0f, 1.15f);
                     if (sr.sprite == walk1) sr.sprite = walk2;
                     else if (sr.sprite == walk2) sr.sprite = walk1;
@@ -186,6 +191,7 @@ public class PlayerController : MonoBehaviour
                     walking = false;
                     hatSprite.flipY = false;
                     hatSprite.flipX = false;
+                    hatMask.sprite = hatSprite.sprite;
                     hat.transform.localPosition = new Vector2(0f, 1.15f);
                 }
                 standing = true;
@@ -193,6 +199,7 @@ public class PlayerController : MonoBehaviour
                 {
                     hatSprite.flipY = false;
                     hatSprite.flipX = false;
+                    hatMask.sprite = hatSprite.sprite;
                     hat.transform.localPosition = new Vector2(0f, 1.15f);
                     if (sr.sprite == stand1) sr.sprite = stand2;
                     else if (sr.sprite == stand2) sr.sprite = stand1;
@@ -211,6 +218,7 @@ public class PlayerController : MonoBehaviour
                 sr.sprite = dodge1;
                 hatSprite.flipY = true;
                 hatSprite.flipX = true;
+                hatMask.sprite = hatSprite.sprite;
                 hat.transform.localPosition = new Vector2(0f, -0.21f);
                 mask.sprite = sr.sprite; //sets the mask to match the sprite
             }
@@ -319,14 +327,26 @@ public class PlayerController : MonoBehaviour
         }
         canMove = true;
         storyMode = false;
-        interactionObject.ToggleHighlight();
-        interactable = true;
-        DialogueManager.SetText(interactionObject.description);
+        
+        if (interactionObject != null)
+        {
+            interactionObject.ToggleHighlight();
+            DialogueManager.SetText(interactionObject.description);
+            interactable = true;
+        }
+        else
+        {
+            DialogueManager.SetText("");
+            interactable = false;
+        }
+        
+        
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (!awoken)
         {
             return;
@@ -392,6 +412,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         hatSprite.sprite = hats[hatChoice];
+        hatMask.sprite = hatSprite.sprite;
     }
 
     public void WalkSound()
@@ -402,6 +423,16 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(PlaySound(walkSounds[Random.Range(0, walkSounds.Length - 1)]));
         }
         
+    }
+
+    public void ShowKnife()
+    {
+        knife.SetActive(true);
+    }
+
+    public void HideKnife()
+    {
+        knife.SetActive(false);
     }
 
     IEnumerator PlaySound(AudioClip audio)

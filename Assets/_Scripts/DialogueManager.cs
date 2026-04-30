@@ -25,6 +25,7 @@ public class DialogueManager : MonoBehaviour
     private ChoiceManager choiceManager;
     string[] choiceList;
     private bool waitingchoice = false;
+    private bool ending = false;
 
     //will listen to variables being changed in ink scripts
     [SerializeField] private InkManager InkManager;
@@ -45,11 +46,13 @@ public class DialogueManager : MonoBehaviour
 
     private void OnEnable()
     {
+        InkManager.EndEvent += Ending;
         QuestManager.SceneLoadEvent += SceneLoaded;
     }
 
     private void OnDisable()
     {
+        InkManager.EndEvent -= Ending;
         QuestManager.SceneLoadEvent -= SceneLoaded;
     }
 
@@ -60,6 +63,20 @@ public class DialogueManager : MonoBehaviour
             ExitStoryMode();
         }
         
+    }
+
+    private void Ending(InkManager ink)
+    {
+        StartCoroutine(EndWait());
+    }
+
+    private IEnumerator EndWait()
+    {
+        Debug.Log("ending...");
+        yield return new WaitForSeconds(3f);
+        ExitStoryMode();
+        yield return new WaitForSeconds(3f);
+        SetText("Thanks for playing!");
     }
 
     private void Awake()
@@ -89,32 +106,48 @@ public class DialogueManager : MonoBehaviour
 
     
     public void EnterStoryMode(TextAsset ink, bool visited) //begin a story, accepts an ink
-    {    
+    {   
+        if (ink == null)
+        {
+            Debug.Log("Error! Ink is null during EnterStoryMode for DialogueManager!");
+            return;
+        }
         PlayerController.instance.rb.linearVelocity = Vector2.zero;
         currentStory = new Story(ink.text);
         if (currentStory.variablesState.TryGetDefaultVariableValue("visited"))
         {
             currentStory.variablesState["visited"] = visited;
         }
-        dialoguePanel.SetActive(true);
         InkManager.StartListening(currentStory);
         ContinueStory();
     }
 
     public void ExitStoryMode()//when a story is done, exits
     {
+        Debug.Log("hiding choices");
         choiceManager.EndChoice(); //hides buttons and selector
+        Debug.Log("stop listen");
         InkManager.StopListening(currentStory);
+        Debug.Log("player end story");
         player.endStory(); //lets player move again
+        Debug.Log("story null");
         currentStory = null;
+        waitingchoice = false;
     }
 
     public void ContinueStory() //goes to next step of story
     {
+        Debug.Log("continuing...");
+        if (ending)
+        {
+            Debug.Log("ending from continue...");
+            return;
+        }
 
         if (currentStory == null)
         {
             Debug.Log("story is null...");
+            ExitStoryMode();
             return;
         }
         if (readingText) //stop reading text, show full text and return
@@ -139,9 +172,10 @@ public class DialogueManager : MonoBehaviour
                 return;
             }
         }
-
+        
         if (currentStory.canContinue)
         {
+            Debug.Log("story can continue");
             fullText = currentStory.Continue();
             SayText(fullText);
             if (currentStory.currentChoices.Count > 0) //if story has more than one choice

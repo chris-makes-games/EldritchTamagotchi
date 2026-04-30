@@ -22,17 +22,17 @@ VAR visited = false
 // THIS IS THE BIG CHOICE, LOTS OF THINGS ARE ABOUT TO HAPPEN
 // make sure to keep "leave" at the top, so that if the player accidentally selects something immediately, it's the "leave" option and not something more permanent
 == knifeless_choice ==
+~ setQuestText = "pick up the knife"
 It's your dog. You have no way to effectively harm your dog with only your slimy form.
 + [Leave] -> later
 + [Spare] -> spare
 
 == knife_choice ==
+~ setQuestText = "kill your dog"
 It's your dog. You have a knife. You must determine the fate of your dog.
 + [Leave] -> later
 + [KILL] -> kill
 + [Spare] -> spare
-
-
 
 == later ==
 You don't feel like dealing with this yet.
@@ -40,11 +40,13 @@ You don't feel like dealing with this yet.
 
 == kill ==
 You thrust the knife into your dog.
+~ setQuestText = "good job"
 ~ dogKilled = 1
--> DONE
+-> END
 
 == spare ==
 You decide not to kill your dog.
+~ setQuestText = "pathetic"
 ~ dogKilled = 2
 -> END
 

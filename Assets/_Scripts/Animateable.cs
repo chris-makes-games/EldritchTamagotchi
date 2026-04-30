@@ -8,18 +8,39 @@ public class Animateable : MonoBehaviour //moved animation stuff from Owen's dog
     SpriteRenderer sr;
     private int currentFrame = 0;
     private int animationFrameCounter = 0;
+    private bool dead = false;
 
     //unity event: I am a wizard - Chris
     public static event Action<Animateable> ChangeSpriteEvent;
+
 
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
     }
 
+    private void OnEnable()
+    {
+        InkManager.EndEvent += EndEvent;
+    }
+
+    private void OnDisable()
+    {
+        InkManager.EndEvent -= EndEvent;
+    }
+
+    private void EndEvent(InkManager ink)
+    {
+        dead = true;
+    }
+
 
     void FixedUpdate()
     {
+        if (dead)
+        {
+            return;
+        }
 
         animationFrameCounter++;
         if (animationFrameCounter == frameDelay)
