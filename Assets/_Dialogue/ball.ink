@@ -1,4 +1,6 @@
 INCLUDE globals.ink
+INCLUDE over.ink
+
 VAR visited = false
 
 {visited == false: -> sphere}
@@ -10,7 +12,7 @@ The perfect spherical ball seems like it should roll but it won't budge. At firs
 +[Leave] -> leave
 
 ==still==
-The ball has not moved even a little bit.
+The ball has not moved... even a little bit.
 +[Kick it] -> kick
 +[Leave] -> leave
 
